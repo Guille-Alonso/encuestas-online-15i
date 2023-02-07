@@ -1,5 +1,9 @@
 const HomePage = () => {
-    return (  <h1>Bienvenidos a la pagina principal de encuestas online</h1>);
+    return (  
+<div className="layout">
+    <h1>Bienvenidos a la pagina principal de encuestas online</h1>
+</div>
+    );
 }
  
 export default HomePage;
