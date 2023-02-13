@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../hook/useForm';
+import 'bootstrap/dist/css/bootstrap.css'
+import "../index.css"
 
 export const RegisterPage = () => {
 	const navigate = useNavigate();
@@ -27,7 +29,7 @@ export const RegisterPage = () => {
 	};
 
 	return (
-		<div className='wrapper'>
+		<div id='register' className='wrapper '>
 			<form onSubmit={onRegister}>
 				<h1>Registrarse</h1>
 

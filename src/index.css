@@ -5,10 +5,15 @@
   box-sizing: border-box;
 }
 
-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  padding: 15px;
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 15px;
+	background-color: #65B891;
+	color: #fff;
 }
+
