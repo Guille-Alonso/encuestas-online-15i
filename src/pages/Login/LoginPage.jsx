@@ -24,24 +24,23 @@ function ModalIniciaSesion() {
          </Form.Text>
        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="loginPassword">
         <Form.Label>Contraseña</Form.Label>
          <Form.Control type="password" placeholder="Contraseña" />
        </Form.Group>
-       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Recuérdame" /><Link to="/Login">¿Has olvidado tu contraseña?</Link>
+       <Form.Group className="mb-3" controlId="loginCheckbox">
+        <Form.Check type="switch" label="Recuérdame" /><Link to="/ForgetPassword">¿Has olvidado tu contraseña?</Link>
        </Form.Group>
-       <Button variant="primary" type="submit">
-         Inicia Sesión
-       </Button>
+       <div className="d-grid gap-2"></div>
+       <Button variant="primary" size="l" type="submit">Inicia Sesión</Button>
      </Form>
             
           </Modal.Body>
   
           <Modal.Footer>
             <h9>O inicia sesión con:</h9>
-            <Button variant="secondary">Facebook</Button>
-            <Button variant="primary">Google</Button>
+            <Button variant="info">Facebook</Button>
+            <Button variant="danger">Google</Button>
           </Modal.Footer>
         </Modal.Dialog>
       </div>
