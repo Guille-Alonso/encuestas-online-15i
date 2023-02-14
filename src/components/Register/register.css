@@ -1,0 +1,53 @@
+
+
+body {
+    background-image: url('C:\Users\Usuario\Desktop\Proyectos de Rolling\FORMULARIO CON REACT\encuestas-online-15i\src\asset\fondo.jpg') !important;
+}
+
+
+form {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.input-group {
+	width: 100%;
+	background: #24303c;
+	border-radius: 4px;
+	padding: 10px;
+	border: 1px solid #1f53c5;
+	margin-bottom: 16px;
+	font-size: 18px;
+	font-family: 'calibri';
+
+}
+
+.name{
+	width: 100%;
+}
+
+.btn {
+    font-weight: 400;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    min-width: 10rem;
+    background-color: #1f53c5;
+}
+
+.btn-outline-dark {
+    border: 2px solid var(--color-dark-xx);
+}
+
+.form-register {
+	width: 400px;
+	background: #24303c;
+	padding: 30px;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 4px;
+	font-family: 'calibri';
+	box-shadow: 7px 13px 37px #000;
+}
+
+

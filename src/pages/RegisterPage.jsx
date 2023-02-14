@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from '../hook/useForm';
 import 'bootstrap/dist/css/bootstrap.css'
-import "../index.css"
+import "../components/Register/register.css"
 
 export const RegisterPage = () => {
 	const navigate = useNavigate();
@@ -30,48 +30,48 @@ export const RegisterPage = () => {
 
 	return (
 		<div id='register' className='wrapper  bg-chatter-green h-100 py-4 fs-1 fw-bold scroll-y'>
-			<form onSubmit={onRegister}>
-				<h1>Registrarse</h1>
+			<form onSubmit={onRegister} class="form-register">
+			<h1 class="py-3 font-weight-bold mb-3">Crea tu cuenta gratis</h1>
 
 				<div className='input-group'>
 					<input
 						type='text'
 						name='name'
-						id='name'
+						className='name'
 						value={name}
 						onChange={onInputChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu nombre"
+						maxLength={15}
 					/>
-					<label htmlFor='name'>Nombre:</label>
 				</div>
 
 				<div className='input-group'>
 					<input
 						type='email'
 						name='email'
-						id='email'
+						className='name'
 						value={email}
 						onChange={onInputChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu correo"
+						maxLength={20}
 					/>
-					<label htmlFor='email'>Email:</label>
 				</div>
 				<div className='input-group'>
 					<input
 						type='password'
 						name='password'
-						id='password'
+						className='name'
 						value={password}
 						onChange={onInputChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu contraseña"
+						maxLength={20}
 					/>
-					<label htmlFor='password'>Contraseña:</label>
 				</div>
 
 				<div className="content d-flex flex-column mb-3 d-flex align-items-start" data-aos="fade">
