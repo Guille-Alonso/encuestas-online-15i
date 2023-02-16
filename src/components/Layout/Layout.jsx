@@ -1,16 +1,12 @@
-import Footer from "../common/Footer/Footer";
-import MainNavBar from "../common/MainNavBar/MainNavBar";
-
-
-const Layout = ({children}) => {
-
-    return ( 
-      <>
-      <MainNavBar/>
-        {children}
-      <Footer/>
-      </>
-    );
-  }
-   
-  export default Layout;
+import { Content } from "../Content.jsx";
+import { Box } from "../Box.jsx";
+export const Layout = ({ children }) => (
+  <Box
+    css={{
+      maxW: "100%"
+    }}
+  >
+    {children}
+    <Content />
+  </Box>
+);
