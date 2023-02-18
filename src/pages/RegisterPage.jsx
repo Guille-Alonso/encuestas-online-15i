@@ -1,6 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from '../hook/useForm';
+import 'bootstrap/dist/css/bootstrap.css'
+import "../index.css"
 
 export const RegisterPage = () => {
 	const navigate = useNavigate();
@@ -27,7 +29,7 @@ export const RegisterPage = () => {
 	};
 
 	return (
-		<div className='wrapper'>
+		<div id='register' className='wrapper  bg-chatter-green h-100 py-4 fs-1 fw-bold scroll-y'>
 			<form onSubmit={onRegister}>
 				<h1>Registrarse</h1>
 
@@ -40,6 +42,7 @@ export const RegisterPage = () => {
 						onChange={onInputChange}
 						required
 						autoComplete='off'
+						placeholder="Ingresa tu nombre"
 					/>
 					<label htmlFor='name'>Nombre:</label>
 				</div>
@@ -53,6 +56,7 @@ export const RegisterPage = () => {
 						onChange={onInputChange}
 						required
 						autoComplete='off'
+						placeholder="Ingresa tu correo"
 					/>
 					<label htmlFor='email'>Email:</label>
 				</div>
@@ -65,12 +69,27 @@ export const RegisterPage = () => {
 						onChange={onInputChange}
 						required
 						autoComplete='off'
+						placeholder="Ingresa tu contraseña"
 					/>
 					<label htmlFor='password'>Contraseña:</label>
 				</div>
 
-				<button>Registrarse</button>
+				<div className="content d-flex flex-column mb-3 d-flex align-items-start" data-aos="fade">
+        <button className="btn btn-primary">
+        Registrarse
+        </button>
+    </div>
+
+		<div className="content text d-flex flex-row gap-2 fs-6 fst-italic" data-aos="fade">
+        <span>¿Ya tienes una cuenta?</span>
+        <Link to="/" className="text-chatter-blue">
+    Inicia sesión aquí
+        </Link>
+    </div>
+		
 			</form>
+
+			
 		</div>
 	);
 };

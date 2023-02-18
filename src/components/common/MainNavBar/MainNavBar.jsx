@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
 export const MainNavBar = () =>{
 
@@ -21,13 +21,13 @@ export const MainNavBar = () =>{
 
     return (
         <>
-            <header>
-                <h1>
-
-                    <Link to="/"> Logo </Link>
-                </h1>
-
+            <Navbar className="Navbar" variant="dark">
                 
+            <Container className="mw-100 w-100 d-flex justify-content-between m-0">
+            <Navbar.Brand className="brand-logo">
+            <img className="mh-100 mw-100 d-block" alt="Logo" />
+            </Navbar.Brand>
+            <Navbar.Collapse className="justify-content-end">
 
                 {state?.logged ? (
                     <div className='user'>
@@ -43,9 +43,9 @@ export const MainNavBar = () =>{
                     )
                 }
 
-
-                
-            </header>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
 
         
         </>
