@@ -28,11 +28,13 @@ function ModalIniciaSesion() {
         <Form.Label>Contraseña</Form.Label>
          <Form.Control type="password" placeholder="Contraseña" />
        </Form.Group>
-       <Form.Group className="mb-3" controlId="loginCheckbox">
-        <Form.Check type="switch" label="Recuérdame" /><Link to="/ForgetPassword">¿Has olvidado tu contraseña?</Link>
+       <Form.Group className="d-flex justify-content-between" controlId="loginCheckbox">
+       <Form.Check type="switch" label="Recuérdame" />
+        
+        <Link to="/ForgetPassword">¿Has olvidado tu contraseña?</Link>
        </Form.Group>
-       <div className="d-grid gap-2"></div>
-       <Button variant="primary" size="l" type="submit">Inicia Sesión</Button>
+       <div className="d-grid gap-2">
+       <Button variant="primary" size="l" type="submit">Inicia Sesión</Button></div>
      </Form>
             
           </Modal.Body>
