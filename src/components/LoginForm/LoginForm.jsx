@@ -1,52 +1,51 @@
-import { useState } from "react";
-import { Form, Button} from "react-bootstrap";
-// import {ADD_USER_VALUES} from "../../constants";
+import React from 'react';
+import { LockOutlined, UserOutlined} from '@ant-design/icons';
+import { Button, Checkbox, Form, Input } from 'antd';
 
+const LoginForm = () => {
+  const onFinish = (values ) => {
+    console.log('Received values of form: ', values);
+  };
 
-const LoginForm =() => {
-const [Values, setValues]= useState ({
-email:"",
-password:"",
-})
-const handleChange =(e)=>{
-  setValues({
-    ...values,
-    [e.target.name]:e.target.value
-  })
-}
+  return (
+    <Form
+      name="normal_login"
+      className="login-form"
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      style={{ display: 'block', position: 'initial' }}
+    >
+      <Form.Item
+        name="username"
+        rules={[{ required: true, message: 'Por favor ingresa un Usuario!' }]}
+      >
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Usuario" />
+      </Form.Item>
+      <Form.Item
+        name="password"
+        rules={[{ required: true, message: 'Por favor ingresa un correo electronico' }]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password" placeholder="Contraseña"/>
+      </Form.Item>
+      <Form.Item >
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Recuérdame</Checkbox>
+        </Form.Item>
 
-const handleSubmit = async(e)=>{
-  try{
-    e.preventDefault();
-  const {data} = axios.post ("/users/login")
-  console.log (data)
-  } catch (error){
+        <a className="login-form-forgot" href="/forgetPassword">
+          Recuperar contraseña
+        </a>
+      </Form.Item>
 
-  }
-}
-return (
-<Form>
-       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Correo electrónico</Form.Label>
-        <Form.Control name="email" type="email" placeholder="Ingresa un Correo" onChange={handleChange} value={values.email}/>
-        <Form.Text className="text-muted">
-        
-         </Form.Text>
-       </Form.Group>
-
-      <Form.Group className="mb-3" controlId="loginPassword">
-        <Form.Label>Contraseña</Form.Label>
-         <Form.Control name="password"type="password" placeholder="Contraseña" onChange={handleChange} value={values.password} />
-       </Form.Group>
-       <Form.Group className="d-flex justify-content-between" controlId="loginCheckbox">
-       <Form.Check type="switch" label="Recuérdame" />
-        
-        <Link to="/ForgetPassword">¿Has olvidado tu contraseña?</Link>
-       </Form.Group>
-       <div className="d-grid gap-2">
-       <Button variant="primary" size="l" type="submit">Inicia Sesión</Button></div>
-     </Form>
-);
-}
+      <Form.Item >
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          Ingresar</Button>  <a href="">Registrarse</a>
+      </Form.Item>
+      
+    </Form>
+  );
+};
 
 export default LoginForm;

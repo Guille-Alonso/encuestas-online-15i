@@ -1,6 +1,4 @@
-import Footer from "../common/Footer/Footer";
 import MainNavBar from "../common/MainNavBar/MainNavBar";
-
 
 const Layout = ({children}) => {
 
@@ -8,7 +6,7 @@ const Layout = ({children}) => {
       <>
       <MainNavBar/>
         {children}
-      <Footer/>
+      
       </>
     );
   }
