@@ -11,10 +11,10 @@ function ModalIniciaSesion() {
     return  (
       <>
       
-           <div class="loginpage-background-color ">   
+      <div class="loginpage-background-color ">   
       <div className="modal show" style={{ display: 'block', position: 'initial' }}
       >
-        <Modal.Dialog  size="sm"><div className="modal-background-color">
+        <Modal.Dialog  size="large"><div className="modal-background-color">
           <Modal.Header >
             <Modal.Title>Inicia Sesión</Modal.Title>
             <CloseButton />
