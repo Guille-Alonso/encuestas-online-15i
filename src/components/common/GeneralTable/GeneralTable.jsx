@@ -1,8 +1,10 @@
 import { nanoid } from "nanoid";
+import { useState } from "react";
 import { Table } from "react-bootstrap";
 import './GeneralTable.css'
 
 const GeneralTable = ({headings, items, setSelected, selected}) => {
+
   return ( 
     <Table striped bordered hover>
     <thead>
@@ -12,9 +14,11 @@ const GeneralTable = ({headings, items, setSelected, selected}) => {
     </thead>
     <tbody>
       {
+        
         items.length!==0 && items.map((item)=>
         <tr key={nanoid()} onClick={()=>setSelected(item.id)} className={selected===item.id? 'row-selected' : ''}>
           {
+            
           Object.values(item).map((value)=>
             <td key={nanoid()}>{value}</td>
           )

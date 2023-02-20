@@ -9,7 +9,7 @@ const GeneralModal = ({buttonText, modalTitle, modalBody, variant, seleccion}) =
   // const handleShow = () => setShow(true);
   const handleShow = ()=>{
     if(seleccion) setShow(true)
-    else  toast.error("no seleccionaste a nadie")
+    else  toast.error("debes seleccionar un elemento")
   }
 
   return (
