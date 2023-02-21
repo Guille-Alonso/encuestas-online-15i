@@ -4,21 +4,24 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import LoginForm from "../../components/LoginForm/LoginForm";
 import React, { useState } from 'react';
-
+import "../Login/LoginPage.css"
 
 
 function ModalIniciaSesion() {
 
-    const [show, setShow] = useState(false);
+    const [modalshow, setModalShow] = useState(false);
+    
+    
     return  (
       <>
       
-      <div class="loginpage-background-color ">   
-      <div className="modal show" style={{ display: 'block', position: 'initial' }}
+      <body >
+  
+      <div className="modal show, loginpage-background-color" style={{ display: 'block', position: 'initial' }}
       >
         <Modal.Dialog  size="large"><div className="modal-background-color">
-        <Modal.Header closeButton>
-        <Modal.Title>Inicia Sesión</Modal.Title>
+        <Modal.Header  closeButton onClick="" >
+        <Modal.Title >Inicia Sesión</Modal.Title>
         </Modal.Header>
   
         <Modal.Body>
@@ -28,7 +31,12 @@ function ModalIniciaSesion() {
   
           </div> 
         </Modal.Dialog>
-      </div>   </div>  
+        </div>  
+
+        
+      </body>
+    
+      
       
       </>
     )
