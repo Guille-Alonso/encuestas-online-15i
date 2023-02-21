@@ -5,8 +5,9 @@
 
 }
 
-.containersize{
-  width: 100px;
-  height: 100px;
+.layout {
+  overflow-y: auto;
+  height: 100vh;
+flex-direction: row;
   
 }
