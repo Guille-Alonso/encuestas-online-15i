@@ -1,0 +1,35 @@
+{
+  "users":[
+        
+  {   "id": 1,
+      "usuario": "Guille",
+      "correo_electronico": "guille@encuestas.com",
+      "password": "760189fd6e3ad37a6fa110844582c911"
+  },
+
+ {
+      "id": 2,
+      "usuario": "Nico",
+      "correo_electronico": "nico@encuestas.com",
+      "password": "760189fd6e3ad37a6fa110844582c911"
+
+ } ,
+
+ {
+  "id": 3,
+  "usuario": "Ro",
+  "correo_electronico": "ro@encuestas.com",
+  "password": "760189fd6e3ad37a6fa110844582c911"
+
+},
+
+{
+  "id": 4,
+  "usuario": "Stella",
+  "correo_electronico": "stella@encuestas.com",
+  "password": "760189fd6e3ad37a6fa110844582c911"
+
+}
+
+]
+}

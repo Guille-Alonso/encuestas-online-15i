@@ -14,11 +14,11 @@ const LoginPage= () => {
     return  (
       <>
           
-      <Container fluid className="containersize" >
+      <Container fluid  >
         <Row >
-        <Col className="bg-primary" sx={2} md={8}>
+        <Col sx={12} md={8}className=" d-none d-sm-block layout bg-primary" >
          </Col>
-         <Col className=" bg-success d-flex justify-content-center pt-5 " sx={2} md={4}><LoginForm/>
+         <Col sx={12} md={4} className=" layout bg-success d-flex justify-content-center pt-5  align-items-center" ><LoginForm/>
          </Col>
                 
         </Row>
