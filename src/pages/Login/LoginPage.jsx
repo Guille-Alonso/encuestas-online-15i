@@ -7,14 +7,13 @@ import React, { useState } from 'react';
 import "../Login/LoginPage.css"
 
 
-function ModalIniciaSesion() {
+const LoginPage= () => {
 
-    const [modalshow, setModalShow] = useState(false);
+    
     
     
     return  (
       <>
-      
       <body >
   
       <div className="modal show, loginpage-background-color" style={{ display: 'block', position: 'initial' }}
@@ -42,4 +41,4 @@ function ModalIniciaSesion() {
     )
   }
 
-  export default ModalIniciaSesion ;
+  export default LoginPage ;
