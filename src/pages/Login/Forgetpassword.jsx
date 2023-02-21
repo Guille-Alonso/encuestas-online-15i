@@ -3,9 +3,16 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import styled from 'styled-components';
 import "../Login/Modal.css"
+import { useNavigate } from 'react-router';
 
 
 function ForgetPassword() {
+
+  const navigate = useNavigate()
+
+  const toLogin = ()=>{
+    navigate('/login')
+  }
   return (
     <>
     
@@ -27,6 +34,7 @@ function ForgetPassword() {
           <Form.Control type="email" 
            placeholder="@"
            aria-label="Small"
+           required
           />
         </Form.Group>
    
@@ -35,7 +43,7 @@ function ForgetPassword() {
        </Modal.Body>
 
         <Modal.Footer>
-          <Button onClick={"/login"} variant="success">Volver</Button>
+          <Button onClick={toLogin} variant="success">Volver</Button>
           <Button variant="primary">Enviar</Button>
         </Modal.Footer> 
         </div>

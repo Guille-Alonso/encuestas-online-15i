@@ -1,6 +1,7 @@
 import React from 'react';
 import { LockOutlined, UserOutlined} from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const onFinish = (values ) => {
@@ -34,9 +35,9 @@ const LoginForm = () => {
           <Checkbox>Recuérdame</Checkbox>
         </Form.Item>
 
-        <a className="login-form-forgot" href="/forgetPassword">
+        <Link className="login-form-forgot" to="/forgetPassword">
           Recuperar contraseña
-        </a>
+        </Link>
       </Form.Item>
 
       <Form.Item >

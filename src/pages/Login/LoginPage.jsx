@@ -11,7 +11,7 @@ function ModalIniciaSesion() {
     return  (
       <>
       
-           <div class="loginpage-background-color ">   
+           <div className="loginpage-background-color ">   
       <div className="modal show" style={{ display: 'block', position: 'initial' }}
       >
         <Modal.Dialog  size="sm"><div className="modal-background-color">
