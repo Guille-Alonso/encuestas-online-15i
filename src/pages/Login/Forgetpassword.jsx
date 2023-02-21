@@ -14,7 +14,7 @@ function ForgetPassword() {
       style={{ display: 'block', position: 'initial' }}
     >
       <Modal.Dialog  ><div className="modal-background-color">
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>¿Has olvidado tu contraseña?</Modal.Title>
         </Modal.Header>
 

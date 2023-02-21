@@ -40,7 +40,7 @@ const LoginForm = () => {
       </Form.Item>
      
       <Form.Item > <div className="d-grid gap-2">
-        <Button type="primary" htmlType="submit" className="login-form-button">
+        <Button type="primary" htmlType="submit" className="login-form-button" >
           Ingresar</Button>  
           {/* <a href="">Registrarse</a> */}</div>
       </Form.Item> 
