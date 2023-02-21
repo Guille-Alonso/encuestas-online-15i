@@ -15,9 +15,9 @@ const LoginForm = () => {
       onFinish={onFinish}
       style={{ display: 'block', position: 'initial' }}
     >
-      <Form.Item
+      <Form.Item 
         name="username"
-        rules={[{ required: true, message: 'Por favor ingresa un Usuario o Correo electrónico!' }]}>
+        rules ={[{ required: true, message: 'Por favor ingresa un Usuario o Correo electrónico!' }]}>
         <Input  prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Usuario" />
       </Form.Item>
 
