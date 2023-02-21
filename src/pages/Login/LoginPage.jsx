@@ -1,43 +1,30 @@
 import { Link} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+
 import Modal from 'react-bootstrap/Modal';
 import LoginForm from "../../components/LoginForm/LoginForm";
 import React, { useState } from 'react';
 import "../Login/LoginPage.css"
+import { Col, Container, Row} from "react-bootstrap";
+import "../../Assets/ImagesLogin/wallpaper 3.jpg";
 
 
 const LoginPage= () => {
 
-    
-    
-    
     return  (
       <>
-      <body >
-  
-      <div className="modal show, loginpage-background-color" style={{ display: 'block', position: 'initial' }}
-      >
-        <Modal.Dialog  size="large"><div className="modal-background-color">
-        <Modal.Header  closeButton onClick="" >
-        <Modal.Title >Inicia Sesión</Modal.Title>
-        </Modal.Header>
-  
-        <Modal.Body>
-        <LoginForm/>
-                     
-          </Modal.Body>
-  
-          </div> 
-        </Modal.Dialog>
-        </div>  
-
-        
-      </body>
-    
-      
-      
+          
+      <Container fluid className="containersize" >
+        <Row >
+        <Col className="bg-primary" sx={2} md={8}>
+         </Col>
+         <Col className=" bg-success d-flex justify-content-center pt-5 " sx={2} md={4}><LoginForm/>
+         </Col>
+                
+        </Row>
+ </Container>
       </>
+      
     )
   }
 

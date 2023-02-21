@@ -1,4 +1,12 @@
-body {
-  height: 100vh;
-  background-image: url(/src/Assets/ImagesLogin/wallpaper\ 3.jpg);
+.bg-primary {
+  background-image: url(/src/Assets/ImagesLogin/wallpaper\ 2.jpg);
+  background-size: cover;
+  
+
+}
+
+.containersize{
+  width: 100px;
+  height: 100px;
+  
 }

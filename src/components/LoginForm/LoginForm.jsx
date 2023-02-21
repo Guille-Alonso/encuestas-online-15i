@@ -17,18 +17,18 @@ const LoginForm = () => {
     >
       <Form.Item
         name="username"
-        rules={[{ required: true, message: 'Por favor ingresa un Usuario!' }]}
-      >
+        rules={[{ required: true, message: 'Por favor ingresa un Usuario o Correo electrónico!' }]}>
         <Input  prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Usuario" />
       </Form.Item>
+
       <Form.Item
         name="password"
-        rules={[{ required: true, message: 'Por favor ingresa un correo electronico' }]}
-      >
+        rules={[{ required: true, message: 'Por favor ingresa una contraseña' }]}>
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password" placeholder="Contraseña"/>
       </Form.Item>
+
       <Form.Item >
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Recuérdame</Checkbox>

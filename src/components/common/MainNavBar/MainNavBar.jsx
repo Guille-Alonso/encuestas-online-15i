@@ -25,10 +25,11 @@ const MainNavBar = () =>{
             <Navbar className="Navbar" variant="dark">
             <Container className="mw-100 w-100 d-flex justify-content-between m-0">
 
-            {pathname === '/login' ? (
+            {pathname === '/login'?(
             
             <Navbar.Brand className="brand-logo">
-            <img className="mh-100 mw-100 d-block" alt="Logo" />
+            <img className="mh-100 mw-100 d-block" alt="Logo" /> 
+            <button className='btn-logOut ' onClick={onLogout}>Cerrar Sesiòn</button>
             </Navbar.Brand>
 
 ) : (
@@ -37,12 +38,12 @@ const MainNavBar = () =>{
 
                     <div className='user'>
                     <span className='username'>{state?.name}</span>
-                    <button className='btn-logOut' onClick={onLogout}>Cerrar Sesiòn</button>
+                   
                 </div>
                                           
-                    <nav>
-                    <Link to="/Login">Iniciar Sesiòn</Link>
-                    <Link to="/register">Registrarse</Link>
+                    <nav className=''>
+                    <Link to="/Login" className= "nav-link primary-button btn d-flex align-items-center">Iniciar Sesiòn</Link>
+                    <Link to="/register"className= "nav-link primary-button btn d-flex align-items-center">Registrarse</Link>
                 </nav>
                  
                     </Navbar.Collapse>
