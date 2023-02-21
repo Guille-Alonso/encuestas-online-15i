@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import EmailForm from '../components/encuestas/EmeilForm';
 import "../components/encuestas/Questions.css"
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -8,6 +9,22 @@ export default function encuestas() {
     const [onEdit, setOnEdit] = useState(false);
     const [textField, setTextField] = useState("");
     const [editedField, setEditedField] = useState("");
+
+
+    const [email, setEmail] = useState('');
+    const [isEmailValid, setIsEmailValid] = useState(false);
+  
+    const handleEmailChange = (event) => {
+      const emailValue = event.target.value;
+      setEmail(emailValue);
+      setIsEmailValid(/^\S+@\S+\.\S+$/.test(emailValue)); // verifica si el valor del correo es una dirección válida
+    };
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log(`El correo electrónico es: ${email}`);
+      // aquí puedes hacer lo que quieras con el correo electrónico, como enviarlo a través de una API o guardarlo en una base de datos
+    };
 
     const addQuestion = () => {
         const field = {
@@ -50,7 +67,7 @@ export default function encuestas() {
     }
 
     return (
-    <div className='container mx-auto px-4 h-screen'>
+    <div className='container mx-auto px-4 h-screen' id='box-all'>
             <div className="question_form">
                 <br />
                 <div className="section">
@@ -61,13 +78,23 @@ export default function encuestas() {
                         </div>
                     </div>
                 </div>
+                <form onSubmit={handleSubmit}>
+            <label htmlFor="email-input">Correo electrónico:</label>
+                <input
+        id="email-input"
+        type="email"
+        value={email}
+        onChange={handleEmailChange}
+        required // esto hace que el campo de correo electrónico sea obligatorio
+                />
+    </form>
             </div>
         
-        <div className='bg-white shadow-lg rounded-md p-5 my-10'>
+        <div className='bg-white shadow-lg rounded-md p-5 my-10' >
         {
             formContent.map((field) => {
             return (
-                <div>
+                <div >
                 <div className='flex justify-between items-center space-y-2'>
                     <div key={field.name} className="block text-sm font-medium text-gray-700 capitalize">
                     {
@@ -117,7 +144,16 @@ export default function encuestas() {
             <button onClick={() => addQuestion()} className='inline-flex bg-gray-800 hover:bg-gray-700 items-center p-3 text-sm text-white rounded-md'>Add Question</button>
             </div>
             </div>
+            <form onSubmit={handleSubmit}>
+
+                <button type="submit" disabled={!isEmailValid}>
+                    Enviar
+                </button>
+            </form>
             </div>
+            
+            
+    
         </div>
     )
 }

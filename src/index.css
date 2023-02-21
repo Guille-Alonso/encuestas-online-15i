@@ -15,20 +15,23 @@
 	color: #fff;
 }
 
+#box-all{
+	width: 50em;
+}
+
+
 footer {
-	height: 10vh;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #333;
+	color: #fff;
+	padding: 1rem
 
 }
 
 
-
-footer div {
-	opacity: 50%;
-	padding-top: 5px ;
-	padding-bottom: 5px ;
-	margin-top: auto;
-
-}
 
 
 h1 a {
