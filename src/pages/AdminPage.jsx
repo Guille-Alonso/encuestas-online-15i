@@ -10,14 +10,16 @@ import {axiosBack}from "../config/axios";
 import { ERROR_MESSAGE } from "../constants";
 import useGet from "../hooks/useGet";
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import SurveyPage from "./SurveyPage";
+import EditSurvey from "../components/EditSurveyForm/EditSurvey";
 
 const AdminPage = () => {
   const [surveys, loading, getSurveys] = useGet('/surveys',axiosBack);
   const [selected,setSelected] =useState(undefined);
   const [categorias, setCategorias] = useState([])
   const [survey,setSurvey] = useState('')
+
 
   const deleteSurvey = async()=>{
     try {
@@ -50,10 +52,15 @@ const AdminPage = () => {
     }
   }
 
-  const goToAdmin = (mode)=>{
+  const goToAdmin = ()=>{
    setSurvey('')
+  // window.location.reload()
+  
   }
 
+  const goToSurveys = ()=>{
+    window.location.reload()
+  }
   const getCategories = async()=>{
     try {
       const cats = await axiosBack('/categories');
@@ -66,8 +73,8 @@ const AdminPage = () => {
 
   useEffect(()=>{
     getCategories();
+   
   },[])
-
 
   return ( 
     <>
@@ -110,14 +117,29 @@ const AdminPage = () => {
      
      :selected && survey=='editar'?
    
+    // <Container>
+    //   <Row>
+    //     <Col>
+    //         <Col className="d-flex justify-content-end">
+    //             <Button onClick={goToSurveys}>Encuestas</Button>
+               
+    //         </Col>
+    
+    //         <SurveyPage modo={<EditSurveyForm selected={selected} getSurveys={getSurveys} setSelected = {setSelected} categorias = {categorias} goToAdmin={goToAdmin}/>}/>
+    
+    //     </Col>
+    //   </Row>
+    // </Container>
+    
     <Container>
       <Row>
         <Col>
             <Col className="d-flex justify-content-end">
-                <Button onClick={goToAdmin}>Encuestas</Button>
+                <Button onClick={goToSurveys}>Encuestas</Button>
+               
             </Col>
     
-            <SurveyPage modo={<EditSurveyForm selected={selected} getSurveys={getSurveys} setSelected = {setSelected} categorias = {categorias} goToAdmin={goToAdmin}/>}/>
+            <SurveyPage modo={<EditSurvey selected={selected} getSurveys={getSurveys} setSelected = {setSelected} categorias = {categorias} goToAdmin={goToAdmin}/>}/>
     
         </Col>
       </Row>
@@ -127,9 +149,9 @@ const AdminPage = () => {
       <Row>
         <Col>
         <Col className="d-flex justify-content-end">
-          <Button onClick={goToAdmin}>Encuestas</Button>
+          <Button onClick={goToSurveys}>Encuestas</Button>
         </Col>
-            <SurveyPage modo={<AddSurveyForm getSurveys={getSurveys} categorias = {categorias} goToAdmin={goToAdmin}/>}/>
+            <SurveyPage modo={<AddSurveyForm getSurveys={getSurveys} categorias = {categorias} goToAdmin={goToAdmin} setSelected={setSelected} selected={selected}/>}/>
         </Col>
       </Row>
     </Container>

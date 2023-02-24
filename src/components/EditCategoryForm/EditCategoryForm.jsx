@@ -7,7 +7,7 @@ import { ADD_CATEGORY_VALUES,ERROR_MESSAGE } from "../../constants";
 import useForm from "../../hooks/useForm";
 
 const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
-    const [values, setValues] = useState(ADD_CATEGORY_VALUES);
+    // const [values, setValues] = useState(ADD_CATEGORY_VALUES);
 
     const editCategory = async()=>{
         try {
@@ -19,6 +19,8 @@ const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
           toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
         }
       }
+
+      const {handleChange, handleSubmit,validated, values, setValues} = useForm(ADD_CATEGORY_VALUES,editCategory,onClose)
   
       const getCategoryInfo = async ()=>{
         try {
@@ -36,7 +38,7 @@ const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
         getCategoryInfo()
       },[])
 
-    const {handleChange, handleSubmit,validated} = useForm(editCategory,values,setValues,onClose)
+    
   
     return ( 
       <>

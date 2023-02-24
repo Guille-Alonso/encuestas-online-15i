@@ -1,28 +1,73 @@
 import { nanoid } from "nanoid";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Form} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { toast} from "react-toastify";
 import { axiosBack } from "../../config/axios";
 import { ADD_SURVEY_VALUES } from "../../constants/index";
+import { SurveysContext } from "../../context/addSurveyContext";
 import useForm from "../../hooks/useForm";
+import GeneralTable from "../common/GeneralTable/GeneralTable";
 import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
 
-const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin}) => {
-  const [values, setValues] = useState(ADD_SURVEY_VALUES);
+const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, selected}) => {
+
+ 
+  const {questionsA, setQuestionsA, flagQuestion, setFlagQuestion} = useContext(SurveysContext)
+  const [aux, setAux] = useState([])
+
 
   const addSurvey = async()=>{
     try {
-      await axiosBack.post('/surveys',values);
+      const auxSurvey = {...values}
+      auxSurvey.pregunta = questionsA
+   
+      await axiosBack.post('/surveys',auxSurvey);
       getSurveys();
       toast.info('encuesta creada');
+      setQuestionsA([])
     } catch (error) {
       toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
     }
   }
+
+  const removeQuestionAdd = ()=>{
+    if(selected){
+     
+      setFlagQuestion(false)
+      const questionsFiltered = aux.filter(q=>q.id !== selected)
+      const questions = questionsA.filter(q=>q.id !== selected)
+      setQuestionsA(questions)
+      setAux(questionsFiltered)
+    
+      setSelected(undefined)
+      
+    }else toast.error("debes seleccionar una pregunta")
+   
+  }
+
+  const loadQuestionsAdd = ()=>{
+    
+    
+      for (let index = 0; index < questionsA.length; index++) {
+    
+        let {responses, ...resto} = questionsA[index];
+        setAux([...aux, resto])
+      }
+    
+    
+  }
+
+  useEffect(()=>{
+  if(flagQuestion){
+    loadQuestionsAdd();
+  }
+   
+
+  },[questionsA])
  
-  const {handleChange, handleSubmit, validated} = useForm(addSurvey,values,setValues,onClose,goToAdmin)
+  const {handleChange, handleSubmit, validated,values, setValues} = useForm(ADD_SURVEY_VALUES,addSurvey,onClose,goToAdmin)
 
   return ( 
     <>
@@ -108,12 +153,32 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin}) => {
             required
           />
         </Form.Group>
-      <QuestionAndResponse  handleChange={handleChange} values={values}/>
         
-      <a href="">Nueva pregunta +</a>
+      
+            <QuestionAndResponse />
+            {
+               aux.length > 0 &&   <Button className="d-flex ms-auto mb-1" onClick={removeQuestionAdd}>Quitar</Button>
+            }
+          
+        
+     
+        
+          {
+         
+            aux.length > 0 && <GeneralTable headings={['id','Pregunta','Tipo de Respuesta']} items={aux} setSelected={setSelected} selected={selected}></GeneralTable>
+          }
+           
+        
+
+         
+        
+    {/* <Link onClick={addQuestions}>Nueva pregunta</Link>
+    <br />
+    <Link onClick={removeQuestion}>borrar pregunta</Link> */}
+
       <br></br>
       <br></br>
-      <Button variant="success" type="submit">
+      <Button variant="success" type="submit" >
         Agregar
       </Button>
     </Form>

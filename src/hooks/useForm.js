@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const useForm = (submit,values, setValores,onClose,goToAdmin) => {
+const useForm = (initialValues,submit,onClose,goToAdmin) => {
 
   const [validated, setValidated] = useState(false);
-
+  const [values, setValues] = useState(initialValues);
+ 
   const handleChange = (e)=>{
   
-    setValores({
+    setValues({
       ...values,
       [e.target.name] : e.target.value
     })
+ 
   }
 
   const handleSubmit = (event) => {
@@ -37,7 +39,7 @@ const useForm = (submit,values, setValores,onClose,goToAdmin) => {
   };
 
 
-  return {handleChange, handleSubmit,validated}
+  return {handleChange, handleSubmit,validated,values,setValues}
 }
  
 export default useForm;

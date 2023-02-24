@@ -7,7 +7,7 @@ import { ADD_CATEGORY_VALUES } from "../../constants";
 import useForm from "../../hooks/useForm";
 
 const AddCategoryForm = ({onClose,getCategories}) => {
-    const [values, setValues] = useState(ADD_CATEGORY_VALUES);
+    // const [values, setValues] = useState(ADD_CATEGORY_VALUES);
 
   const addCategory = async()=>{
     try {
@@ -19,7 +19,7 @@ const AddCategoryForm = ({onClose,getCategories}) => {
     }
   }
   
-  const {handleChange, handleSubmit, validated} = useForm(addCategory,values,setValues,onClose)
+  const {handleChange, handleSubmit, validated,values,setValues} = useForm(ADD_CATEGORY_VALUES,addCategory,onClose)
   return ( 
     <>
     <Form noValidate validated={validated} onSubmit={handleSubmit}>

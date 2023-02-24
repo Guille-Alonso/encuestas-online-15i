@@ -4,15 +4,15 @@
       "id": "1",
       "name": "Elecciones primarias 2023",
       "categoria": "cine",
-      "estado": "Activa",
+      "estado": "Pendiente",
       "unaRespuestaPorPersona": "Activado"
     },
     {
       "id": "2",
       "name": "Medios de comunicación",
       "categoria": "politica",
-      "estado": "Activa",
-      "unaRespuestaPorPersona": "Desactivado"
+      "estado": "Pendiente",
+      "unaRespuestaPorPersona": "Activado"
     },
     {
       "id": "3",
@@ -32,22 +32,131 @@
       "id": "5",
       "name": "motocicletas",
       "categoria": "deportes",
-      "estado": "Pendiente",
-      "unaRespuestaPorPersona": "Activado"
+      "estado": "Inactiva",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": []
     },
     {
-      "id": "2343",
-      "name": "aveerrr",
+      "id": "77767567",
+      "name": "comandadte",
       "categoria": "deportes",
       "estado": "Activa",
-      "unaRespuestaPorPersona": "Desactivado"
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": []
     },
     {
-      "id": "54654564",
-      "name": "del dia de ayer",
-      "categoria": "politica",
+      "id": "11112312",
+      "name": "felix torino",
+      "categoria": "politica arg",
+      "estado": "Activa",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "4",
+          "question": "me voy??",
+          "typeQuestion": "texto"
+        },
+        {
+          "id": "6",
+          "question": "me hoy??",
+          "typeQuestion": "texto"
+        }
+      ]
+    },
+    {
+      "id": "2312334",
+      "name": "jo torino",
+      "categoria": "lucha",
+      "estado": "Pendiente",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": []
+    },
+    {
+      "id": "5665777",
+      "name": "dill ee",
+      "categoria": "cine",
+      "estado": "Activa",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": []
+    },
+    {
+      "id": "756677",
+      "name": "comann",
+      "categoria": "deportes",
+      "estado": "Activa",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "3",
+          "question": "sos de river",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "46565",
+      "name": "xxxxxxxx",
+      "categoria": "deportes",
+      "estado": "Activa",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "9W7HxjeMLH-wXZ9T-yLU1",
+          "question": "sos de riverqqqqqqqq",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "77887878",
+      "name": "fearr",
+      "categoria": "cine",
       "estado": "Inactiva",
-      "unaRespuestaPorPersona": "Activado"
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "QmaruwE7np6Cih9F6dT9X",
+          "question": "sos de river plate??",
+          "typeQuestion": "opción múltiple",
+          "responses": [
+            "se",
+            "ne"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "009009098",
+      "name": "sole",
+      "categoria": "lucha",
+      "estado": "Inactiva",
+      "unaRespuestaPorPersona": "Desactivado",
+      "pregunta": [
+        {
+          "id": "a1MVZX2Qqr3Eao0vO7M1X",
+          "question": "sos de river??",
+          "typeQuestion": "casillas de verificación",
+          "responses": [
+            "se"
+          ]
+        },
+        {
+          "id": "nEX_oP3h07xfhVhl5mAai",
+          "question": "sos de river??",
+          "typeQuestion": "texto",
+          "responses": []
+        },
+        {
+          "id": "_PDvbKwVglC-IBFt4hXki",
+          "question": "sos de river??",
+          "typeQuestion": "opción múltiple",
+          "responses": [
+            "bb"
+          ]
+        }
+      ]
     }
   ],
   "categories": [
@@ -58,7 +167,7 @@
     },
     {
       "id": "2",
-      "name": "politica",
+      "name": "politica arg",
       "state": "Disponible"
     },
     {
@@ -69,6 +178,16 @@
     {
       "id": "4",
       "name": "Musica Clasica",
+      "state": "Disponible"
+    },
+    {
+      "id": "6",
+      "name": "lucha",
+      "state": "Disponible"
+    },
+    {
+      "id": "7",
+      "name": "poularrr",
       "state": "Disponible"
     }
   ]

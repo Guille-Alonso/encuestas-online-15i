@@ -1,19 +1,25 @@
-import { nanoid } from "nanoid";
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { axiosBack } from "../../config/axios";
-import { ADD_SURVEY_VALUES, ERROR_MESSAGE } from "../../constants";
+import { ADD_QUESTION_VALUES, ADD_SURVEY_VALUES, ERROR_MESSAGE } from "../../constants";
 import { SurveysContext } from "../../context/addSurveyContext";
 import useForm from "../../hooks/useForm";
+import useGet from "../../hooks/useGet";
+import GeneralModal from "../common/GeneralModal/GeneralModal";
+import GeneralTable from "../common/GeneralTable/GeneralTable";
 import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
 
-const EditSurveyForm = ({onClose, selected, getSurveys, setSelected, categorias, goToAdmin}) => {
+const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goToAdmin}) => {
+    const [questionsWithoutAnserws, loading, getData,setQuestionsWithoutAnserws] = useGet('/surveys/'+selected,axiosBack,selected);
+    const {questionsA, setQuestionsA} = useContext(SurveysContext)
+    const [selectedQuestion, setSelectedQuestion]= useState(undefined)
+    const [questionEdit, setQuestionEdit] = useState(ADD_QUESTION_VALUES)
 
-const {questionsA, setQuestionsA} = useContext(SurveysContext)
-const [questions,setQuestions] = useState([]);
+    // const [questions,setQuestions] = useState([]);
+
   const editSurvey = async()=>{
     try {
 
@@ -25,40 +31,61 @@ const [questions,setQuestions] = useState([]);
       toast.info('encuesta editada');
       setSelected(undefined)
       setQuestionsA([])
+    
     } catch (error) {
       toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
     }
   }
 
   const {handleChange, handleSubmit,validated,values,setValues} = useForm(ADD_SURVEY_VALUES,editSurvey,onClose,goToAdmin);
-
+ 
   const getSurveyInfo = async ()=>{
     try {
       const {data} = await axiosBack.get('/surveys/'+selected);
       
      setValues(data);
-    
+ console.log(data);
+    setQuestionsA(data.pregunta)
+   
     } catch (error) {
       toast.error(ERROR_MESSAGE)
     }
   }
+
+  const removeQuestion = ()=>{
+    if(selectedQuestion){
+       
+      const questionsFilter = questionsWithoutAnserws.filter(q=>q.id !== selectedQuestion)
+      const questions = questionsA.filter(q=>q.id !== selectedQuestion)
+      setQuestionsA(questions)
+        setQuestionsWithoutAnserws(questionsFilter)
+        setSelectedQuestion(undefined)
+    }else toast.error("debes seleccionar una pregunta")
+   
+  }
   
   useEffect(()=>{
     getSurveyInfo();
+    
   },[])
 
-  
-  const addQuestions = ()=>{
-    setQuestions([...questions, `pregunta${questions.length + 1}`])
-    console.log(questions);
-  }
+useEffect(()=>{
+  const questionAux = questionsA.find(q=>q.id==selectedQuestion)
+   setQuestionEdit(questionAux)
+},[selectedQuestion])
 
-  const removeQuestion = ()=>{
-    const newArray = questions.filter(item=> item !=`pregunta${questions.length}`)
-    setQuestions(newArray);
+useEffect(()=>{
+  let aux=[]
+  for (let index = 0; index < questionsA.length; index++) {
+      
+    let {responses, ...res} = questionsA[index];
+    aux.push(res)
   }
+setQuestionsWithoutAnserws(aux)
+},[questionsA])
 
-  return (
+   return (<>
+    
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="idEncuesta">
         <Form.Label>ID</Form.Label>
@@ -119,24 +146,42 @@ const [questions,setQuestions] = useState([]);
           <option>Desactivado</option>
         </Form.Select>
       </Form.Group>
-      {values.pregunta.map((item,index) => (
-        <QuestionAndResponse key={index} itemQuestion={item} values={values} setValues={setValues} indice={item.id}/>
-      ))}
-      <br />
-      {
-        questions.map((item,index)=>(
-          <QuestionAndResponse key={index} values={values} setValues={setValues} indice={true}/>
-        ))
-      }
-    <Link onClick={addQuestions}>Nueva pregunta</Link>
-    <br />
-    <Link onClick={removeQuestion}>borrar pregunta</Link>
-      <br />
+
+    <div className="d-flex justify-content-end mb-1">
+    <GeneralModal
+          buttonText='Agregar'
+          modalTitle={'Agregar Pregunta'}
+          modalBody={<QuestionAndResponse onClose={onClose}/>}
+          variant="success"
+          seleccion={selected}
+          />
+    <GeneralModal
+          buttonText='Editar'
+          modalTitle={'Editar Pregunta'}
+          modalBody={<QuestionAndResponse itemQuestion={questionEdit} onClose={onClose} setSelectedQuestion={setSelectedQuestion}/>}
+          variant="warning"
+          seleccion={selectedQuestion}
+          />
+         <Button variant="danger" onClick={removeQuestion}>Quitar</Button> 
+    </div>
+      
+        {
+          loading?
+            <Spinner/>
+          :
+         
+        <GeneralTable headings={['id','Pregunta','Tipo de Respuesta']} items={questionsWithoutAnserws} setSelected={setSelectedQuestion} selected={selectedQuestion}></GeneralTable>
+    
+        }
+
       <Button variant="success" type="submit">
-        Editar
+        Guardar Cambios
       </Button>
     </Form>
-  );
+    </>  );
 }
  
-export default EditSurveyForm;
+export default EditSurvey;<>
+
+
+</>
