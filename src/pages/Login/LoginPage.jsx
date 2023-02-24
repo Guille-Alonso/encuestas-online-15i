@@ -19,7 +19,7 @@ const LoginPage= () => {
         <Col sx={12} md={8}className=" d-none d-sm-block layout bg-primary" >
          </Col>
          <Col sx={12} md={4} className=" layout bg-success d-flex justify-content-center pt-5  align-items-center" >
-         <Image src= "../../Assets/ImagesLogin/Logo.png"/>
+         {/* <Image src= "../../Assets/ImagesLogin/Logo.png"/> */}
           <LoginForm/>
          </Col>
                 
