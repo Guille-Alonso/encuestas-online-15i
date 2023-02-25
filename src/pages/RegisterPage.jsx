@@ -82,7 +82,7 @@ export const RegisterPage = () => {
 
 		<div className="content text d-flex flex-row gap-2 fs-6 fst-italic" data-aos="fade">
         <span>¿Ya tienes una cuenta?</span>
-        <Link to="/" className="text-chatter-blue">
+        <Link to="/Login" className="text-chatter-blue">
     Inicia sesión aquí
         </Link>
     </div>

@@ -1,0 +1,13 @@
+.bg-primary {
+    background-image: url(/src/Assets/ImagesLogin/wallpaper\ 2.jpg);
+    background-size: cover;
+    
+  
+  }
+  
+  .layout {
+    overflow-y: auto;
+    height: 100vh;
+  
+    
+  }
