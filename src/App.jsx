@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/Login/LoginPage'
 import ForgetPassword from './pages/Login/Forgetpassword'
 import { Link, useLocation } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
@@ -14,8 +15,8 @@ function App() {
         <Route path='/*' element={<HomePage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/forgetPassword' element={<ForgetPassword/>}/>
-        
-        </Routes>
+        </Routes> 
+        <ToastContainer/>
       </Layout>
     </Router>
   )
