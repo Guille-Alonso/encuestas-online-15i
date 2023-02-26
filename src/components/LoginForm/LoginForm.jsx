@@ -15,7 +15,7 @@ const LoginForm =()=>{
     password:"",
   });
 
-  const [backErrors, setbackErrors]=useState(false);
+  const [backErrors, setBackErrors]= useState(false);
 
   const handleChange=(e)=>{
   setValues({
@@ -68,8 +68,7 @@ console.log ("hi");
           >
        Ingresar
       </Button>
-      {backErrors && (
-      <Alert variant= "danger" className="mt-3"> Los datos enviados son incorrectos
+      {backErrors && ( <Alert variant= "danger" className="mt-3"> El formato de los datos enviados son incorrectos
       </Alert>)
       }
       </Form>
