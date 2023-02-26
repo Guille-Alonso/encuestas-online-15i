@@ -4,9 +4,9 @@ import { Button, Grid } from "@nextui-org/react";
 const ButtonEncuesta = () => {
   return (
     <Grid.Container justify="center">
-      <Button bordered color="gradient" auto>
-        Agregar Encuesta
-      </Button>
+       <Button color="white" auto ghost>
+         Crear encuesta
+        </Button>
     </Grid.Container>
   );
 };
