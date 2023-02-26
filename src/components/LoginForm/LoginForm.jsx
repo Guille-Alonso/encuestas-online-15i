@@ -5,6 +5,7 @@ import axios from "../../config/axios";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -59,16 +60,29 @@ console.log ("hi");
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Recuérdame" />
       </Form.Group>
-      <Button 
+      <Button variant="outline-success"
         type="submit"
         style={{
-          backgroundColor: "#083045"
-          
+          backgroundColor: "#083045",
+          fontSize: "20px",
+          padding: "4px 4px",
         }}
           >
        Ingresar
       </Button>
-      {backErrors && ( <Alert variant= "danger" className="mt-3"> El formato de los datos enviados son incorrectos
+
+      <Link to="/ForgetPassword" style={{
+          color: "#083045",
+          fontSize: "15px",
+          padding: "4px 4px",
+          outline: "white",
+        }} >Recuperar contraseña</Link>
+
+      {backErrors && ( <Alert variant= "danger" className="mt-3"
+      style={{
+        padding: "1px 5px",
+        }}
+        > El formato de los datos enviados son incorrectos
       </Alert>)
       }
       </Form>
