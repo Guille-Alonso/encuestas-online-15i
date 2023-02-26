@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
 import axios from "../../config/axios";
 import { toast } from "react-toastify";
+
 
 
 
@@ -29,12 +30,22 @@ const handleSubmit= async (e)=>{
   }catch (error){
     console.log(error);
 toast.error("Hubo un error, intenta de nuevo");
-setbackErrors (true);
+setBackErrors (true);
   }
 };
+useEffect (()=>{
+  if (backErrors){
+    setTimeout(()=>{
+  setBackErrors (false);
+    }, 3000);
+  }
+}, [backErrors]);
+console.log ("hi");
   return (
-   
-    <Form onSubmit= {handleSubmit}>
+    <>
+    
+    <Form  onSubmit= {handleSubmit}>
+       
 <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
         <Form.Control value={values.email} onChange={handleChange} name= "email" type="email" placeholder="Ingresa tu email" />
@@ -47,15 +58,21 @@ setbackErrors (true);
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Recuérdame" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button 
+        type="submit"
+        style={{
+          backgroundColor: "#083045"
+          
+        }}
+          >
        Ingresar
       </Button>
       {backErrors && (
-      <Alert variant= "danger"> Los datos enviados son incorrectos
+      <Alert variant= "danger" className="mt-3"> Los datos enviados son incorrectos
       </Alert>)
       }
       </Form>
-    
+      </>
   );
 }
 export default LoginForm;

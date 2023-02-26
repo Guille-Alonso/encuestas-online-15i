@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from '../hook/useForm';
-import 'bootstrap/dist/css/bootstrap.css'
-import "../components/Register/register.css"
+import 'bootstrap/dist/css/bootstrap.css';
+import "../components/Register/register.css";
+import BackgroundRegister from "../../src/asset/Register/fondo.jpg";
 
 export const RegisterPage = () => {
 	const navigate = useNavigate();
@@ -30,6 +31,12 @@ export const RegisterPage = () => {
 
 	return (
 		<div id='register' className='wrapper  bg-chatter-green h-100 py-4 fs-1 fw-bold scroll-y'>
+			style={{
+			backgroundImage: `url("${BackgroundRegister}")`,
+			backgroundSize: 'cover',
+			
+		  }}>
+			
 			<form onSubmit={onRegister} class="form-register">
 			<h1 class="py-3 font-weight-bold mb-3">Crea tu cuenta gratis</h1>
 

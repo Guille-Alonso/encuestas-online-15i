@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
-const MainNavBar = () =>{
+export const MainNavBar = () =>{
 
 
     const {state} = useLocation()
@@ -18,45 +18,44 @@ const MainNavBar = () =>{
 
 
     }
-    const { pathname } = useLocation();
 
     return (
-        
+        <>
             <Navbar className="Navbar" variant="dark">
+                
             <Container className="mw-100 w-100 d-flex justify-content-between m-0">
-
-            {pathname === '/login'?(
-            
             <Navbar.Brand className="brand-logo">
-            <img className="mh-100 mw-100 d-block" alt="Logo" /> 
-            <button className='btn-logOut ' onClick={onLogout}>Cerrar Sesiòn</button>
+            <img className="mh-100 mw-100 d-block" alt="Logo" />
             </Navbar.Brand>
-
-) : (
-    <> 
             <Navbar.Collapse className="justify-content-end">
 
+                {state?.logged ? (
                     <div className='user'>
                     <span className='username'>{state?.name}</span>
-                   
+                    <button className='btn-logOut' onClick={onLogout}>Cerrar Sesiòn</button>
                 </div>
-                                          
-                    <nav className=''>
-                    <Link to="/Login" className= "nav-link primary-button btn d-flex align-items-center">Iniciar Sesiòn</Link>
-                    <Link to="/register"className= "nav-link primary-button btn d-flex align-items-center">Registrarse</Link>
+
+                    ) : (
+                    <nav>
+                    <Link to="/Login">Iniciar Sesiòn</Link>
+                    <Link to="/register">Registrarse</Link>
                 </nav>
-                 
+                    )
+                }
+
                     </Navbar.Collapse>
-                    </>
-                    )}
                 </Container>
             </Navbar>
-            
-       
+
+        
+        </>
     )
+
+
 }
 
 export default MainNavBar;
+
 
 
 
