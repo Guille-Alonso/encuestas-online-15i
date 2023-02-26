@@ -60,16 +60,15 @@ const NavbarComponent = () => {
           {collapseItems.map((item, index) => (
             <Navbar.CollapseItem
               key={item}
-              activeColor="warning"
               css={{
                 color: index === collapseItems.length - 1 ? "$error" : "",
               }}
-              isActive={index === 2}
+              
             >
               <Link
-                color="inherit"
                 css={{
                   minWidth: "100%",
+                  color: "#073044"
                 }}
                 href="#"
               >
