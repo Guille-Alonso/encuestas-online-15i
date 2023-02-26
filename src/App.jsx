@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Layout from "./components/Layout/Layout"
 import Encuestas from './pages/Encuestas'
 import HomePage from './pages/HomePage'
@@ -15,10 +16,12 @@ function App() {
       <Routes>
         <Route path='/*' element={<HomePage/>}/>
         <Route path='Login' element ={<LoginPage/>} />
+       
         <Route path = "/ForgetPassword" element ={<ForgetPassword/>} />
         <Route path='/register' element={<RegisterPage/>}/>
         <Route path='/Encuestas' element={<Encuestas/>} />
       </Routes>
+       <ToastContainer/>
       </Layout>
     </Router>
   )

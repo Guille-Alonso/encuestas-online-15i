@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
 import axios from "../../config/axios";
-import { toast } from "react-toastify";
 
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import React from "react";
 
 
 
@@ -22,13 +24,12 @@ const LoginForm =()=>{
   });
 };
 const handleSubmit= async (e)=>{
-  
   try {
     e.preventDefault ();
     const {data} = await axios.post("/users/login");
     console.log(data);
   }catch (error){
-    console.log(error);
+    // console.log(error);
 toast.error("Hubo un error, intenta de nuevo");
 setBackErrors (true);
   }
