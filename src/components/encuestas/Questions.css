@@ -1,0 +1,53 @@
+.question_form{
+    background-color: white;
+    height: 100%;
+    padding-bottom: 30px;
+    margin-top: 20px;
+}
+
+.section{
+    margin: auto;
+    width: 75%;
+}
+
+
+.quetion_form_top{
+    background-color: white;
+    border-top: 8px solid purple;
+    border-radius: 8px;
+    padding: 30px 25px;
+    text-transform: capitalize;
+
+}
+
+
+.question_form_name{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+    line-height: 135%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid white;
+    color: black;
+    height: 35px;
+}
+
+.question_form_desc{
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 40px;
+
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid white;
+    color: black;
+    height: 20px;
+}
+
