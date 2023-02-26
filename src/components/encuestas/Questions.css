@@ -1,8 +1,26 @@
+body{
+    background-image: url("C:\Users\Usuario\Desktop\Proyectos de Rolling\FORMULARIO CON REACT\encuestas-online-15i\src\asset\fondo.jpg");
+}
+
+.email-form-question{
+    width: 400px;
+	background-image: url("C:\Users\Usuario\Desktop\Proyectos de Rolling\FORMULARIO CON REACT\encuestas-online-15i\src\asset\fondo.jpg");
+	padding: 30px;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 4px;
+	font-family: 'calibri';
+	color: white;
+	box-shadow: 7px 13px 37px #000;
+}
+
+
 .question_form{
     background-color: white;
     height: 100%;
     padding-bottom: 30px;
     margin-top: 20px;
+    background-image: url("C:\Users\Usuario\Desktop\Proyectos de Rolling\FORMULARIO CON REACT\encuestas-online-15i\src\asset\fondo.jpg");
 }
 
 .section{
@@ -49,5 +67,45 @@
     border-bottom: 1px solid white;
     color: black;
     height: 20px;
+}
+
+#box{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#box-question{
+    display: block;
+    text-align: center;
+    justify-content: center;
+}
+
+#box-add{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background: black; /* color de fondo */
+  color: #fff; /* color de fuente */
+  border: 2px solid #65B891; /* tamaño y color de borde */
+    padding: 16px 20px;
+  border-radius: 3px; /* redondear bordes */
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+}
+
+
+
+.form-send-button{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.but-send{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 

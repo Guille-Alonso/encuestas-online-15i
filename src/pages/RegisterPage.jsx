@@ -7,7 +7,7 @@ import "../components/Register/register.css"
 export const RegisterPage = () => {
 	const navigate = useNavigate();
 
-	const { name, email, password, onInputChange, onResetForm } =
+	const { name, email, password,lastname,  onInputChange, onResetForm } =
 		useForm({
 			name: '',
 			email: '',
@@ -49,6 +49,20 @@ export const RegisterPage = () => {
 
 				<div className='input-group'>
 					<input
+						type='text'
+						name='lastname'
+						className='name'
+						value={lastname}
+						onChange={onInputChange}
+						required
+						autoComplete='off'
+						placeholder="Ingresa tu apellido"
+						maxLength={15}
+					/>
+				</div>
+
+				<div className='input-group'>
+					<input
 						type='email'
 						name='email'
 						className='name'
@@ -74,8 +88,8 @@ export const RegisterPage = () => {
 					/>
 				</div>
 
-				<div className="content d-flex flex-column mb-3 d-flex align-items-start" data-aos="fade">
-        <button className="btn btn-primary">
+				<div className="content register-btn" data-aos="fade">
+        <button className="btn btn-primary ">
         Registrarse
         </button>
     </div>

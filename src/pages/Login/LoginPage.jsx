@@ -1,6 +1,5 @@
 import { Link} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-
 import Modal from 'react-bootstrap/Modal';
 import LoginForm from "../../components/LoginForm/LoginForm";
 import React, { useState } from 'react';

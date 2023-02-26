@@ -1,3 +1,4 @@
+import footer from "../footnav.css"
 const Footer = () => {
     return (
         <footer

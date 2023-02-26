@@ -1,5 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Layout from "./components/Layout/Layout"
+import About from './pages/AboutUs'
 import Encuestas from './pages/Encuestas'
 import HomePage from './pages/HomePage'
 import ForgetPassword from './pages/Login/Forgetpassword'
@@ -18,6 +19,7 @@ function App() {
         <Route path = "/ForgetPassword" element ={<ForgetPassword/>} />
         <Route path='/register' element={<RegisterPage/>}/>
         <Route path='/Encuestas' element={<Encuestas/>} />
+        <Route path='AboutUs' element={<About/>} />
       </Routes>
       </Layout>
     </Router>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import EmailForm from '../components/encuestas/EmeilForm';
 import "../components/encuestas/Questions.css"
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -13,18 +12,18 @@ export default function encuestas() {
 
     const [email, setEmail] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(false);
-  
+
     const handleEmailChange = (event) => {
-      const emailValue = event.target.value;
-      setEmail(emailValue);
-      setIsEmailValid(/^\S+@\S+\.\S+$/.test(emailValue)); // verifica si el valor del correo es una dirección válida
-    };
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      console.log(`El correo electrónico es: ${email}`);
-      // aquí puedes hacer lo que quieras con el correo electrónico, como enviarlo a través de una API o guardarlo en una base de datos
-    };
+    const emailValue = event.target.value;
+    setEmail(emailValue);
+    setIsEmailValid(/^\S+@\S+\.\S+$/.test(emailValue)); // verifica si el valor del correo es una dirección válida
+};
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`El correo electrónico es: ${email}`);
+    // aquí puedes hacer lo que quieras con el correo electrónico, como enviarlo a través de una API o guardarlo en una base de datos
+};
 
     const addQuestion = () => {
         const field = {
@@ -78,23 +77,24 @@ export default function encuestas() {
                         </div>
                     </div>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form className='email-form-question' onSubmit={handleSubmit}>
+            
             <label htmlFor="email-input">Correo electrónico:</label>
                 <input
-        id="email-input"
-        type="email"
-        value={email}
-        onChange={handleEmailChange}
-        required // esto hace que el campo de correo electrónico sea obligatorio
+                id="email-input"
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                required // esto hace que el campo de correo electrónico sea obligatorio
                 />
-    </form>
-            </div>
+            </form>
+            
         
-        <div className='bg-white shadow-lg rounded-md p-5 my-10' >
+        <div className='bg-white shadow-lg rounded-md p-5 my-10 question_form' >
         {
             formContent.map((field) => {
             return (
-                <div >
+                <div id='box-question'>
                 <div className='flex justify-between items-center space-y-2'>
                     <div key={field.name} className="block text-sm font-medium text-gray-700 capitalize">
                     {
@@ -113,7 +113,7 @@ export default function encuestas() {
                     </div>
                 </div>
 
-                <div className='my-4'>
+                <div className='my-4' >
                     {
                     field.question_type == 'short_answer' && <input type="text" className="px-5 shadow-sm h-10 rounded-md block w-full" placeholder={field.label} />
                     }
@@ -123,12 +123,13 @@ export default function encuestas() {
                     {field.question_type == 'multichoice' &&
                     <div className='my-4 flex flex-col space-y-2'>
                         <select
+                        
                         className='px-5 shadow-sm h-10 rounded-md block w-full'>
                         {field.list.map((item) => <option key={item} value={item}>{item}</option>)}
                         </select>
-                        <div className='flex space-between'>
-                        <input type="text" onChange={(e) => setTextField(e.target.value)} value={textField} placeholder="Add an option" className='flex-1' />
-                        <button className='bg-indigo-700 block hover:bg-indigo-900 text-white px-4' onClick={() => addFieldOption(field.name, textField) }>Add</button>
+                        <div  className='flex space-between'>
+                        <input  type="text" onChange={(e) => setTextField(e.target.value)} value={textField} placeholder="Add an option" className='flex-1' />
+                        <button  onClick={() => addFieldOption(field.name, textField)  } >Add</button>
                         </div>
                     </div>
                     }
@@ -139,20 +140,21 @@ export default function encuestas() {
             })
         }
 
-        <div className='relative w-full p-5'>
+        <div className='relative w-full p-5' id='box'>
             <div className='absolute inset-x-0 bottom-0 h-12 flex justify-center'>
-            <button onClick={() => addQuestion()} className='inline-flex bg-gray-800 hover:bg-gray-700 items-center p-3 text-sm text-white rounded-md'>Add Question</button>
+            <button id='box-add' onClick={() => addQuestion()} className='inline-flex bg-gray-800 hover:bg-gray-700 items-center p-3 text-sm text-white rounded-md'>Add Question</button>
             </div>
             </div>
-            <form onSubmit={handleSubmit}>
+            
+            <form className='but-send' onSubmit={handleSubmit}>
 
-                <button type="submit" disabled={!isEmailValid}>
-                    Enviar
-                </button>
+            <button type="submit" disabled={!isEmailValid}>
+        Enviar
+            </button>
             </form>
             </div>
             
-            
+            </div>
     
         </div>
     )

@@ -2,21 +2,29 @@
 
 
 
-form {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+#register {
+	width: 400px;
+	background: #24303c;
+	padding: 30px;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 100px;
+	border-radius: 4px;
+	font-family: 'calibri';
+	color: white;
+	box-shadow: 7px 13px 37px #000;
 }
 
 .input-group {
 	width: 100%;
 	background: #24303c;
-	border-radius: 4px;
 	padding: 10px;
-	border: 1px solid #1f53c5;
+	border-radius: 4px;
 	margin-bottom: 16px;
-	font-size: 18px;
+	border: 1px solid #1f53c5;
 	font-family: 'calibri';
+	font-size: 18px;
+	color: white;
 
 }
 
@@ -32,19 +40,14 @@ form {
     background-color: #1f53c5;
 }
 
-.btn-outline-dark {
-    border: 2px solid var(--color-dark-xx);
-}
-
 .form-register {
-	width: 400px;
-	background: #24303c;
 	padding: 30px;
 	margin: auto;
-	margin-top: 50px;
-	border-radius: 4px;
-	font-family: 'calibri';
-	box-shadow: 7px 13px 37px #000;
 }
 
-
+.register-btn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+}
