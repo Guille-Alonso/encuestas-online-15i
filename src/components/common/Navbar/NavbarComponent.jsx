@@ -1,14 +1,15 @@
 import React from "react";
 import { Navbar, Button, Link, Text } from "@nextui-org/react";
 import EncuestaLogo from "../../EncuestaLogo";
-import { Layout } from "../../Layout/Layout";
+
 import { UserIcon } from "../Navbar/UserIcon/UserIcon";
+import {  LayoutHome } from "../../LayoutHome/LayoutHome";
 
 const collapseItems = ["Registrarse", "Pagina Principal", "Encuestas" , "Ingresar" , "Administración"];
 
 const NavbarComponent = () => {
   return (
-    <Layout>
+    <LayoutHome>
       <Navbar
         isBordered
         variant="sticky"
@@ -151,7 +152,7 @@ const NavbarComponent = () => {
           ))}
           </Navbar.Collapse>   
       </Navbar> */}
-    </Layout>
+    </LayoutHome>
   );
 };
 

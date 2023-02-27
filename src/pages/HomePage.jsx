@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "../components/Styles/homePage.css";
 import NavbarComponent from "../components/common/Navbar/NavbarComponent";
 import FooterComponent from "../components/common/Footer/FooterComponent";
-import { Layout } from "../components/Layout/Layout";
+/*import { Layout } from "../components/Layout/LayoutHome";*/
 import ButtonEncuesta from "../components/ui/Home/botonAgregarEncuesta/ButtonEncuesta";
 
 const HomePage = () => {
