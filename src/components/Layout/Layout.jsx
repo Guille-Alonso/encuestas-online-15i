@@ -1,5 +1,5 @@
 import Footer from "../common/Footer/Footer";
-import MainNavBar from "../common/MainNavBar/MainNavBar";
+import MainNavBar from "../../components/common/MainNavBar/NavbarComponent";
 
 
 const Layout = ({children}) => {
@@ -12,5 +12,5 @@ const Layout = ({children}) => {
       </>
     );
   }
-   
+
   export default Layout;

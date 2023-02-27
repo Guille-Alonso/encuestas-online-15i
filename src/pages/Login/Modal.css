@@ -2,3 +2,9 @@
     background: #85abd2;
     
 }
+
+.layout {
+    overflow-y: auto;
+    height: 100vh;
+
+}

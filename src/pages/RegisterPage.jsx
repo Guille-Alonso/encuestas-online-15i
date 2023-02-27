@@ -14,6 +14,7 @@ export const RegisterPage = () => {
 			password: '',
 		});
 
+		
 	const onRegister = e => {
 		e.preventDefault();
 
@@ -31,7 +32,7 @@ export const RegisterPage = () => {
 	return (
 		<div id='register' className='wrapper  bg-chatter-green h-100 py-4 fs-1 fw-bold scroll-y'>
 			<form onSubmit={onRegister} class="form-register">
-			<h1 class="py-3 font-weight-bold mb-3">Crea tu cuenta gratis</h1>
+			<h1 class="h1-form font-weight-bold mb-3">Registrarse</h1>
 
 				<div className='input-group'>
 					<input
@@ -61,6 +62,7 @@ export const RegisterPage = () => {
 					/>
 				</div>
 
+
 				<div className='input-group'>
 					<input
 						type='email'
@@ -71,7 +73,7 @@ export const RegisterPage = () => {
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu correo"
-						maxLength={20}
+						maxLength={35}
 					/>
 				</div>
 				<div className='input-group'>

@@ -9,7 +9,6 @@ export default function encuestas() {
     const [textField, setTextField] = useState("");
     const [editedField, setEditedField] = useState("");
 
-
     const [email, setEmail] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(false);
 
@@ -65,10 +64,19 @@ const handleSubmit = (event) => {
     }
     }
 
+    const [enviado, setEnviado] = useState(false);
+
+  const handleClick = () => {
+    setEnviado(true);
+  }
+
+
+
     return (
+        
     <div className='container mx-auto px-4 h-screen' id='box-all'>
             <div className="question_form">
-                <br />
+                <div id='img-seccion' >
                 <div className="section">
                     <div className="question_title_section">
                         <div className="quetion_form_top">
@@ -77,11 +85,16 @@ const handleSubmit = (event) => {
                         </div>
                     </div>
                 </div>
+                </div>
+
+            <div className='box-br'></div>
+
                 <form className='email-form-question' onSubmit={handleSubmit}>
             
-            <label htmlFor="email-input">Correo electrónico:</label>
+            <label htmlFor="email-input" className='aswers'>Correo electrónico:</label>
                 <input
                 id="email-input"
+                className='aswers'
                 type="email"
                 value={email}
                 onChange={handleEmailChange}
@@ -90,7 +103,7 @@ const handleSubmit = (event) => {
             </form>
             
         
-        <div className='bg-white shadow-lg rounded-md p-5 my-10 question_form' >
+        <div className='rounded-md p-5 my-10 question_form' >
         {
             formContent.map((field) => {
             return (
@@ -106,19 +119,19 @@ const handleSubmit = (event) => {
                     </div>
                     <div>
                         <select onChange={(e) => editFieldType(field.name, e.target.value)}>
-                        <option value="short_answer">Pregunta corta</option>
-                        <option value="paragraph">Parrafo</option>
-                        <option value="multichoice">Multichoice</option>
+                        <option className='aswers' value="short_answer">Pregunta corta</option>
+                        <option className='aswers' value="paragraph">Parrafo</option>
+                        <option className='aswers' value="multichoice">Multichoice</option>
                     </select>
                     </div>
                 </div>
 
                 <div className='my-4' >
                     {
-                    field.question_type == 'short_answer' && <input type="text" className="px-5 shadow-sm h-10 rounded-md block w-full" placeholder={field.label} />
+                    field.question_type == 'short_answer' && <input type="text" className="px-5 shadow-sm h-10 rounded-md block w-full aswers" placeholder={field.label} />
                     }
                     {
-                    field.question_type == 'paragraph' && <textarea rows={4} className="px-5 shadow-sm h-10 rounded-md block w-full" placeholder={field.label} />
+                    field.question_type == 'paragraph' && <textarea rows={4} className="px-5 shadow-sm h-10 rounded-md block w-full aswers" placeholder={field.label} />
                     }
                     {field.question_type == 'multichoice' &&
                     <div className='my-4 flex flex-col space-y-2'>
@@ -129,7 +142,7 @@ const handleSubmit = (event) => {
                         </select>
                         <div  className='flex space-between'>
                         <input  type="text" onChange={(e) => setTextField(e.target.value)} value={textField} placeholder="Add an option" className='flex-1' />
-                        <button  onClick={() => addFieldOption(field.name, textField)  } >Add</button>
+                        <button id='btn-add'  onClick={() => addFieldOption(field.name, textField)  } >Add</button>
                         </div>
                     </div>
                     }
@@ -146,12 +159,15 @@ const handleSubmit = (event) => {
             </div>
             </div>
             
-            <form className='but-send' onSubmit={handleSubmit}>
+            <form className='but-send'  onSubmit={handleSubmit}>
 
-            <button type="submit" disabled={!isEmailValid}>
-        Enviar
+            <button className='but-sends' onClick={handleClick}  type="submit" disabled={!isEmailValid} title="Está desactivado porque aún no agreaste tu Correo electrónico">
+                Enviar
             </button>
+            
             </form>
+            {enviado ? <p id='send-p'>Enviado!</p> : null}
+
             </div>
             
             </div>
