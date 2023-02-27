@@ -11,7 +11,7 @@ import useForm from "../../hooks/useForm";
 import GeneralTable from "../common/GeneralTable/GeneralTable";
 import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
 
-const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, selected}) => {
+const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, selected, client}) => {
 
  
   const {questionsA, setQuestionsA, flagQuestion, setFlagQuestion} = useContext(SurveysContext)
@@ -25,7 +25,8 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
    
       await axiosBack.post('/surveys',auxSurvey);
       getSurveys();
-      toast.info('encuesta creada');
+      toast.success('encuesta creada');
+      setSelected(undefined)
       setQuestionsA([])
     } catch (error) {
       toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
@@ -82,13 +83,13 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       </Form.Group>
       <Form.Group className="mb-3" controlId="CategoriaEncuesta">
         <Form.Label>Categoría</Form.Label>
-        <Form.Select required onChange={handleChange} value={values.categoria} name="categoria">
+        <Form.Select required onChange={handleChange}  name="categoria">
         <option value="">Elija una opción :</option>
           {
             categorias.map(item  => 
             {
               if(item.state=="Disponible"){
-                return     <option key={item.id} >{item.name}</option>
+                return     <option key={item.id} value={item.id} >{item.name}</option>
               }
             })
           }
@@ -98,7 +99,22 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
 
         <Form.Group className="mb-3" controlId="EstadoEncuesta">    
         <Form.Label>Estado</Form.Label>
-     
+     {
+      client?
+      <Form.Check 
+       
+      onChange={handleChange} 
+      type="radio"
+      id="3"
+      name="estado"
+      label="Pendiente"
+      value="Pendiente"
+      required
+      
+      
+    />
+    :
+     <>
         <Form.Check 
 
             onChange={handleChange} 
@@ -129,6 +145,8 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
             value="Pendiente"
             required
           />
+          </>
+     }
         </Form.Group>
         <Form.Group className="mb-3" controlId="UnaRespuestaPorPersonaEncuesta">  
         <Form.Label>Una Respuesta por Persona</Form.Label>
@@ -167,16 +185,7 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
          
             aux.length > 0 && <GeneralTable headings={['id','Pregunta','Tipo de Respuesta']} items={aux} setSelected={setSelected} selected={selected}></GeneralTable>
           }
-           
-        
 
-         
-        
-    {/* <Link onClick={addQuestions}>Nueva pregunta</Link>
-    <br />
-    <Link onClick={removeQuestion}>borrar pregunta</Link> */}
-
-      <br></br>
       <br></br>
       <Button variant="success" type="submit" >
         Agregar

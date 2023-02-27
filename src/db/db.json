@@ -65,11 +65,72 @@
     },
     {
       "id": "2312334",
-      "name": "jo torino",
-      "categoria": "lucha",
+      "name": "Clarin",
+      "categoria": {
+        "name": "deportes"
+      },
       "estado": "Pendiente",
-      "unaRespuestaPorPersona": "Activado",
-      "pregunta": []
+      "unaRespuestaPorPersona": "Desactivado",
+      "pregunta": [
+        {
+          "id": "OMjR9bFbA4-FgrYEB1BwE",
+          "question": "te gusta el futbol?",
+          "typeQuestion": "casillas de verificación",
+          "responses": [
+            "seee",
+            "neeee"
+          ]
+        },
+        {
+          "id": "AzVCD2vkdQxltZemPdV4l",
+          "question": "sos de river??",
+          "typeQuestion": "texto",
+          "responses": []
+        },
+        {
+          "id": "-WVNdHbozsHtpihiVh1Ar",
+          "question": "sos de banfield??",
+          "typeQuestion": "opción múltiple",
+          "responses": [
+            "se",
+            "ne"
+          ]
+        },
+        {
+          "id": "-fdsfddfsd",
+          "question": "sos de tigre??",
+          "typeQuestion": "opción múltiple",
+          "responses": [
+            "si",
+            "no"
+          ]
+        }
+      ],
+      "respuesta": [
+        {
+          "user": "patri",
+          "responses": [
+            {
+              "response": "puede se",
+              "question": "AzVCD2vkdQxltZemPdV4l"
+            },
+            {
+              "response": "ne",
+              "question": "-WVNdHbozsHtpihiVh1Ar"
+            },
+            {
+              "response": "no",
+              "question": "-fdsfddfsd"
+            },
+            {
+              "response": [
+                ""
+              ],
+              "question": "OMjR9bFbA4-FgrYEB1BwE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "5665777",
@@ -95,24 +156,9 @@
       ]
     },
     {
-      "id": "46565",
-      "name": "xxxxxxxx",
-      "categoria": "deportes",
-      "estado": "Activa",
-      "unaRespuestaPorPersona": "Activado",
-      "pregunta": [
-        {
-          "id": "9W7HxjeMLH-wXZ9T-yLU1",
-          "question": "sos de riverqqqqqqqq",
-          "typeQuestion": "texto",
-          "responses": []
-        }
-      ]
-    },
-    {
       "id": "77887878",
       "name": "fearr",
-      "categoria": "cine",
+      "categoria": "Musica Clasica",
       "estado": "Inactiva",
       "unaRespuestaPorPersona": "Activado",
       "pregunta": [
@@ -157,6 +203,213 @@
           ]
         }
       ]
+    },
+    {
+      "id": "1234433232",
+      "name": "los simpson",
+      "categoria": "7",
+      "estado": "Inactiva",
+      "unaRespuestaPorPersona": "Desactivado",
+      "pregunta": [
+        {
+          "id": "kAw2xHVCVzpUyYfRUFrpI",
+          "question": "yyyyy q onda homero",
+          "typeQuestion": "texto",
+          "responses": []
+        },
+        {
+          "id": "UmtmR06nDu-lMqRzy9GzE",
+          "question": "todo bien??",
+          "typeQuestion": "opción múltiple",
+          "responses": [
+            "si",
+            "ee"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9832009384",
+      "name": "bigote",
+      "categoria": "2",
+      "estado": "Activa",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "sbV8bP8DwoGeqzoSonjqk",
+          "question": "sos de banfield",
+          "typeQuestion": "texto",
+          "responses": []
+        },
+        {
+          "id": "GjO2DToTwvJI-GfXfQAKb",
+          "question": "sas",
+          "typeQuestion": "texto",
+          "responses": []
+        },
+        {
+          "id": "n8m7dj_B0CRdFhRrhaxMO",
+          "question": "revolución de mayo??",
+          "typeQuestion": "opción múltiple",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "21243444",
+      "name": "horacio",
+      "categoria": "3",
+      "estado": "",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "zdFwArBuEGXU08a5vsN8V",
+          "question": "hola??",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "21243444123",
+      "name": "horacio colombres",
+      "categoria": "3",
+      "estado": "",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "hgyim_vzUOdq7WkzwkYc0",
+          "question": "que onda horacio",
+          "typeQuestion": "texto",
+          "responses": []
+        },
+        {
+          "id": "bwieEfI6TBfJYN7zbBsAL",
+          "question": "que onda horacio??",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "123454443222",
+      "name": "juanpi",
+      "categoria": "4",
+      "estado": "",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "Do_VmK4vuZauJntbMPx6P",
+          "question": "sos jp??",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "123454443222122",
+      "name": "juanpi cornalba",
+      "categoria": "4",
+      "estado": "",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "Do_VmK4vuZauJntbMPx6P",
+          "question": "sos jp??",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "123454443222122342",
+      "name": "juanpi cornalba",
+      "categoria": "4",
+      "estado": "",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "fGMIc6jRcMY4GLlgISHW7",
+          "question": "sos jp??",
+          "typeQuestion": "opción múltiple",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "243456565421",
+      "name": "anote anote",
+      "categoria": "6",
+      "estado": "Pendiente",
+      "unaRespuestaPorPersona": "Activado",
+      "pregunta": [
+        {
+          "id": "id17rqHATmAHz2uZzMsWi",
+          "question": "pq ahora noo",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "111111121122112",
+      "name": "delfin",
+      "categoria": "3",
+      "estado": "",
+      "unaRespuestaPorPersona": "Desactivado",
+      "pregunta": [
+        {
+          "id": "5cbCjp3kdVbztugn-GBnk",
+          "question": "sos de banfield??",
+          "typeQuestion": "texto",
+          "responses": []
+        }
+      ]
+    },
+    {
+      "id": "687843534",
+      "name": "Clarin",
+      "categoria": {
+        "name": "deportes"
+      },
+      "estado": "Pendiente",
+      "unaRespuestaPorPersona": "Desactivado",
+      "pregunta": [
+        {
+          "id": "OMjR9bFbA4-FgrYEB1BwE",
+          "question": "te gusta el futbol?",
+          "typeQuestion": "casillas de verificación",
+          "responses": [
+            "seee",
+            "neeee"
+          ]
+        },
+        {
+          "id": "AzVCD2vkdQxltZemPdV4l",
+          "question": "sos de river??",
+          "typeQuestion": "texto",
+          "responses": []
+        },
+        {
+          "id": "-WVNdHbozsHtpihiVh1Ar",
+          "question": "sos de banfield??",
+          "typeQuestion": "opción múltiple",
+          "responses": [
+            "se",
+            "ne"
+          ]
+        },
+        {
+          "id": "-fdsfddfsd",
+          "question": "sos de tigre??",
+          "typeQuestion": "opción múltiple",
+          "responses": [
+            "si",
+            "no"
+          ]
+        }
+      ],
+      "respuesta": []
     }
   ],
   "categories": [

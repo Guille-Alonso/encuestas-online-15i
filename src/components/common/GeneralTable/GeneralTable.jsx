@@ -23,14 +23,13 @@ const GeneralTable = ({headings, items, setSelected, selected}) => {
         <tr key={nanoid()} onClick={()=>setSelected(item.id)} className={selected===item.id? 'row-selected' : ''}>
           {
           
-          Object.values(item).map((value)=>
-          
-        
-            <td key={nanoid()}>{value}</td>
-            
+          Object.values(item).map((value)=>{
+            if (!Array.isArray(value)) {
+              return  <td key={nanoid()}>{value?.name ?? value}</td>
+            }
          
           
-          )
+        })
 
           }
         </tr>
@@ -43,12 +42,3 @@ const GeneralTable = ({headings, items, setSelected, selected}) => {
 }
  
 export default GeneralTable;
-
-// const test = {
-//   a:1,
-//   b:2,
-//   c:3
-// }
-
-// Object.keys(test) ==> ["a","b","c"]
-// Object.values(test) ==> [1, 2, 3]

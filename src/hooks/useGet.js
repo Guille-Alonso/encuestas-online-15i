@@ -27,7 +27,7 @@ const useGet = (url, axios, selected)=>{
       }
       
       }else aux = data
-    
+      
       setState(data.data || aux);
       setLoading(false);
     } catch (error) {

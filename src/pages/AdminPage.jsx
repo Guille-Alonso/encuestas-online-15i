@@ -5,7 +5,6 @@ import AddSurveyForm from "../components/AddSurveyForm/AddSurveyForm";
 import GeneralModal from "../components/common/GeneralModal/GeneralModal";
 import GeneralTable from "../components/common/GeneralTable/GeneralTable";
 import DeleteConfirmation from "../components/DeleteConfirmation/DeleteConfirmation";
-import EditSurveyForm from "../components/EditSurveyForm/EditSurveyForm";
 import {axiosBack}from "../config/axios";
 import { ERROR_MESSAGE } from "../constants";
 import useGet from "../hooks/useGet";
@@ -116,21 +115,7 @@ const AdminPage = () => {
     </Container>
      
      :selected && survey=='editar'?
-   
-    // <Container>
-    //   <Row>
-    //     <Col>
-    //         <Col className="d-flex justify-content-end">
-    //             <Button onClick={goToSurveys}>Encuestas</Button>
-               
-    //         </Col>
-    
-    //         <SurveyPage modo={<EditSurveyForm selected={selected} getSurveys={getSurveys} setSelected = {setSelected} categorias = {categorias} goToAdmin={goToAdmin}/>}/>
-    
-    //     </Col>
-    //   </Row>
-    // </Container>
-    
+     
     <Container>
       <Row>
         <Col>

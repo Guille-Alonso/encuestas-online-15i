@@ -18,8 +18,6 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
     const [selectedQuestion, setSelectedQuestion]= useState(undefined)
     const [questionEdit, setQuestionEdit] = useState(ADD_QUESTION_VALUES)
 
-    // const [questions,setQuestions] = useState([]);
-
   const editSurvey = async()=>{
     try {
 
@@ -117,7 +115,7 @@ setQuestionsWithoutAnserws(aux)
         >
           {categorias.map((item) => {
             if (item.state == "Disponible") {
-              return <option key={item.id}>{item.name}</option>;
+              return <option key={item.id} value={item.id}>{item.name}</option>;
             }
           })}
         </Form.Select>
@@ -181,7 +179,4 @@ setQuestionsWithoutAnserws(aux)
     </>  );
 }
  
-export default EditSurvey;<>
-
-
-</>
+export default EditSurvey;

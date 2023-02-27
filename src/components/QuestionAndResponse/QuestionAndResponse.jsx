@@ -54,16 +54,14 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
         setFlagQuestion(true)
         setQuestionsA([...questionsA,field])
 
-        setResponses([]);
-       onClose()
+      setResponses([]);
+      if(onClose!=null){
+        onClose()
+      }
+       
         toast.info("pregunta agregada");
       }
 
-      
-      
-      
-    
-      console.log(questionsA);
     } else toast.error("debe completar los campos");
   };
 
@@ -100,7 +98,8 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
     if(itemQuestion){
       setResponses([])
       setCheckSelect(e.target.value)
-    }
+    }else setResponses([])
+    
     setState(e.target.value);
     handleChangeQuestion(e);
   };
@@ -111,8 +110,6 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
       [e.target.name]: e.target.value,
     });
   };
-
-
 
   useEffect(() => {
     if(values){
@@ -137,8 +134,6 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
     }else console.log(itemQuestion);
   },[]);
   
-
-
   return (
     <>
     

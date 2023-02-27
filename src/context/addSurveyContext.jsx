@@ -7,15 +7,17 @@ const SurveysProvider = ({children}) => {
 
 
     //
-    const [questionsA, setQuestionsA] = useState([]);
+  const [questionsA, setQuestionsA] = useState([]);
   const [flagQuestion, setFlagQuestion] = useState(true)
+  const [userRegister,setUserRegister] = useState(true)
    
   return ( 
     <SurveysContext.Provider 
     value={{
  
     questionsA,setQuestionsA,
-    flagQuestion,setFlagQuestion
+    flagQuestion,setFlagQuestion,
+    userRegister,setUserRegister
    
     }}>
       {children}

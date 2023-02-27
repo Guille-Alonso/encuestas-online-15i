@@ -12,7 +12,7 @@ const useForm = (initialValues,submit,onClose,goToAdmin) => {
       ...values,
       [e.target.name] : e.target.value
     })
- 
+    console.log(values);
   }
 
   const handleSubmit = (event) => {
@@ -33,8 +33,11 @@ const useForm = (initialValues,submit,onClose,goToAdmin) => {
     if(form.checkValidity()){
       event.preventDefault();
      submit();
-     if(goToAdmin) goToAdmin()
-      else onClose();
+     if(goToAdmin){
+      goToAdmin()
+     }else if(onClose!=null){
+      onClose()
+    }
     }
   };
 
