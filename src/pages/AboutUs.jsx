@@ -13,7 +13,7 @@ return (
     <p>
         Somos 4 amigos y programadores apasionados por la tecnología, trabajamos juntos en un proyecto emocionante que pudiera ayudar a la gente a realizar encuestas. Así fue como surgió la idea de crear una página de encuestas.
 
-    Rosario es una experta en diseño de interfaz de usuario. Ella se encargó  de crear una interfaz de usuario atractiva y fácil de usar para la  página de encuestas. Guillermo es un experto en back-end y se encargó de desarrollar el sistema que almacenaría las encuestas y las respuestas de los usuarios. Stella es una experto en front-end y se encargó de hacer que la interfaz de usuario de Rosario funcionara correctamente con el sistema de Guillermo. Nicolas es un experto en marketing y se encargó de promocionar la página de encuestas y atraer a usuarios.
+    Rosario es una experta en diseño de interfaz de usuario. Ella se encargó  de crear una interfaz de usuario atractiva y fácil de usar para la  página de encuestas. Guillermo es un experto en back-end y se encargó de desarrollar el sistema que almacenaría las encuestas y las respuestas de los usuarios. Stella es una experta en front-end y se encargó de hacer que la interfaz de usuario de Rosario funcionara correctamente con el sistema de Guillermo. Nicolas es un experto en marketing y se encargó de promocionar la página de encuestas y atraer a usuarios.
     </p>
     <br />
     <p>
