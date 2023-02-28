@@ -14,7 +14,13 @@ body {
 	width: 100%;
 }
 
-
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #13232F ;
+}
 
 
 footer div {
@@ -29,4 +35,41 @@ footer div {
 	width: 100%;
 	margin: 10px 0;
 	text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #073044;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+nav img {
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+img{
+    width: 100px;
+    height: 500px;
 }

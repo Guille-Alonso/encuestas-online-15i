@@ -42,8 +42,8 @@ return (
         </Col>
         
     </Row>
-    <Row className="row">
-        <Col>
+    <Row className="row m-2">
+        <Col >
         <a href="">
         <img className="img" id="pick-nico" src="src\asset\aboutUs\Nicolas Pereira.jpeg" alt="Imagen de Nicolas" />
         </a>

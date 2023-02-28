@@ -1,5 +1,6 @@
 import React from "react";
 import { Image } from "@nextui-org/react";
+import Logo from "../Image/Logo.png";
 
 const EncuestaLogo = () => {
   return (

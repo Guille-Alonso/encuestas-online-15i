@@ -1,12 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "../../common/Footer/FooterComponent.css"
-import { Link } from "react-router-dom";
-
+import "../../Styles/footerComponent.css";
 
 const FooterComponent = () => {
   return (
-    <footer className="footerComp">
+    <footer className="footerComp bg-chatter-blue footer-height text-white">
       <div className="text-center text-white">Todos los derechos reservados ® - 15I</div>
       <div className="d-flex justify-content-center">
 
@@ -16,9 +14,9 @@ const FooterComponent = () => {
         </a>
       </div>
       <div className=" mx-1">
-      <Link to="/AboutUs" className="text-chatter-blue">
-    Sobre Nosotros
-        </Link>
+        <a href="#">
+          Sobre nosotros
+        </a>
       </div>
       </div>
       <div class="d-flex justify-content-center align-items-center">

@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import styled from 'styled-components';
 import "../../pages/Login/LoginPage.css";
+import { Link } from 'react-router-dom';
 
 
 
@@ -21,7 +22,7 @@ const ForgetPasswordForm =()=>{
       </Form.Group>
  </div> 
  <div className='d-flex  justify-content-center mb-4'>
-<Button onClick={"/Login"} variant="outline-success"
+<Button onClick={"/HomePage"} variant="outline-success"
       type="submit"
       style={{
         backgroundColor: "#083045",

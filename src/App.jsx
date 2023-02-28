@@ -14,14 +14,15 @@ function App() {
     <Router>
       <Layout>
       <Routes>
-        <Route path='/*' element={<HomePage/>}/>
-        <Route path='Login' element ={<LoginPage/>} />
-        <Route path = "/ForgetPassword" element ={<ForgetPassword/>} />
+        <Route path='/Login' element ={<LoginPage/>} />
+        <Route path= '/Forgetpassword'element = {<ForgetPassword/>}/>
         <Route path='/register' element={<RegisterPage/>}/>
         <Route path='/Encuestas' element={<Encuestas/>} />
-        <Route path='AboutUs' element={<About/>} />
+        <Route path='/AboutUs' element={<About/>} />
       </Routes>
       </Layout>
+      
+      <Routes> <Route path='/Home' element={<HomePage/>}/>  </Routes>
     </Router>
   )
 }

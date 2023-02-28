@@ -1,3 +1,12 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	box-sizing: border-box;
+
+	color: white;
+}
+
 body{
     background-color: #EBFFF7;
 }
@@ -55,7 +64,6 @@ body{
     font-size: 13px;
     font-weight: 400;
     line-height: 40px;
-
     width: 100%;
     border: none;
     outline: none;
@@ -66,8 +74,10 @@ body{
 }
 
 .question_form{
-    padding: 50px;
+    padding: 10px;
     background-color: #BDEFCC;
+    margin-top: 10px;
+    margin-bottom: 90px;
 }
 
 .box-question{
