@@ -13,7 +13,7 @@ function Navbar() {
       </Link>
 
       <ul>
-        <li><Link to="/">Página Principal</Link></li>
+        <li><Link to="/Home">Página Principal</Link></li>
         <li><Link to="/Encuestas">Encuestas</Link></li>
         <li><Link to="/register">Registrarse</Link></li>
         <li><Link to="/Login">Ingresar</Link></li>

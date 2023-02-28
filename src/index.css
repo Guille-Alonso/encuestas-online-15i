@@ -62,11 +62,24 @@ nav ul li {
     margin: 0 1rem;
 }
 
+nav ul li:hover{
+    background-color: antiquewhite;
+    width: 100px;
+    height: 30px;
+    color: #073044;
+    border-radius: 10%;
+}
+
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 13px;
+}
+
+li{
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 img{

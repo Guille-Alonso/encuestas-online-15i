@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import Layout from "./components/Layout/Layout"
 import About from './pages/AboutUs'
 import Encuestas from './pages/Encuestas'
@@ -21,8 +21,8 @@ function App() {
         <Route path='/AboutUs' element={<About/>} />
       </Routes>
       </Layout>
-      
-      <Routes> <Route path='/Home' element={<HomePage/>}/>  </Routes>
+
+      {/* <Route path="/Home" element={<HomePage/>} /> */}
     </Router>
   )
 }
