@@ -2,9 +2,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-import styled from 'styled-components';
-import "../Login/Modal.css"
-import ReactPlayer from 'react-player';
+/*import styled from 'styled-components';*/
+/*import "../Login/Modal.css"*/
+/*import ReactPlayer from 'react-player';*/
 import videoEncuestas from "../../asset/ForgetPassword/videoEncuestas.mp4";
 import { Col, Container, Row} from "react-bootstrap";
 import BackgroundLogin2 from "../../asset/Register/fondo.jpg";

@@ -11,7 +11,7 @@ const FooterComponent = () => {
       <div className="d-flex justify-content-center">
 
       <div className=" mx-1S">
-        <Link to='/'>
+        <Link to='/contact'>
           Contacto
         </Link>
       </div>
