@@ -50,6 +50,14 @@ const GridCardContainer = () => {
       id: 9,
       titulo: "Encuesta 9",
       descripcion: "encuesta dsadas",
+    },{
+      id: 19,
+      titulo: "Encuesta 19",
+      descripcion: "encuesta dsadas",
+    },{
+      id: 29,
+      titulo: "Encuesta 29",
+      descripcion: "encuesta dsadas",
     },
   ];
 
