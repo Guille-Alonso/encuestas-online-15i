@@ -25,6 +25,7 @@ const ForgetPassword= () => {
     url={videoEncuestas}playing loop 
     width='40%'
     height='40%'
+    border-radius= '50%'
         
   ></ReactPlayer>
   <div><ForgetPasswordForm/></div>

@@ -1,4 +1,4 @@
-export const ADD_USER_VALUES ={
+export const LOGIN_VALUES ={
     email: "",
-    password:"",
-}
+    password: "",
+};

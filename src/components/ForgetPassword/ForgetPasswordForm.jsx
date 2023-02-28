@@ -3,10 +3,19 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import styled from 'styled-components';
 import "../../pages/Login/LoginPage.css";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const ForgetPasswordForm =()=>{
+
+  const navigate = useNavigate ()
+
+  const toLoginPage = ()=>{
+    navigate('/Login')
+  }
+
+
   return(
     <>
    <div className="modal-background-color d-flex flex-column mb-3  justify-content-center">
@@ -21,7 +30,7 @@ const ForgetPasswordForm =()=>{
       </Form.Group>
  </div> 
  <div className='d-flex  justify-content-center mb-4'>
-<Button onClick={"/Login"} variant="outline-success"
+<Button onClick={toLoginPage}  variant="outline-success"
       type="submit"
       style={{
         backgroundColor: "#083045",
