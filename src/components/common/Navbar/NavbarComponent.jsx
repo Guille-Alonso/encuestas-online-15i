@@ -6,9 +6,9 @@ import { UserIcon } from "../Navbar/UserIcon/UserIcon";
 import {  LayoutHome } from "../../LayoutHome/LayoutHome";
 
 import NavBar from "./Navbar";
-import { Content } from "../../Content";
+import  Content  from "../../Content";
 
-const collapseItems = ["Registrarse", "Pagina Principal", "Encuestas" , "Ingresar" , "Administración"];
+// const collapseItems = ["Registrarse", "Pagina Principal", "Encuestas" , "Ingresar" , "Administración"];
 
 const NavbarComponent = () => {
   return (

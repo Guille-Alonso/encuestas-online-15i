@@ -1,37 +1,55 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useForm } from '../hook/useForm'
+import  useForm  from '../hook/useForm'
 import 'bootstrap/dist/css/bootstrap.css'
 import "../components/Register/register.css"
+import { REGISTER_VALUES } from '../constants';
+import { toast } from 'react-toastify';
+import axios from '../config/axios';
 
 export const RegisterPage = () => {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
-	const { name, email, password,lastname,  onInputChange, onResetForm } =
-		useForm({
-			name: '',
-			email: '',
-			password: '',
-		});
+	// const { name, email, password,lastname,  onInputChange, onResetForm } =
+	// 	useForm({
+	// 		name: '',
+	// 		email: '',
+	// 		password: '',
+	// 	});
 
 		
-	const onRegister = e => {
-		e.preventDefault();
+	// const onRegister = e => {
+	// 	e.preventDefault();
 
-		navigate('/dashboard', {
-			replace: true,
-			state: {
-				logged: true,
-				name,
-			},
-		});
+	// 	navigate('/dashboard', {
+	// 		replace: true,
+	// 		state: {
+	// 			logged: true,
+	// 			name,
+	// 		},
+	// 	});
 
-		onResetForm();
-	};
+	// 	onResetForm();
+	// };
+	const register = async () => {
+		try {
+		  
+		  const { data } = await axios.post("/users/register", values);
+		 
+		
+		  toast.success("registro exitoso")
+		} catch (error) {
+		  toast.error("Registro fallido. Campos incorrectos");
+		}
+	  };
+	const { handleChange, handleSubmit, values} = useForm(
+		REGISTER_VALUES,
+		register
+	  );
 
 	return (
 		<div id='register' className='wrapper  bg-chatter-green h-100 py-4 fs-1 fw-bold scroll-y'>
-			<form onSubmit={onRegister} class="form-register">
+			<form onSubmit={handleSubmit} class="form-register">
 			<h1 class="h1-form font-weight-bold mb-3">Registrarse</h1>
 
 				<div className='input-group'>
@@ -39,15 +57,15 @@ export const RegisterPage = () => {
 						type='text'
 						name='name'
 						className='name'
-						value={name}
-						onChange={onInputChange}
+						value={values.name}
+						onChange={handleChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu nombre"
 						maxLength={15}
 					/>
 				</div>
-
+{/* 
 				<div className='input-group'>
 					<input
 						type='text'
@@ -60,7 +78,7 @@ export const RegisterPage = () => {
 						placeholder="Ingresa tu apellido"
 						maxLength={15}
 					/>
-				</div>
+				</div> */}
 
 
 				<div className='input-group'>
@@ -68,8 +86,8 @@ export const RegisterPage = () => {
 						type='email'
 						name='email'
 						className='name'
-						value={email}
-						onChange={onInputChange}
+						value={values.email}
+						onChange={handleChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu correo"
@@ -81,8 +99,8 @@ export const RegisterPage = () => {
 						type='password'
 						name='password'
 						className='name'
-						value={password}
-						onChange={onInputChange}
+						value={values.password}
+						onChange={handleChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu contraseña"

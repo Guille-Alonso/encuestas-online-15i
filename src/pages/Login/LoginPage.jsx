@@ -8,7 +8,8 @@ import { Col, Container, Row} from "react-bootstrap";
 import BackgroundLogin from "../../asset/Login/wallpaper 2.jpg";
 import BackgroundLogin2 from "../../asset/Register/fondo.jpg";
 import AnimacionLogo from "../../components/LoginForm/Animacion";
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage= () => {
 
@@ -21,7 +22,7 @@ const LoginPage= () => {
          style={{
           backgroundImage: `url("${BackgroundLogin}")`,
           backgroundSize: 'cover',
-          
+        
         }}>
                 </Col>
          <Col sx={12} md={4} className=" layout  d-flex justify-content-center  align-items-center " 
@@ -45,6 +46,7 @@ const LoginPage= () => {
          </Col>
                 
         </Row>
+      
  </Container>
       </>
       
