@@ -49,8 +49,8 @@ export const RegisterPage = () => {
 
 	return (
 		<div id='register' className='wrapper  bg-chatter-green h-100 py-4 fs-1 fw-bold scroll-y'>
-			<form onSubmit={handleSubmit} class="form-register">
-			<h1 class="h1-form font-weight-bold mb-3">Registrarse</h1>
+			<form onSubmit={handleSubmit} className="form-register">
+			<h1 className="h1-form font-weight-bold mb-3">Registrarse</h1>
 
 				<div className='input-group'>
 					<input
