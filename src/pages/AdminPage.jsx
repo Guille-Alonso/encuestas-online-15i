@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
 import AddSurveyForm from "../components/AddSurveyForm/AddSurveyForm";
@@ -12,13 +12,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Navigate, useNavigate } from "react-router-dom";
 import SurveyPage from "./SurveyPage";
 import EditSurvey from "../components/EditSurveyForm/EditSurvey";
+import { SurveysContext } from "../context/addSurveyContext";
 
 const AdminPage = () => {
   const [surveys, loading, getSurveys] = useGet('/surveys',axios);
   const [selected,setSelected] =useState(undefined);
   const [categorias, setCategorias] = useState([])
   const [survey,setSurvey] = useState('')
-
+  const {questionsA, setQuestionsA} = useContext(SurveysContext)
 
   const deleteSurvey = async()=>{
     try {
@@ -53,19 +54,19 @@ const AdminPage = () => {
 
   const goToAdmin = ()=>{
    setSurvey('')
-  // window.location.reload()
   
   }
 
   const goToSurveys = ()=>{
-    window.location.reload()
+    setSelected(undefined)
+    setQuestionsA([])
+    setSurvey('')
   }
   const getCategories = async()=>{
     try {
     
       const {data} = await axios.get('/categories');
        setCategorias(data.categories)
-    
       
     } catch (error) {
       toast.error('Error al buscar los datos')

@@ -11,7 +11,12 @@ const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
 
     const editCategory = async()=>{
         try {
-          await axios.put('/categories/'+selected,values);
+          const obj = {
+            "id":values._id,
+            "campos":values
+        }
+
+          await axios.put('/categories',obj);
           getCategories();
           toast.info('categoría editada');
           setSelected(undefined)
@@ -54,8 +59,8 @@ const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
           <Form.Group className="mb-3" controlId="EstadoCategoría">    
           <Form.Label>Estado</Form.Label>
           <Form.Select onChange={handleChange} value={values.state} name="state">
-          <option>Disponible</option>
-          <option>No Disponible</option>
+          <option value={true}>Activa</option>
+          <option value={false}>Inactiva</option>
           </Form.Select>
           </Form.Group>
         

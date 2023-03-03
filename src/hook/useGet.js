@@ -22,7 +22,7 @@ const useGet = (url, axios, selected)=>{
   
       }else if(url == '/surveys/'+selected){
        
-       let {pregunta,...resto} = data;
+       let {pregunta,...resto} = data.survey;
        for (let index = 0; index < pregunta.length; index++) {
       
         let {responses, ...res} = pregunta[index];

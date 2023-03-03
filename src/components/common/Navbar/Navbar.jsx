@@ -27,6 +27,7 @@ const NavBar = () => {
   };
 
   const setOut = () => {
+   
     localStorage.setItem("token", "");
     setAuthenticated(false);
   };

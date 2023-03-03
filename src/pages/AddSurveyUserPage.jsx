@@ -8,50 +8,49 @@ import AddSurveyForm from "../components/AddSurveyForm/AddSurveyForm";
 import SurveyPage from "./SurveyPage";
 
 const AddSurveyUserPage = () => {
-    const {userRegister,setUserRegister} = useContext(SurveysContext)
-    const [surveys, loading, getSurveys] = useGet('/surveys',axios);
-    const [categorias, setCategorias] = useState([])
+    const {user} = useContext(SurveysContext)
+    const [categorias] = useGet('/categories',axios);
+    // const [categorias, setCategorias] = useState([])
     const [selected,setSelected] =useState(undefined);
-    const [state,setState] = useState(false)
+  
 
-    const getCategories = async()=>{
+    // const getCategories = async()=>{
    
-        try {
-          const {data} = await axios('/categories');
-           setCategorias(data.categories)
+    //     try {
+    //       const {data} = await axios('/categories');
+    //        setCategorias(data.categories)
+        
           
-        } catch (error) {
-          toast.error('Error al buscar los datos')
-        }
-      }
+    //     } catch (error) {
+    //       toast.error('Error al buscar los datos')
+    //     }
+    //   }
     
-      useEffect(()=>{
+    //   useEffect(()=>{
      
-            getCategories()
+    //         getCategories()
       
         
-      },[])
+    //   },[])
 
     return (  
 <div className="layout">
     <h1>Bienvenido a la pagina para proponer una encuesta</h1>
 
     {
-        userRegister && 
+        user && 
         <>
-        {/* <Button variant='success' onClick={()=>setState(true)}>agregar encuesta</Button>
-        {
-            state && */}
+     
         <Container>
           <Row>
             <Col>
      
-                <SurveyPage modo={<AddSurveyForm getSurveys={getSurveys} categorias = {categorias} setSelected={setSelected} selected={selected} client={true}/>}/>
+                <SurveyPage modo={<AddSurveyForm  categorias = {categorias} setSelected={setSelected} selected={selected} client={true}/>}/>
             </Col>
           </Row>
           <ToastContainer/>
         </Container>
-        {/* } */}
+       
         </>
     }
        

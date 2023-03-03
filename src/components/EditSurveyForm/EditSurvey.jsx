@@ -20,10 +20,15 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
 
   const editSurvey = async()=>{
     try {
-
+   
       const aux = {...values}
       aux.pregunta = questionsA
-      await axios.put('/surveys/'+selected,aux);
+      const obj = {
+        "id":values._id,
+        "campos":aux
+    }
+   
+      await axios.put('/surveys/',obj);
       
       getSurveys();
       toast.info('encuesta editada');
@@ -40,10 +45,10 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
   const getSurveyInfo = async ()=>{
     try {
       const {data} = await axios.get('/surveys/'+selected);
-      
+    
      setValues(data.survey);
  
-    setQuestionsA(data.surveys.pregunta)
+    setQuestionsA(data.survey.pregunta)
    
     } catch (error) {
       toast.error(ERROR_MESSAGE)
@@ -53,8 +58,8 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
   const removeQuestion = ()=>{
     if(selectedQuestion){
        
-      const questionsFilter = questionsWithoutAnserws.filter(q=>q.id !== selectedQuestion)
-      const questions = questionsA.filter(q=>q.id !== selectedQuestion)
+      const questionsFilter = questionsWithoutAnserws.filter(q=>q._id !== selectedQuestion)
+      const questions = questionsA.filter(q=>q._id !== selectedQuestion)
       setQuestionsA(questions)
         setQuestionsWithoutAnserws(questionsFilter)
         setSelectedQuestion(undefined)
@@ -68,7 +73,7 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
   },[])
 
 useEffect(()=>{
-  const questionAux = questionsA?.find(q=>q.id==selectedQuestion)
+  const questionAux = questionsA?.find(q=>q._id==selectedQuestion)
    setQuestionEdit(questionAux)
 },[selectedQuestion])
 
@@ -110,12 +115,12 @@ setQuestionsWithoutAnserws(aux)
         <Form.Label>Categoría</Form.Label>
         <Form.Select
           onChange={handleChange}
-          value={values.categoria}
+          value={values.categoria?._id}
           name="categoria"
         >
           {categorias.map((item) => {
-            if (item.state == "Disponible") {
-              return <option key={item.id} value={item.id}>{item.name}</option>;
+            if (item.state) {
+              return <option key={item._id} value={item._id}>{item.name}</option>;
             }
           })}
         </Form.Select>
@@ -128,9 +133,9 @@ setQuestionsWithoutAnserws(aux)
           value={values.estado}
           name="estado"
         >
-          <option>Activa</option>
-          <option>Inactiva</option>
-          <option>Pendiente</option>
+          <option value="activa" >activa</option>
+          <option value="inactiva" >inactiva</option>
+          <option value="pendiente">pendiente</option>
         </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3" controlId="RespuestasPorPersonaEncuesta">
@@ -140,8 +145,8 @@ setQuestionsWithoutAnserws(aux)
           value={values.unaRespuestaPorPersona}
           name="unaRespuestaPorPersona"
         >
-          <option>Activado</option>
-          <option>Desactivado</option>
+          <option value={true}>Activado</option>
+          <option value={false}>Desactivado</option>
         </Form.Select>
       </Form.Group>
 

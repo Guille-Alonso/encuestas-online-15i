@@ -13,7 +13,7 @@ const SurveysProvider = ({children}) => {
   const [selected,setSelected] =useState(undefined);
   const [questionsA, setQuestionsA] = useState([]);
   const [flagQuestion, setFlagQuestion] = useState(true)
-  const [userRegister,setUserRegister] = useState(true)
+ 
 
   const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
@@ -42,6 +42,7 @@ const SurveysProvider = ({children}) => {
       setUser(data.user);
       setAuthenticated(true);
     } catch (error) {
+      setAuthenticated(false)
       toast.error("Error de autenticación. Ingrese nuevamente");
     }
     setLoading(false);
@@ -54,7 +55,6 @@ const SurveysProvider = ({children}) => {
  
     questionsA,setQuestionsA,
     flagQuestion,setFlagQuestion,
-    userRegister,setUserRegister,
     user,
     authenticated,
     loading,

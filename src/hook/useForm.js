@@ -19,7 +19,11 @@ const useForm = (initialValues, submit, onClose, goToAdmin) => {
     event.preventDefault();
   
     submit(values?? values);
-    if(onClose) onClose()
+    if(goToAdmin){
+        goToAdmin()
+       }else if(onClose!=null){
+        onClose()
+      }
     // if(values.name?.length >25){
     //   event.preventDefault();
     //   toast.error("no puedes ingresar un nombre tan largo")

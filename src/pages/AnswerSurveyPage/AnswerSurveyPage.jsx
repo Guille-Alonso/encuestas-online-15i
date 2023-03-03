@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 // import useForm from "./../../hooks/useForm";
 import { useEffect, useState } from "react";
-import { Button, Container, Form, Spinner } from "react-bootstrap";
+import { Button, Container, Form, FormLabel, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 // import QuestionAndResponse from "../../components/QuestionAndResponse/QuestionAndResponse";
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import useGet from "../../hook/useGet"
 import axios from "../../config/axios";
 import useForm from "../../hook/useForm";
+import { Input } from "@nextui-org/react";
 
 
 const AnswerSurveyPage = () => {
@@ -20,6 +21,7 @@ const AnswerSurveyPage = () => {
   // );
   const [survey, setSurvey] = useState({})
   const [loading,setLoading] = useState(true)
+
   const getSurvey =async()=>{
     try {
       const {data} = await axios.get("/surveys/"+params.surveyId)
@@ -29,6 +31,7 @@ const AnswerSurveyPage = () => {
       toast.error("error")
     }
   }
+
   useEffect(()=>{
 getSurvey()
   },[])
@@ -77,6 +80,12 @@ getSurvey()
       ) : (
         <>
         <Container>
+          {
+            survey.unaRespuestaPorPersona && 
+            <Form>
+            <FormLabel>Email obligatorio:<Form.Control></Form.Control></FormLabel>
+            </Form>
+          }
         <h1>Encuesta: {survey.name}</h1>
           <br />
           <h2>Categoría: {survey.categoria?.name}</h2>

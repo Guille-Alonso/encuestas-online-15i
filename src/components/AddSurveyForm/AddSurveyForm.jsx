@@ -26,7 +26,10 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       auxSurvey.pregunta = questionsA
   
       await axios.post('/surveys',auxSurvey);
-      getSurveys();
+      if(getSurveys){
+        getSurveys();
+      }
+ 
       toast.success('encuesta creada');
       setSelected(undefined)
       setQuestionsA([])
@@ -39,8 +42,8 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
     if(selected){
      
       setFlagQuestion(false)
-      const questionsFiltered = aux.filter(q=>q.id !== selected)
-      const questions = questionsA.filter(q=>q.id !== selected)
+      const questionsFiltered = aux.filter(q=>q._id !== selected)
+      const questions = questionsA.filter(q=>q._id !== selected)
       setQuestionsA(questions)
       setAux(questionsFiltered)
     

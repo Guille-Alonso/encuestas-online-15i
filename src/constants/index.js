@@ -35,7 +35,7 @@ response:""
 export const ERROR_MESSAGE = 'Error. Intente de nuevo en unos minutos.';
 
 export const ADD_CATEGORY_VALUES = {
- 
+  id:"",
   name:"",
   state:""
 };

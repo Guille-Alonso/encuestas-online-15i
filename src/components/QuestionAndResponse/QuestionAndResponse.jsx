@@ -26,7 +26,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
       }
 
       const field = {
-        id: `${nanoid()}`,
+        _id: `${nanoid()}`,
         question: question.question,
         typeQuestion: question.typeQuestion,
         responses: arrayResponses,
@@ -34,12 +34,12 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
 
       if (itemQuestion) {
         const obj = {
-          id: `${itemQuestion.id}`,
+          _id: `${itemQuestion._id}`,
           question: question.question,
           typeQuestion: question.typeQuestion,
           responses: arrayResponses,
         };
-        let aux = questionsA.filter((q) => q.id != itemQuestion.id);
+        let aux = questionsA.filter((q) => q._id != itemQuestion._id);
 
         aux.push(obj);
 
@@ -68,7 +68,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
   const removeQuestions=(e)=>{
   if(itemQuestion){
     
-    let aux = values.pregunta.filter(q=>q.id != e.target.id)
+    let aux = values.pregunta.filter(q=>q._id != e.target.id)
     let {pregunta, ...res} = values;
     res.pregunta = aux
 
@@ -76,7 +76,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
     setValues(res)
     
   }else{
-    let aux = values.pregunta.filter(q=>q.id != e.target.id)
+    let aux = values.pregunta.filter(q=>q._id != e.target.id)
     let {pregunta, ...res} = values;
     res.pregunta = aux
     setValues(res)
