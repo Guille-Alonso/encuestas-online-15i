@@ -78,6 +78,7 @@ const NavBar = () => {
           <Navbar.Link>
             
             <Link to="/home">Encuestas</Link>
+          
           </Navbar.Link>
           {authenticated && (
             <Navbar.Link>

@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { Table } from "react-bootstrap";
 import './GeneralTable.css'
 
@@ -7,15 +8,16 @@ const GeneralTable = ({headings, items, setSelected, selected}) => {
 
 
   return ( 
-    <Table striped bordered hover>
-    <thead>
+    <MDBTable responsive>
+      <MDBTableHead>
+   
       <tr>
         { 
         headings.map((heading)=><th key={nanoid()}>{heading}</th>)
         }        
       </tr>
-    </thead>
-    <tbody>
+      </MDBTableHead>
+      <MDBTableBody>
       {
         
         items.length!==0 && items.map((item)=>
@@ -36,8 +38,8 @@ const GeneralTable = ({headings, items, setSelected, selected}) => {
           )
       }
       
-    </tbody>
-  </Table>
+      </MDBTableBody>
+    </MDBTable>
    );
 }
  
