@@ -38,6 +38,12 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
     }
   }
 
+  useEffect(()=>{
+    if(questionsA.length>0){
+    setQuestionsA([])
+    }
+    },[])
+
   const removeQuestionAdd = ()=>{
     if(selected){
      
