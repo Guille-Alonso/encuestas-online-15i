@@ -18,7 +18,6 @@ const useGet = (url, axios, selected)=>{
     
           aux.push(res)
         }
-    
   
       }else if(url == '/surveys/'+selected){
        

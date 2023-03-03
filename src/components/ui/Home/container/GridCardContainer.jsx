@@ -17,24 +17,31 @@ const GridCardContainer = () => {
   );
 
   return (
-
-    <Grid.Container >
-      {
-        loading?
-        <Spinner/>
-        :
-        survey.map((card) => (
-          <Grid key={nanoid()} xs={12} md={6} lg={4} justify='center' css={{marginBottom: 5}}>
-            <CardEncuesta
-              key={card._id}
-              descripcion={card.name}
-              titulo={card.categoria?.name}
-              id={card._id}
-            ></CardEncuesta >
-          </Grid>
-        ))
-      }
-      
+    <Grid.Container>
+      {loading ? (
+        <Spinner />
+      ) : (
+        survey.map((card) => {
+          if (card.estado == "activa") {
+            return (
+              <Grid
+                key={nanoid()}
+                xs={12}
+                md={4}
+                justify="center"
+                css={{ marginBottom: 5 }}
+              >
+                <CardEncuesta
+                  key={card._id}
+                  descripcion={card.name}
+                  titulo={card.categoria?.name}
+                  id={card._id}
+                ></CardEncuesta>
+              </Grid>
+            );
+          }
+        })
+      )}
     </Grid.Container>
   );
 };
