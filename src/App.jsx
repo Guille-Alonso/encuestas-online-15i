@@ -44,7 +44,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path='/answerSurvey/:surveyId' element={<AnswerSurveyPage/>}/>
             <Route path='/addSurveyUser' element={<PrivateRoute><AddSurveyUserPage/></PrivateRoute>}/>
-            {/* <Route path='/Encuestas' element={<Encuestas/>} /> */}
+      
           </Routes>
  
         <ToastContainer />

@@ -8,7 +8,7 @@ import {  LayoutHome } from "../../LayoutHome/LayoutHome";
 import NavBar from "./Navbar";
 import  Content  from "../../Content";
 
-// const collapseItems = ["Registrarse", "Pagina Principal", "Encuestas" , "Ingresar" , "Administración"];
+
 
 const NavbarComponent = () => {
   return (

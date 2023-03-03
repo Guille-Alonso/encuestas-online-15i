@@ -16,9 +16,6 @@ const GridCardContainer = () => {
     axios
   );
 
-  useEffect(()=>{
-console.log("holaaa");
-  },[])
   return (
 
     <Grid.Container >
