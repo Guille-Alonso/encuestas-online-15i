@@ -1,0 +1,29 @@
+h1 a {
+	text-decoration: none;
+	color: #fff;
+}
+
+nav,
+.user {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+} 
+
+nav a {
+	text-decoration: none;
+	color: cadetblue;
+}
+
+.username {
+	color: #fff;
+}
+
+.NavbarEncuesta {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 15px;
+	background-color: #083045;
+}

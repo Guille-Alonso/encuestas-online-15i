@@ -5,6 +5,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import EncuestaLogo from "../../EncuestaLogo";
 import { UserIcon } from "./UserIcon/UserIcon";
 import { SurveysContext } from "../../../context/addSurveyContext";
+import "../Navbar/Navbar.css";
 
 
 
