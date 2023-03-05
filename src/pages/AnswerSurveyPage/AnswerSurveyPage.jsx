@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 // import useForm from "./../../hooks/useForm";
 import { useEffect, useState } from "react";
 import { Button, Container, Form, FormLabel, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 // import QuestionAndResponse from "../../components/QuestionAndResponse/QuestionAndResponse";
 
@@ -32,37 +32,36 @@ const AnswerSurveyPage = () => {
     }
   }
 
+  const navigate = useNavigate()
+  const goToSurveys=()=>{
+  navigate('/home')
+  }
+
   useEffect(()=>{
 getSurvey()
   },[])
  
   // const surveyData = survey.survey
   let initialState = {};
-  survey?.pregunta?.forEach((p, index) => {
-    // if(p.typeQuestion == "casillas de verificación"){
-    //   let aux = []
-    //   p?.responses?.forEach((r,index)=>{
-    //     let obj = {"id":index,"valor":r}
-    //     aux.push(obj)
-    //   })
-    //   initialState[p.id] = aux;
-    // }else{
-      initialState[p.id] = "";
-    
   
+  survey?.pregunta?.forEach((p, index) => {
+  
+      initialState[p._id] = "";
+    
+    
   });
   
   const submit = async () => {
-    let auxArr = {...survey}
-    let hol = []
-    hol.push(values)
-    auxArr.respuesta = hol
- 
-    try {
-      await axios.put("/surveys/"+2312334, auxArr);
-    } catch (error) {
-      toast.error("hubo un error")
-    }
+    // let auxArr = {...survey}
+    // let hol = []
+    // hol.push(values)
+    // auxArr.respuesta = hol
+ console.log(values);
+    // try {
+    //   await axios.put("/surveys/"+2312334, auxArr);
+    // } catch (error) {
+    //   toast.error("hubo un error")
+    // }
  
 
     //back
@@ -114,10 +113,10 @@ getSurvey()
                   ) :*/}
                 {item.typeQuestion == "opción múltiple" ? (
                   <Form.Select
-                    name={item.id}
-                    id={item.id}
+                    name={item._id}
+                    id={item._id}
                     onChange={handleChange}
-                    value={values[item.id]}
+                    value={values[item._id]}
                     required
                   >
                       <option value="">Elija una opción :</option>
@@ -133,10 +132,9 @@ getSurvey()
                       <Form.Check
                         type="checkbox"
                         onChange={handleChange}
-                        id={item.id}
-                        name={item.id}
+                        id={index + 1}
+                        name={item._id}
                         value={res}
-                        
                       />
                       <Form.Label className="ms-2">{res}</Form.Label>
                     </div>
@@ -147,15 +145,15 @@ getSurvey()
                     type="text"
                     onChange={handleChange}
                     id={item.id}
-                    value={values[item.id]}
-                    name={item.id}
+                    value={values[item._id]}
+                    name={item._id}
                     required
                   />
                 )}
               </Container>
             ))}
             <Container>
-            <Button variant="success" className="mt-4" type="submit">Enviar Respuestas</Button>
+            <Button onClick={goToSurveys} variant="success" className="mt-4" type="submit">Enviar Respuestas</Button>
             </Container>
             
           </Form>
