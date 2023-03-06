@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import  useForm  from '../hook/useForm'
 import 'bootstrap/dist/css/bootstrap.css'
 import "../components/Register/register.css"
@@ -103,7 +103,9 @@ export const RegisterPage = () => {
 						autoComplete='off'
 						placeholder="Ingresar contraseña"
 						maxLength={20}
+						
 					/>
+					
 					
 				</div>
 
@@ -119,6 +121,7 @@ export const RegisterPage = () => {
 						placeholder="Repetir contraseña"
 						maxLength={20}
 					/>
+					<submit onClick={toggleShowPassword}>{showPassword ? "Ocultar" : "Mostrar"}</submit>
 				</div>
 
 
@@ -136,11 +139,6 @@ export const RegisterPage = () => {
         </Link>
     </div>
 
-	<div className="content text d-flex flex-row gap-2 fs-6 fst-italic" data-aos="fade">
-        <Link to="/Forgetpassword" id="olvide-password">
-		olvide la contraseña
-        </Link>
-    </div>
 		
 			</form>
 
