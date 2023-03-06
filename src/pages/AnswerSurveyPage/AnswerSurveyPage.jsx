@@ -1,75 +1,57 @@
 import { nanoid } from "nanoid";
-// import useForm from "./../../hooks/useForm";
 import { useEffect, useState } from "react";
 import { Button, Container, Form, FormLabel, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-// import QuestionAndResponse from "../../components/QuestionAndResponse/QuestionAndResponse";
-
-// import { ADD_RESPONSE, ADD_SURVEY_VALUES } from "../../constants";
 import useGet from "../../hook/useGet"
 import axios from "../../config/axios";
 import useForm from "../../hook/useForm";
-import { Input } from "@nextui-org/react";
-
 
 const AnswerSurveyPage = () => {
   const params = useParams();
-  // const [survey, loading, getSurveys, setSurvey] = useGet(
-  //   "/surveys/" + params.surveyId,
-  //   axios
-  // );
-  const [survey, setSurvey] = useState({})
-  const [loading,setLoading] = useState(true)
+  const [survey, loading] = useGet("/surveys/"+params.surveyId,axios);
 
-  const getSurvey =async()=>{
-    try {
-      const {data} = await axios.get("/surveys/"+params.surveyId)
-      setSurvey(data.survey)
-      setLoading(false)
-    } catch (error) {
-      toast.error("error")
-    }
-  }
-
-  useEffect(()=>{
-getSurvey()
-  },[])
+  const navigate = useNavigate()
  
-  // const surveyData = survey.survey
-  let initialState = {};
-  survey?.pregunta?.forEach((p, index) => {
-    // if(p.typeQuestion == "casillas de verificación"){
-    //   let aux = []
-    //   p?.responses?.forEach((r,index)=>{
-    //     let obj = {"id":index,"valor":r}
-    //     aux.push(obj)
-    //   })
-    //   initialState[p.id] = aux;
-    // }else{
-      initialState[p.id] = "";
-    
+  const goToSurveys = ()=>{
+    navigate("/home")
+  }
+ 
+  let initialState = {
+    "email":''
+  };
   
+  survey.survey?.pregunta?.forEach((p, index) => {
+     
+      initialState[p._id] = "";
+    
+    
   });
   
   const submit = async () => {
-    let auxArr = {...survey}
-    let hol = []
-    hol.push(values)
-    auxArr.respuesta = hol
- 
-    try {
-      await axios.put("/surveys/"+2312334, auxArr);
-    } catch (error) {
-      toast.error("hubo un error")
-    }
- 
 
-    //back
-    // const encuestaAModificar = await Survey.findById(id);
-    // await Survey.findByIdAndUpdate(id, {
-    //   respuestas: [...encuestaAModificar.respuestas, values],
-    // });
+    const obj = {
+      "id":survey.survey._id,
+      "valores":values
+    }
+  
+    try {
+      await axios.put("/surveys/responses", obj);
+    } catch (error) {
+      toast.error("algo salió mal")
+    }
+
+    Email.send({
+      Host : "smtp.elasticemail.com",
+      Username : "guilloalonsot@gmail.com",
+      Password :  import.meta.env.VITE_APP_ELASTIC_KEY,
+      To : values.email,
+      From : "guilloalonsot@gmail.com",
+      Subject : `respuestas de la encuesta ${survey.survey.name}`,
+      Body :  obj 
+      }).then(() => toast.success("respuestas enviadas"));
+
+    navigate('/home');
   };
 
   const { handleChange, handleSubmit, values } = useForm(initialState, submit);
@@ -80,21 +62,33 @@ getSurvey()
       ) : (
         <>
         <Container>
-          {
-            survey.unaRespuestaPorPersona && 
-            <Form>
-            <FormLabel>Email obligatorio:<Form.Control></Form.Control></FormLabel>
-            </Form>
-          }
-        <h1>Encuesta: {survey.name}</h1>
+         <Button onClick={goToSurveys}>Volver</Button>
+        <h1>Encuesta: {survey.survey.name}</h1>
           <br />
-          <h2>Categoría: {survey.categoria?.name}</h2>
+          <h2>Categoría: {survey.survey.categoria?.name}</h2>
           <br />
           <h3>Preguntas:</h3>
         </Container>
   
           <Form onSubmit={handleSubmit}>
-            {survey.pregunta?.map((item, index) => (
+          {
+            survey.survey.unaRespuestaPorPersona? 
+         
+            <FormLabel>Email obligatorio:<Form.Control type="text"
+            onChange={handleChange}
+            value={values.email}
+            name="email" 
+            required>
+              </Form.Control></FormLabel>
+            :
+            <FormLabel>Email :<Form.Control type="text"
+            onChange={handleChange}
+            value={values.email}
+            name="email">
+              </Form.Control></FormLabel>
+           
+          }
+            {survey.survey.pregunta?.map((item, index) => (
               <Container key={index}>
                 <h3>{item.question}</h3>
 
@@ -114,10 +108,10 @@ getSurvey()
                   ) :*/}
                 {item.typeQuestion == "opción múltiple" ? (
                   <Form.Select
-                    name={item.id}
-                    id={item.id}
+                    name={item._id}
+                    id={item._id}
                     onChange={handleChange}
-                    value={values[item.id]}
+                    value={values[item._id]}
                     required
                   >
                       <option value="">Elija una opción :</option>
@@ -133,10 +127,9 @@ getSurvey()
                       <Form.Check
                         type="checkbox"
                         onChange={handleChange}
-                        id={item.id}
-                        name={item.id}
+                        id={index + 1}
+                        name={item._id}
                         value={res}
-                        
                       />
                       <Form.Label className="ms-2">{res}</Form.Label>
                     </div>
@@ -147,8 +140,8 @@ getSurvey()
                     type="text"
                     onChange={handleChange}
                     id={item.id}
-                    value={values[item.id]}
-                    name={item.id}
+                    value={values[item._id]}
+                    name={item._id}
                     required
                   />
                 )}

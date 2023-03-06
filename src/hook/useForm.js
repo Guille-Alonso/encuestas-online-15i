@@ -6,12 +6,32 @@ const useForm = (initialValues, submit, onClose, goToAdmin) => {
   const [values, setValues] = useState(initialValues);
 
   const handleChange = (e) => {
-  
+  if(e.target.type=="checkbox"){
+    let aux=[]
+    if(values[e.target.name]?.length>0){
+      aux = values[e.target.name]
+     }
+    if(e.target.checked){
+    
+    setValues({
+      ...values,
+      [e.target.name]: [...aux,e.target.value]
+    });
+  }else {
+    const arrFilter = aux.filter(r=>r!==e.target.value)
+    setValues({
+      ...values,
+      [e.target.name]: arrFilter,
+    });
+  }
+
+  }else{
     setValues({
       ...values,
       [e.target.name]: e.target.value,
     });
-  
+  }
+ 
   };
 
   const handleSubmit = (event) => {
