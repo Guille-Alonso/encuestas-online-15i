@@ -10,29 +10,8 @@ import SurveyPage from "./SurveyPage";
 const AddSurveyUserPage = () => {
     const {user} = useContext(SurveysContext)
     const [categorias] = useGet('/categories',axios);
-    // const [categorias, setCategorias] = useState([])
     const [selected,setSelected] =useState(undefined);
   
-
-    // const getCategories = async()=>{
-   
-    //     try {
-    //       const {data} = await axios('/categories');
-    //        setCategorias(data.categories)
-        
-          
-    //     } catch (error) {
-    //       toast.error('Error al buscar los datos')
-    //     }
-    //   }
-    
-    //   useEffect(()=>{
-     
-    //         getCategories()
-      
-        
-    //   },[])
-
     return (  
 <div className="layout">
     <h1>Bienvenido a la pagina para proponer una encuesta</h1>

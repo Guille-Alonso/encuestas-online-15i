@@ -16,13 +16,14 @@ import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
 const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, selected, client}) => {
 
  
-  const {questionsA, setQuestionsA, flagQuestion, setFlagQuestion} = useContext(SurveysContext)
+  const {questionsA, setQuestionsA, flagQuestion, setFlagQuestion,user} = useContext(SurveysContext)
   const [aux, setAux] = useState([])
 
 
   const addSurvey = async()=>{
     try {
       const auxSurvey = {...values}
+      auxSurvey.user = user._id;
       auxSurvey.pregunta = questionsA
   
       await axios.post('/surveys',auxSurvey);
