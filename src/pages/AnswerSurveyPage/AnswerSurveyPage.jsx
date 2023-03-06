@@ -1,42 +1,33 @@
 import { nanoid } from "nanoid";
-// import useForm from "./../../hooks/useForm";
 import { useEffect, useState } from "react";
 import { Button, Container, Form, FormLabel, Spinner } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-// import QuestionAndResponse from "../../components/QuestionAndResponse/QuestionAndResponse";
-
-// import { ADD_RESPONSE, ADD_SURVEY_VALUES } from "../../constants";
 import useGet from "../../hook/useGet"
 import axios from "../../config/axios";
 import useForm from "../../hook/useForm";
-import { Input } from "@nextui-org/react";
-
 
 const AnswerSurveyPage = () => {
   const params = useParams();
-  // const [survey, loading, getSurveys, setSurvey] = useGet(
-  //   "/surveys/" + params.surveyId,
-  //   axios
-  // );
-  const [survey, setSurvey] = useState({})
-  const [loading,setLoading] = useState(true)
+  const [survey, loading] = useGet("/surveys/"+params.surveyId,axios);
+//   const [survey, setSurvey] = useState({})
+//   const [loading,setLoading] = useState(true)
 
-  const getSurvey =async()=>{
-    try {
-      const {data} = await axios.get("/surveys/"+params.surveyId)
-      setSurvey(data.survey)
-      setLoading(false)
-    } catch (error) {
-      toast.error("error")
-    }
-  }
+//   const getSurvey =async()=>{
+//     try {
+//       const {data} = await axios.get("/surveys/"+params.surveyId)
+//       setSurvey(data.survey)
+//       setLoading(false)
+//     } catch (error) {
+//       toast.error("error")
+//     }
+//   }
 
   const navigate = useNavigate()
 
-  useEffect(()=>{
-getSurvey()
-  },[])
+//   useEffect(()=>{
+// getSurvey()
+//   },[])
  
   const goToSurveys = ()=>{
     navigate("/home")
@@ -46,7 +37,7 @@ getSurvey()
     "email":''
   };
   
-  survey?.pregunta?.forEach((p, index) => {
+  survey.survey?.pregunta?.forEach((p, index) => {
      
       initialState[p._id] = "";
     
@@ -56,7 +47,7 @@ getSurvey()
   const submit = async () => {
 
     const obj = {
-      "id":survey._id,
+      "id":survey.survey._id,
       "valores":values
     }
     // console.log(obj);
@@ -78,16 +69,16 @@ getSurvey()
         <>
         <Container>
          <Button onClick={goToSurveys}>Volver</Button>
-        <h1>Encuesta: {survey.name}</h1>
+        <h1>Encuesta: {survey.survey.name}</h1>
           <br />
-          <h2>Categoría: {survey.categoria?.name}</h2>
+          <h2>Categoría: {survey.survey.categoria?.name}</h2>
           <br />
           <h3>Preguntas:</h3>
         </Container>
   
           <Form onSubmit={handleSubmit}>
           {
-            survey.unaRespuestaPorPersona? 
+            survey.survey.unaRespuestaPorPersona? 
          
             <FormLabel>Email obligatorio:<Form.Control type="text"
             onChange={handleChange}
@@ -103,7 +94,7 @@ getSurvey()
               </Form.Control></FormLabel>
            
           }
-            {survey.pregunta?.map((item, index) => (
+            {survey.survey.pregunta?.map((item, index) => (
               <Container key={index}>
                 <h3>{item.question}</h3>
 
