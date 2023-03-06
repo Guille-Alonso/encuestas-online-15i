@@ -112,3 +112,10 @@ form {
 #olvide-password:hover{
 	color: #93E5AB;
 }
+
+#button-password{
+	border-radius: 10%;
+    border-radius: 5rem;
+    background-color: #1f53c5;
+	margin-top: 10px;
+}

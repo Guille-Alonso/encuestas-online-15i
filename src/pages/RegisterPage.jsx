@@ -6,6 +6,7 @@ import "../components/Register/register.css"
 import { REGISTER_VALUES } from '../constants';
 import { toast } from 'react-toastify';
 import axios from '../config/axios';
+import { Button } from 'react-bootstrap';
 
 export const RegisterPage = () => {
 	// const navigate = useNavigate();
@@ -121,7 +122,7 @@ export const RegisterPage = () => {
 						placeholder="Repetir contraseña"
 						maxLength={20}
 					/>
-					<submit onClick={toggleShowPassword}>{showPassword ? "Ocultar" : "Mostrar"}</submit>
+					<Button id='button-password' onClick={toggleShowPassword}>{showPassword ? "Ocultar" : "Mostrar"}</Button>
 				</div>
 
 
