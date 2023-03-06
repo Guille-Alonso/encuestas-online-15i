@@ -13,7 +13,7 @@
   }
 
 .row{
-    padding-top: 10px;
+    /* padding-top: 10px; (afecta al padding de loginpage) */
 }
 
 

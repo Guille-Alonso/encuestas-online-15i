@@ -8,12 +8,13 @@ export default function AnimacionLogo() {
       loop
       animationData={lottieJson}
       play
+      autoSize
+      
       style={{ 
         width: 250, 
         height:250,
-        marginBlock: 50,
         
-                
+                      
      }}
     />
   )
