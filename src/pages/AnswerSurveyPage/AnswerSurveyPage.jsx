@@ -33,42 +33,40 @@ const AnswerSurveyPage = () => {
   }
 
   const navigate = useNavigate()
-  const goToSurveys=()=>{
-  navigate('/home')
-  }
 
   useEffect(()=>{
 getSurvey()
   },[])
  
-  // const surveyData = survey.survey
-  let initialState = {};
+  const goToSurveys = ()=>{
+    navigate("/home")
+  }
+ 
+  let initialState = {
+    "email":''
+  };
   
   survey?.pregunta?.forEach((p, index) => {
-  
+     
       initialState[p._id] = "";
     
     
   });
   
   const submit = async () => {
-    // let auxArr = {...survey}
-    // let hol = []
-    // hol.push(values)
-    // auxArr.respuesta = hol
- console.log(values);
-    // try {
-    //   await axios.put("/surveys/"+2312334, auxArr);
-    // } catch (error) {
-    //   toast.error("hubo un error")
-    // }
- 
 
-    //back
-    // const encuestaAModificar = await Survey.findById(id);
-    // await Survey.findByIdAndUpdate(id, {
-    //   respuestas: [...encuestaAModificar.respuestas, values],
-    // });
+    const obj = {
+      "id":survey._id,
+      "valores":values
+    }
+    // console.log(obj);
+    try {
+      await axios.put("/surveys/responses", obj);
+    } catch (error) {
+      toast.error("algo salió mal")
+    }
+ 
+    navigate('/home');
   };
 
   const { handleChange, handleSubmit, values } = useForm(initialState, submit);
@@ -79,12 +77,7 @@ getSurvey()
       ) : (
         <>
         <Container>
-          {
-            survey.unaRespuestaPorPersona && 
-            <Form>
-            <FormLabel>Email obligatorio:<Form.Control></Form.Control></FormLabel>
-            </Form>
-          }
+         <Button onClick={goToSurveys}>Volver</Button>
         <h1>Encuesta: {survey.name}</h1>
           <br />
           <h2>Categoría: {survey.categoria?.name}</h2>
@@ -93,6 +86,23 @@ getSurvey()
         </Container>
   
           <Form onSubmit={handleSubmit}>
+          {
+            survey.unaRespuestaPorPersona? 
+         
+            <FormLabel>Email obligatorio:<Form.Control type="text"
+            onChange={handleChange}
+            value={values.email}
+            name="email" 
+            required>
+              </Form.Control></FormLabel>
+            :
+            <FormLabel>Email :<Form.Control type="text"
+            onChange={handleChange}
+            value={values.email}
+            name="email">
+              </Form.Control></FormLabel>
+           
+          }
             {survey.pregunta?.map((item, index) => (
               <Container key={index}>
                 <h3>{item.question}</h3>
@@ -153,7 +163,7 @@ getSurvey()
               </Container>
             ))}
             <Container>
-            <Button onClick={goToSurveys} variant="success" className="mt-4" type="submit">Enviar Respuestas</Button>
+            <Button variant="success" className="mt-4" type="submit">Enviar Respuestas</Button>
             </Container>
             
           </Form>
