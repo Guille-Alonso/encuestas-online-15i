@@ -15,7 +15,8 @@ export const ADD_SURVEY_VALUES = {
   categoria:"",
   estado:"",
   unaRespuestaPorPersona:"",
-  pregunta:[]
+  pregunta:[],
+  user:""
 };
 export const ADD_QUESTION_VALUES={
   id:"",
