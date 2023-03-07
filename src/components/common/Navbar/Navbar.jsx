@@ -28,9 +28,9 @@ const NavBar = () => {
   };
 
   const setOut = () => {
-   
-    localStorage.setItem("token", "");
-    setAuthenticated(false);
+  localStorage.removeItem("token")
+  setAuthenticated(false);  
+ 
   };
 
   useEffect(() => {
@@ -85,7 +85,7 @@ const NavBar = () => {
           {authenticated && (
             <Navbar.Link>
               
-              <Link onClick={setOut}>Cerrar Sesión</Link>
+              <Link  onClick={setOut}>Cerrar Sesión</Link>
             </Navbar.Link>
           )}
         </div>
@@ -93,8 +93,8 @@ const NavBar = () => {
         {loading ? (
           <Spinner />
         ) : (
-          authenticated &&
-          user.admin && (
+          (authenticated &&
+          user.admin) && (
             <Button
               onClick={() => goToAddress("/admin")}
               icon={<UserIcon />}

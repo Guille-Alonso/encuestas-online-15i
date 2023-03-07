@@ -20,14 +20,7 @@ function App() {
         <SurveysProvider>
       <Layout>
           <Routes>
-            <Route
-              path="/*"
-              element={
-                
-                  <Content />
-                
-              }
-            />
+          
             <Route path="/about" element={<AboutUs />} />
             <Route
               path="/admin"
@@ -44,7 +37,14 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path='/answerSurvey/:surveyId' element={<AnswerSurveyPage/>}/>
             <Route path='/addSurveyUser' element={<PrivateRoute><AddSurveyUserPage/></PrivateRoute>}/>
-      
+            <Route
+              path="/*"
+              element={
+                
+                  <Content />
+                
+              }
+            />
           </Routes>
  
         <ToastContainer />
