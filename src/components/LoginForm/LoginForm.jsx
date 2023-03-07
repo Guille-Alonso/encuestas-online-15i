@@ -72,11 +72,13 @@ const LoginForm =()=>{
         }}
         >
        
-<Form.Group className="mb-3" controlId="formBasicEmail">
+<Form.Group className="mb-3 w-96" controlId="formBasicEmail">
         <Form.Label style={{
           color: "#083045",
           fontSize: "15px",
           fontWeight: 'bold',
+          padding: '8px',
+          
         }}>Email</Form.Label>
         <Form.Control required value={values.email} onChange={handleChange} name= "email" type="email" placeholder="Ingresa tu email" />
       </Form.Group>
