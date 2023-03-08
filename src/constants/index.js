@@ -7,6 +7,7 @@ export const REGISTER_VALUES={
   name: "",
   email: "",
   password: "",
+  repeatPassword:""
 }
 
 

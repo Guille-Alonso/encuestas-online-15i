@@ -9,42 +9,23 @@ import axios from '../config/axios';
 import { Button } from 'react-bootstrap';
 
 export const RegisterPage = () => {
-	// const navigate = useNavigate();
-
-	// const { name, email, password,lastname,  onInputChange, onResetForm } =
-	// 	useForm({
-	// 		name: '',
-	// 		email: '',
-	// 		password: '',
-	// 	});
-
-		
-	// const onRegister = e => {
-	// 	e.preventDefault();
-
-	// 	navigate('/dashboard', {
-	// 		replace: true,
-	// 		state: {
-	// 			logged: true,
-	// 			name,
-	// 		},
-	// 	});
-
-	// 	onResetForm();
-	// };
-
-
-
-
+	
 	const register = async () => {
 		try {
+		if(values.password==values.repeatPassword){
+			const { data } = await axios.post("/users/register", values);
+			toast.success("registro exitoso")
+		}else toast.error("Las contraseñas no coinciden")
 		
-		const { data } = await axios.post("/users/register", values);
-		
-		
-		toast.success("registro exitoso")
+	
 		} catch (error) {
-		toast.error("Registro fallido. Campos incorrectos");
+		// toast.error("Registro fallido. Campos incorrectos");
+		if(error.response.data.errors){
+			toast.error(error.response.data.errors[0].msg)
+		
+		}else toast.error(error.response.data.message)
+	
+		
 		}
 	};
 	const { handleChange, handleSubmit, values} = useForm(
@@ -52,13 +33,10 @@ export const RegisterPage = () => {
 		register
 	);
 
-	const [password, setPassword] = useState('');
-	const [passwordRepeat, setPasswordRepeat] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 	const toggleShowPassword = () => {
 		setShowPassword(!showPassword);
 	}
-
 
 	return (
 		<div id='register' >
@@ -85,7 +63,7 @@ export const RegisterPage = () => {
 						type='email'
 						name='email'
 						className='name'
-						
+						value={values.email}
 						onChange={handleChange}
 						required
 						autoComplete='off'
@@ -98,8 +76,8 @@ export const RegisterPage = () => {
 						type={showPassword ? "text" : "password"}
 						name='password'
 						className='name'
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
+						value={values.password}
+						onChange={handleChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresar contraseña"
@@ -113,10 +91,10 @@ export const RegisterPage = () => {
 				<div className='input-group'>
 					<input
 						type={showPassword ? "text" : "password"}
-						name='password'
+						name='repeatPassword'
 						className='name'
-						value={passwordRepeat}
-						onChange={(e) => setPasswordRepeat(e.target.value)}
+						value={values.repeatPassword}
+						onChange={handleChange}
 						required
 						autoComplete='off'
 						placeholder="Repetir contraseña"
