@@ -61,7 +61,8 @@ const SurveysProvider = ({children}) => {
     login,
     getAuth,
     selected,
-    setSelected
+    setSelected,
+    setLoading
    
     }}>
       {children}

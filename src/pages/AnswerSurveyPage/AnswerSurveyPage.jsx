@@ -10,24 +10,8 @@ import useForm from "../../hook/useForm";
 const AnswerSurveyPage = () => {
   const params = useParams();
   const [survey, loading] = useGet("/surveys/"+params.surveyId,axios);
-//   const [survey, setSurvey] = useState({})
-//   const [loading,setLoading] = useState(true)
-
-//   const getSurvey =async()=>{
-//     try {
-//       const {data} = await axios.get("/surveys/"+params.surveyId)
-//       setSurvey(data.survey)
-//       setLoading(false)
-//     } catch (error) {
-//       toast.error("error")
-//     }
-//   }
 
   const navigate = useNavigate()
-
-//   useEffect(()=>{
-// getSurvey()
-//   },[])
  
   const goToSurveys = ()=>{
     navigate("/home")
@@ -50,14 +34,42 @@ const AnswerSurveyPage = () => {
       "id":survey.survey._id,
       "valores":values
     }
-    // console.log(obj);
+  
     try {
-      await axios.put("/surveys/responses", obj);
+    const {data} = await axios.put("/surveys/responses", obj);
+
+    let preguntasYrespuestas = [];
+     for (let index = 0; index < data.encuestaModificada.pregunta.length; index++) {
+      
+        let objPreguntasYRespuestas={
+          "pregunta":data.encuestaModificada.pregunta[index].question,
+          "respuesta":values[data.encuestaModificada.pregunta[index]._id]
+        }
+        preguntasYrespuestas.push(objPreguntasYRespuestas)
+     }
+
+     let responsesEmail = []
+    for (let index = 0; index < preguntasYrespuestas.length; index++) {
+    responsesEmail.push(`<h3>${preguntasYrespuestas[index].pregunta}</h3><label>${preguntasYrespuestas[index].respuesta}</label> <br/>`)
+     }
+   
+      Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "guilloalonsot@gmail.com",
+        Password :  import.meta.env.VITE_APP_ELASTIC_KEY,
+        To : values.email,
+        From : "guilloalonsot@gmail.com",
+        Subject : `respuestas de la encuesta ${survey.survey.name}`,
+        Body :  `<h1>${data.encuestaModificada.name}</h1> <br/>
+        ${responsesEmail}
+        `
+        }).then(() => toast.success("respuestas enviadas"));
+  
+      navigate('/home');
     } catch (error) {
-      toast.error("algo salió mal")
+      toast.error(error.response?.data.message || error.message)
+     
     }
- 
-    navigate('/home');
   };
 
   const { handleChange, handleSubmit, values } = useForm(initialState, submit);
@@ -68,7 +80,7 @@ const AnswerSurveyPage = () => {
       ) : (
         <>
         <Container>
-         <Button onClick={goToSurveys}>Volver</Button>
+         <Button className="d-flex my-3" onClick={goToSurveys}>Volver</Button>
         <h1>Encuesta: {survey.survey.name}</h1>
           <br />
           <h2>Categoría: {survey.survey.categoria?.name}</h2>

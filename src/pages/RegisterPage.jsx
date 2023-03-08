@@ -1,11 +1,12 @@
-import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import  useForm  from '../hook/useForm'
 import 'bootstrap/dist/css/bootstrap.css'
 import "../components/Register/register.css"
 import { REGISTER_VALUES } from '../constants';
 import { toast } from 'react-toastify';
 import axios from '../config/axios';
+import { Button } from 'react-bootstrap';
 
 export const RegisterPage = () => {
 	// const navigate = useNavigate();
@@ -31,24 +32,36 @@ export const RegisterPage = () => {
 
 	// 	onResetForm();
 	// };
+
+
+
+
 	const register = async () => {
 		try {
-		  
-		  const { data } = await axios.post("/users/register", values);
-		 
 		
-		  toast.success("registro exitoso")
+		const { data } = await axios.post("/users/register", values);
+		
+		
+		toast.success("registro exitoso")
 		} catch (error) {
-		  toast.error("Registro fallido. Campos incorrectos");
+		toast.error("Registro fallido. Campos incorrectos");
 		}
-	  };
+	};
 	const { handleChange, handleSubmit, values} = useForm(
 		REGISTER_VALUES,
 		register
-	  );
+	);
+
+	const [password, setPassword] = useState('');
+	const [passwordRepeat, setPasswordRepeat] = useState('');
+	const [showPassword, setShowPassword] = useState(false);
+	const toggleShowPassword = () => {
+		setShowPassword(!showPassword);
+	}
+
 
 	return (
-		<div id='register' className='wrapper  bg-chatter-green h-100 py-4 fs-1 fw-bold scroll-y'>
+		<div id='register' >
 			<form onSubmit={handleSubmit} className="form-register">
 			<h1 className="h1-form font-weight-bold mb-3">Registrarse</h1>
 
@@ -65,20 +78,6 @@ export const RegisterPage = () => {
 						maxLength={15}
 					/>
 				</div>
-{/* 
-				<div className='input-group'>
-					<input
-						type='text'
-						name='lastname'
-						className='name'
-						value={lastname}
-						onChange={onInputChange}
-						required
-						autoComplete='off'
-						placeholder="Ingresa tu apellido"
-						maxLength={15}
-					/>
-				</div> */}
 
 
 				<div className='input-group'>
@@ -86,7 +85,7 @@ export const RegisterPage = () => {
 						type='email'
 						name='email'
 						className='name'
-						value={values.email}
+						
 						onChange={handleChange}
 						required
 						autoComplete='off'
@@ -96,20 +95,40 @@ export const RegisterPage = () => {
 				</div>
 				<div className='input-group'>
 					<input
-						type='password'
+						type={showPassword ? "text" : "password"}
 						name='password'
 						className='name'
-						value={values.password}
-						onChange={handleChange}
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
 						required
 						autoComplete='off'
-						placeholder="Ingresa tu contraseña"
+						placeholder="Ingresar contraseña"
 						maxLength={20}
+						
 					/>
+					
+					
 				</div>
 
+				<div className='input-group'>
+					<input
+						type={showPassword ? "text" : "password"}
+						name='password'
+						className='name'
+						value={passwordRepeat}
+						onChange={(e) => setPasswordRepeat(e.target.value)}
+						required
+						autoComplete='off'
+						placeholder="Repetir contraseña"
+						maxLength={20}
+					/>
+					<Button id='button-password' onClick={toggleShowPassword}>{showPassword ? "Ocultar" : "Mostrar"}</Button>
+				</div>
+
+
+
 				<div className="content register-btn" data-aos="fade">
-        <button className="btn btn-primary ">
+        <button className="btn-register btn-primary ">
         Registrarse
         </button>
     </div>
@@ -120,6 +139,7 @@ export const RegisterPage = () => {
     Inicia sesión aquí
         </Link>
     </div>
+
 		
 			</form>
 

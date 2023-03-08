@@ -15,41 +15,41 @@ const LoginPage= () => {
 
     return  (
       <>
-          
-      <Container fluid  >
+
+      <Container fluid>
         <Row >
-        <Col sx={12} md={8}  className=" d-none d-sm-block layout "
+        <Col sm={12} md={7} lg={8} className=" columna1login"  
          style={{
           backgroundImage: `url("${BackgroundLogin}")`,
           backgroundSize: 'cover',
+          overflow: "hidden",
+          float: "left",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
         
         }}>
-                </Col>
-         <Col sx={12} md={4} className=" layout  d-flex justify-content-center  align-items-center " 
+        </Col>
+         <Col  sm={12} md={5} lg={4} 
          style={{
-          backgroundImage: `url("${BackgroundLogin2}")`,
-          backgroundSize: 'cover',
-          zIndex: '0',
           
+          margin: '0',
+          float:'left',
+          display: 'flex',
+          justifyContent: 'center',
+          
+                 
         }}>
-       <div className="Animacion" 
-       style={{
-       position: 'absolute',
-       top: '0',
-         }}>
-            <AnimacionLogo ></AnimacionLogo>
-        </div>
-          <div style={{
-       position: 'relative',
-       
-         }}><LoginForm /></div>
+       <div className="columna2login">
+         <AnimacionLogo className="animacion" ></AnimacionLogo>
+         <LoginForm /></div>
+
          </Col>
-                
+
         </Row>
-      
+
  </Container>
       </>
-      
+
     )
   }
 

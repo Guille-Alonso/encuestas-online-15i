@@ -4,9 +4,13 @@ import { toast } from "react-toastify";
 const useGet = (url, axios, selected)=>{
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(true);
+
+
   
   const getData = async()=>{
+   
     try {
+     
       const {data} = await axios.get(url);
     
       let aux =[]
@@ -37,9 +41,13 @@ const useGet = (url, axios, selected)=>{
     }
   }
 
-  useEffect(()=>{
-    getData();
-  },[])
+// useEffect(()=>{
+// return()=>getData()
+// },[])
+useEffect(()=>{
+getData();
+},[])
+  
   return [state, loading, getData, setState]
 }
 
