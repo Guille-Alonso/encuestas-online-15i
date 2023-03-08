@@ -36,22 +36,28 @@ const AnswerSurveyPage = () => {
     }
   
     try {
-      await axios.put("/surveys/responses", obj);
-    } catch (error) {
-      toast.error("algo salió mal")
+     const {data} = await axios.put("/surveys/responses", obj);
+
+     const responsesUser = {
+      "encuesta":data.encuestaModificada.name,
+      "preguntas":data.encuestaModificada.pregunta,
+      "respuestas":data.encuestaModificada.respuesta.find(r=>r.email==values.email)
     }
-
-    Email.send({
-      Host : "smtp.elasticemail.com",
-      Username : "guilloalonsot@gmail.com",
-      Password :  import.meta.env.VITE_APP_ELASTIC_KEY,
-      To : values.email,
-      From : "guilloalonsot@gmail.com",
-      Subject : `respuestas de la encuesta ${survey.survey.name}`,
-      Body :  obj 
-      }).then(() => toast.success("respuestas enviadas"));
-
-    navigate('/home');
+ 
+      Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "guilloalonsot@gmail.com",
+        Password :  import.meta.env.VITE_APP_ELASTIC_KEY,
+        To : values.email,
+        From : "guilloalonsot@gmail.com",
+        Subject : `respuestas de la encuesta ${survey.survey.name}`,
+        Body :  responsesUser
+        }).then(() => toast.success("respuestas enviadas"));
+  
+      navigate('/home');
+    } catch (error) {
+      toast.error(error.response.data.message)
+    }
   };
 
   const { handleChange, handleSubmit, values } = useForm(initialState, submit);
@@ -62,7 +68,7 @@ const AnswerSurveyPage = () => {
       ) : (
         <>
         <Container>
-         <Button onClick={goToSurveys}>Volver</Button>
+         <Button className="d-flex my-3" onClick={goToSurveys}>Volver</Button>
         <h1>Encuesta: {survey.survey.name}</h1>
           <br />
           <h2>Categoría: {survey.survey.categoria?.name}</h2>
