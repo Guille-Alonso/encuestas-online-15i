@@ -36,14 +36,23 @@ const AnswerSurveyPage = () => {
     }
   
     try {
-     const {data} = await axios.put("/surveys/responses", obj);
+    const {data} = await axios.put("/surveys/responses", obj);
 
-     const responsesUser = {
-      "encuesta":data.encuestaModificada.name,
-      "preguntas":data.encuestaModificada.pregunta,
-      "respuestas":data.encuestaModificada.respuesta.find(r=>r.email==values.email)
-    }
- 
+    let preguntasYrespuestas = [];
+     for (let index = 0; index < data.encuestaModificada.pregunta.length; index++) {
+      
+        let objPreguntasYRespuestas={
+          "pregunta":data.encuestaModificada.pregunta[index].question,
+          "respuesta":values[data.encuestaModificada.pregunta[index]._id]
+        }
+        preguntasYrespuestas.push(objPreguntasYRespuestas)
+     }
+
+     let responsesEmail = []
+    for (let index = 0; index < preguntasYrespuestas.length; index++) {
+    responsesEmail.push(`<h3>${preguntasYrespuestas[index].pregunta}</h3><label>${preguntasYrespuestas[index].respuesta}</label> <br/>`)
+     }
+   
       Email.send({
         Host : "smtp.elasticemail.com",
         Username : "guilloalonsot@gmail.com",
@@ -51,12 +60,15 @@ const AnswerSurveyPage = () => {
         To : values.email,
         From : "guilloalonsot@gmail.com",
         Subject : `respuestas de la encuesta ${survey.survey.name}`,
-        Body :  responsesUser
+        Body :  `<h1>${data.encuestaModificada.name}</h1> <br/>
+        ${responsesEmail}
+        `
         }).then(() => toast.success("respuestas enviadas"));
   
       navigate('/home');
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response?.data.message || error.message)
+     
     }
   };
 

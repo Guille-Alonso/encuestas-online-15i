@@ -8,7 +8,9 @@ import Form from 'react-bootstrap/Form';
 import styled from 'styled-components';
 import "../../pages/Login/forgetpassword.css";
 import { Container } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 
 
 
@@ -19,6 +21,24 @@ const ForgetPasswordForm =()=>{
 const goToLogin =()=>{
 navigate('/login')
 }
+
+  const [email,setEmail]=useState("");
+  
+
+  
+const handleSubmit= (e)=>{
+  e.preventDefault();
+// console.log (email);
+if ([email].includes ("")){
+  toast.error("El email es obligatorio",{
+   theme: "dark",
+});
+return;
+}
+
+console.log ("Correcto");
+};
+
 
   return(
     <>
@@ -38,8 +58,8 @@ navigate('/login')
         <Modal.Title style={{
         color: "#083045",
         fontSize: "30px",
-        paddingBottom: "5%",
-        marginTop:'40px',
+        paddingBottom: "4%",
+        marginTop:'28px',
         fontWeight: 'bold',
         textAlign: 'center',
       }}>
@@ -52,38 +72,37 @@ navigate('/login')
       }}>
              <p style={{
         color: "#083045",
-        fontSize: "20px",
+        fontSize: "18px",
         fontWeight: 'bold',
         textAlign: 'center',
-      }}>Introduce el email que utilizaste para registrate debajo y pulsa Enviar.  En pocos minutos recibirás un email para obtener una nueva contraseña.</p>
+        padding: '0 px',
+      }}>Introduce el email que utilizaste para registrate debajo y pulsa Enviar. </p><p style={{
+        color: "#083045",
+        fontSize: "18px",
+        fontWeight: 'bold',
+        textAlign: 'center',
+        paddingTop: '0 px',
+        paddingBottom:'1rem',
+      }}> En pocos minutos recibirás un email para obtener una nueva contraseña.</p>
         </div>
         <div className="d-flex   justify-content-center">
-        <Form.Group className='group-email'
-         >
-        <Form.Control required  name= "email" type="email" placeholder="Ingresa tu email" />
+        <Form.Group className="mb-3 " controlId="formBasicEmail">
+        
+        <Form.Control required value={email} onChange= {(e)=>setEmail (e.target.value)} name= "email" type="email" placeholder="Ingresa tu email" />
       </Form.Group>
+
  </div> 
  <div className="d-flex   justify-content-center">
-<Button className='botones' variant="outline-success"
-    
-      style={{
-        backgroundColor: "#083045",
-        fontSize: "20px",
-        padding: "4px",
-        margin: "5px",
-        
-      }}
-      onClick={goToLogin}
-        >
-     Volver
-    </Button>
+
     <Button className='botones'variant="outline-success"
       type="submit"
       style={{
         backgroundColor: "#083045",
-        fontSize: "20px",
-        padding: "4px",
-        margin: "5px",
+          fontSize: "20px",
+          padding: "4px 90px",
+          display:'flex',
+          justifyContent: 'center',
+          
         
       }}
         >
@@ -91,6 +110,16 @@ navigate('/login')
     </Button>
    
 </div> 
+<Link to="/Login" style={{
+          color: "#083045",
+          fontSize: "15px",
+          fontWeight: 'bold',
+          padding: "4px 4px",
+          outline: "white",
+          marginTop: '5%',
+          display:'flex',
+          justifyContent: 'center',
+        }} >Volver</Link>
 </Form>
 </Container>
 
