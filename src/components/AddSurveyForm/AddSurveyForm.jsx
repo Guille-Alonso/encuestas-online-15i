@@ -85,13 +85,10 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
   return ( 
     <>
     <Form onSubmit={handleSubmit}>
-      {/* <Form.Group className="mb-3" controlId="idEncuesta">
-        <Form.Label>ID</Form.Label>
-        <Form.Control type="text" placeholder="Ingrese un id" onChange={handleChange} value={values.id} name='id'/>
-      </Form.Group> */}
+   
       <Form.Group className="mb-3" controlId="NombreEncuesta">
         <Form.Label>Nombre de la encuesta</Form.Label>
-        <Form.Control required type="text" placeholder="popular" onChange={handleChange} value={values.name} name='name' maxLength={25} minLength={4}/>
+        <Form.Control required type="text" placeholder="popular" onChange={handleChange} value={values.name} name='name' maxLength={35} minLength={4}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="CategoriaEncuesta">
         <Form.Label>Categoría</Form.Label>

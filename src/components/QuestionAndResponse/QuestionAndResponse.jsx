@@ -149,6 +149,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
             onChange={handleChangeQuestion}
             value={question.question}
             name="question"
+            maxLength={60}
           />
           <Form.Label>Seleccione el tipo de respuesta</Form.Label>
           <Form.Check
@@ -195,8 +196,8 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
                   type="text"
                   onChange={(e) => setTextField(e.target.value)}
                   value={textField}
-                  placeholder="Add an option"
                   className="flex-1"
+                  maxLength={30}
                 />
                 <button
                   className="btn btn-success ms-2"
@@ -204,6 +205,9 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
                 >
                   +
                 </button>
+                {
+                  responses.length>0 && <button className="btn btn-danger ms-2" onClick={()=>setResponses([])}>limpiar</button>
+                }
               </div>
             </div>
           ) : state == "casillas de verificación" ? (
@@ -216,8 +220,11 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
               }
               </div>
               <div>
-            <input type="text" onChange={(e) => setTextField(e.target.value)} value={textField}/>
+            <input type="text" onChange={(e) => setTextField(e.target.value)} value={textField} maxLength={30}/>
             <button className="btn btn-success ms-2" onClick={(e) => addFieldOption(textField,e)}>+</button>
+            {
+              responses.length>0 && <button className="btn btn-danger ms-2" onClick={()=>setResponses([])}>limpiar</button>
+            }
             <br />
             </div>
             </div>
