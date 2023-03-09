@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const useForm = (initialValues, submit, onClose, goToAdmin) => {
-  // const [validated, setValidated] = useState(false);
+const useForm = (initialValues, submit, onClose, goToAdmin,validations) => {
+  
   const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
   if(e.target.type=="checkbox"){
@@ -37,39 +39,35 @@ const useForm = (initialValues, submit, onClose, goToAdmin) => {
   const handleSubmit = (event) => {
     
     event.preventDefault();
-  
-    submit(values?? values);
-    if(goToAdmin){
-        goToAdmin()
-       }else if(onClose!=null){
-        onClose()
-      }
-    // if(values.name?.length >25){
-    //   event.preventDefault();
-    //   toast.error("no puedes ingresar un nombre tan largo")
-    //   return;
-    // }
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    
+   
+    if (validations) {
      
-    // }
-    // setValidated(true);
-
-    // if(form.checkValidity()){
-    //   event.preventDefault();
-    //  submit(values?? values);
-    //  if(goToAdmin){
-    //   goToAdmin()
-    //  }else if(onClose!=null){
-    //   onClose()
-    // }
-    // }
+      setErrors(validations(values));
+    } else {
+      setErrors({});
+    }
+    setSubmitting(true);
+ 
   };
 
-  return { handleChange, handleSubmit, values, setValues };
+  useEffect(() => {
+    if (submitting) {
+      if (Object.keys(errors).length === 0) {
+        submit(values?? values);
+          if(goToAdmin){
+          goToAdmin()
+          }else if(onClose!=null){
+            onClose()
+          }
+      }
+      setSubmitting(false);
+      setTimeout(() => {
+        setErrors({});
+      }, 3000);
+    }
+  }, [errors]);
+
+  return { handleChange, handleSubmit, values, setValues, errors };
 };
 
 export default useForm;
