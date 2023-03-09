@@ -7,15 +7,17 @@ import { toast } from "react-toastify";
 import useForm from "../../hook/useForm"
 import { Link, useNavigate } from "react-router-dom";
 import { SurveysContext } from "../../context/addSurveyContext";
-
-
+import { validationLogin } from "../../helpers/validationsLogin";
 
 const LoginForm =()=>{
 
   const { login, authenticated } = useContext(SurveysContext);
-  const { handleChange, handleSubmit, values} = useForm(
+  const { handleChange, handleSubmit, values,errors} = useForm(
     LOGIN_VALUES,
-    login
+    login,
+    null,
+    null,
+    validationLogin
   );
 
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ const LoginForm =()=>{
           padding: '8px',
           
         }}>Email</Form.Label>
-        <Form.Control required value={values.email} onChange={handleChange} name= "email" type="email" placeholder="Ingresa tu email" />
+        <Form.Control required value={values.email} onChange={handleChange} name= "email" type="email" placeholder="Ingresa tu email" maxLength={35}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -56,7 +58,7 @@ const LoginForm =()=>{
           fontSize: "15px",
           fontWeight: 'bold',
         }}>Contraseña</Form.Label>
-        <Form.Control required value={values.password} onChange={handleChange} name="password" type="password" placeholder="Contraseña" />
+        <Form.Control required value={values.password} onChange={handleChange} name="password" type="password" placeholder="Contraseña" maxLength={25} minLength={5}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Recuérdame" style={{
@@ -86,7 +88,12 @@ const LoginForm =()=>{
           >
        Ingresar
       </Button></div>      
-      
+      {Object.keys(errors).length !== 0 &&
+          Object.values(errors).map((error, index) => (
+            <Alert variant="danger" className="mt-3" key={index}>
+              {error}
+            </Alert>
+          ))}
 
       <Link to="/ForgetPassword" style={{
           color: "#083045",

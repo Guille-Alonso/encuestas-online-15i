@@ -26,7 +26,8 @@ const SurveysProvider = ({children}) => {
       setUser(data.user);
       localStorage.setItem("token", data.token);
     } catch (error) {
-      toast.error("Ups! Hubo un error, intenta más tarde por favor");
+      // toast.error("Ups! Hubo un error, intenta más tarde por favor");
+      toast.error(error.response?.data.message || error.message)
     }
   };
 

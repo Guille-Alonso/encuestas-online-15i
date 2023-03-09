@@ -6,59 +6,37 @@ import "../components/Register/register.css"
 import { REGISTER_VALUES } from '../constants';
 import { toast } from 'react-toastify';
 import axios from '../config/axios';
-import { Button } from 'react-bootstrap';
+import { Button,Alert } from 'react-bootstrap';
+import { validationRegister } from "../helpers/validationsRegister";
 
 export const RegisterPage = () => {
-	// const navigate = useNavigate();
-
-	// const { name, email, password,lastname,  onInputChange, onResetForm } =
-	// 	useForm({
-	// 		name: '',
-	// 		email: '',
-	// 		password: '',
-	// 	});
-
-		
-	// const onRegister = e => {
-	// 	e.preventDefault();
-
-	// 	navigate('/dashboard', {
-	// 		replace: true,
-	// 		state: {
-	// 			logged: true,
-	// 			name,
-	// 		},
-	// 	});
-
-	// 	onResetForm();
-	// };
-
-
-
-
+	
 	const register = async () => {
 		try {
-		
-		const { data } = await axios.post("/users/register", values);
-		
-		
-		toast.success("registro exitoso")
+			const { data } = await axios.post("/users/register", values);
+			toast.success("registro exitoso")	
+	
 		} catch (error) {
-		toast.error("Registro fallido. Campos incorrectos");
+		// toast.error("Registro fallido. Campos incorrectos");
+		if(error.response.data.errors){
+			toast.error(error.response.data.errors[0].msg)
+		
+		}else toast.error(error.response.data.message)
 		}
 	};
-	const { handleChange, handleSubmit, values} = useForm(
+	
+	const { handleChange, handleSubmit, values,errors} = useForm(
 		REGISTER_VALUES,
-		register
+		register,
+		null,
+		null,
+		validationRegister
 	);
 
-	const [password, setPassword] = useState('');
-	const [passwordRepeat, setPasswordRepeat] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 	const toggleShowPassword = () => {
 		setShowPassword(!showPassword);
 	}
-
 
 	return (
 		<div id='register' >
@@ -75,7 +53,9 @@ export const RegisterPage = () => {
 						required
 						autoComplete='off'
 						placeholder="Ingresa tu nombre"
-						maxLength={15}
+						maxLength={25}
+						pattern="[A-Za-z ]{4,25}"
+           				title="Solo Letras, sin acentos. Tamaño mínimo: 4. Tamaño máximo: 25"
 					/>
 				</div>
 
@@ -85,7 +65,7 @@ export const RegisterPage = () => {
 						type='email'
 						name='email'
 						className='name'
-						
+						value={values.email}
 						onChange={handleChange}
 						required
 						autoComplete='off'
@@ -98,12 +78,12 @@ export const RegisterPage = () => {
 						type={showPassword ? "text" : "password"}
 						name='password'
 						className='name'
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
+						value={values.password}
+						onChange={handleChange}
 						required
 						autoComplete='off'
 						placeholder="Ingresar contraseña"
-						maxLength={20}
+						maxLength={25}
 						
 					/>
 					
@@ -113,14 +93,14 @@ export const RegisterPage = () => {
 				<div className='input-group'>
 					<input
 						type={showPassword ? "text" : "password"}
-						name='password'
+						name='repeatPassword'
 						className='name'
-						value={passwordRepeat}
-						onChange={(e) => setPasswordRepeat(e.target.value)}
+						value={values.repeatPassword}
+						onChange={handleChange}
 						required
 						autoComplete='off'
 						placeholder="Repetir contraseña"
-						maxLength={20}
+						maxLength={25}
 					/>
 					<Button id='button-password' onClick={toggleShowPassword}>{showPassword ? "Ocultar" : "Mostrar"}</Button>
 				</div>
@@ -131,8 +111,14 @@ export const RegisterPage = () => {
         <button className="btn-register btn-primary ">
         Registrarse
         </button>
+		
     </div>
-
+	{Object.keys(errors).length !== 0 &&
+          Object.values(errors).map((error, index) => (
+            <Alert variant="danger" className="mt-3" key={index}>
+              {error}
+            </Alert>
+          ))}
 		<div className="content text d-flex flex-row gap-2 fs-6 fst-italic" data-aos="fade">
         <span>¿Ya tienes una cuenta?</span>
         <Link to="/Login" className="text-chatter-blue">
