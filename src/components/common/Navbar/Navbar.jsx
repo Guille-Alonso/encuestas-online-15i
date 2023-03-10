@@ -48,7 +48,15 @@ const NavBar = () => {
         $$navbarBlur: "none",
       }}
     >
-      <Navbar.Toggle showIn="xs" />
+        <Navbar.Toggle showIn="xs">
+        <img
+          className="d-inline-block  justify-align-center"
+          src="src/Image/encuesta.png"
+          width="50"
+          height="50"
+          alt=""
+        />
+      </Navbar.Toggle>
       <Navbar.Brand
         css={{
           "@xs": {

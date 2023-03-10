@@ -9,12 +9,20 @@ const CardEncuesta = ({ titulo, descripcion, id }) => {
   }
   return (
     <Card css={{ mw: "330px" , backgroundColor: "#073044" , opacity:"0.8"}}>
-      <Card.Header>
-        <Text css={{color:"White"}}>{titulo}</Text>
+      <Card.Header className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center">
+          <img
+            className="d-inline-block  justify-align-center"
+            src="src/Image/encuesta.png"
+            width="70"
+            height="70"
+            alt=""
+          />
+        </div>
       </Card.Header>
       <Card.Divider />
       <Card.Body css={{ py: "$10" , textAlign: "center" }}>
-        <Text css={{color:"white"}} >{descripcion}</Text>
+      <Text css={{color:"white"}} >{descripcion.toUpperCase()}</Text>
       </Card.Body>
       <Card.Divider />
       <Card.Footer>
