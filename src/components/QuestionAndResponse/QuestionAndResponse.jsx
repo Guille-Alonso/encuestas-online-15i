@@ -61,7 +61,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
        
         toast.info("pregunta agregada");
       }
-
+      question.question="";
     } else toast.error("debe completar los campos");
   };
 
@@ -144,7 +144,6 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
 
           <Form.Control
             type="text"
-            required
             placeholder="Escriba una pregunta"
             onChange={handleChangeQuestion}
             value={question.question}
