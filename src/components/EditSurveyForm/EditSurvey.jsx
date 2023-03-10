@@ -36,7 +36,11 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
       setQuestionsA([])
     
     } catch (error) {
-      toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
+      // toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
+    	if(error.response.data.errors){
+        toast.error(error.response.data.errors[0].msg)
+      
+      }else toast.error(error.message)
     }
   }
 
@@ -90,15 +94,7 @@ setQuestionsWithoutAnserws(aux)
    return (<>
     
     <Form onSubmit={handleSubmit}>
-      {/* <Form.Group className="mb-3" controlId="idEncuesta">
-        <Form.Label>ID</Form.Label>
-        <Form.Control
-          type="text"
-          onChange={handleChange}
-          value={values.id}
-          name="id"
-        />
-      </Form.Group> */}
+    
       <Form.Group className="mb-3" controlId="NombreEncuesta">
         <Form.Label>Nombre de la encuesta</Form.Label>
         <Form.Control
@@ -107,7 +103,7 @@ setQuestionsWithoutAnserws(aux)
           onChange={handleChange}
           value={values.name}
           name="name"
-          maxLength={25}
+          maxLength={35}
           minLength={4}
         />
       </Form.Group>

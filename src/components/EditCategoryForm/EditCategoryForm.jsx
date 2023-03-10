@@ -21,7 +21,11 @@ const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
           toast.info('categoría editada');
           setSelected(undefined)
         } catch (error) {
-          toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
+          // toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
+          if(error.response.data.errors){
+            toast.error(error.response.data.errors[0].msg)
+          
+          }else toast.error(error)
         }
       }
 
@@ -48,10 +52,7 @@ const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
     return ( 
       <>
       <Form  onSubmit={handleSubmit}>
-        {/* <Form.Group className="mb-3" controlId="idCategoría">
-          <Form.Label>ID</Form.Label>
-          <Form.Control type="text" onChange={handleChange} value={values.id} name='id'/>
-        </Form.Group> */}
+      
         <Form.Group className="mb-3" controlId="NombreCategoría">
           <Form.Label>Nombre de la categoría</Form.Label>
           <Form.Control required type="text" onChange={handleChange} value={values.name} name='name' maxLength={25} minLength={4}/>

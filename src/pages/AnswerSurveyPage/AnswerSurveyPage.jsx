@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import { Button, Container, Form, FormLabel, Spinner } from "react-bootstrap";
+import { Button, Container, Form, FormLabel, Spinner,Row,Col } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useGet from "../../hook/useGet"
@@ -84,11 +84,13 @@ const AnswerSurveyPage = () => {
         <h1>Encuesta: {survey.survey.name}</h1>
           <br />
           <h2>Categoría: {survey.survey.categoria?.name}</h2>
-          <br />
-          <h3>Preguntas:</h3>
         </Container>
   
           <Form onSubmit={handleSubmit}>
+            <Container>
+              <Row>
+                <Col xs={6}>
+         
           {
             survey.survey.unaRespuestaPorPersona? 
          
@@ -96,34 +98,29 @@ const AnswerSurveyPage = () => {
             onChange={handleChange}
             value={values.email}
             name="email" 
+            maxLength={40}
             required>
               </Form.Control></FormLabel>
             :
             <FormLabel>Email :<Form.Control type="text"
             onChange={handleChange}
             value={values.email}
+            maxLength={40}
             name="email">
               </Form.Control></FormLabel>
            
           }
+          <h2>Preguntas:</h2>
+                 </Col>
+              </Row>
+            </Container>
+            
             {survey.survey.pregunta?.map((item, index) => (
               <Container key={index}>
-                <h3>{item.question}</h3>
+                <Row>
+                  <Col xs={6}>
+                <h4>{item.question}</h4>
 
-                {/*item.typeQuestion == "casillas de verificación" ? (
-                  item.responses.map((res, index) => (
-                    <div key={index} className="d-flex ">
-                      <Form.Check
-                        checked={res}
-                        type="checkbox"
-                        onChange={handleChange}
-                        id={item.id}
-                        name={`response${index}`}
-                      />
-                      <Form.Label className="ms-2">{res}</Form.Label>
-                    </div>
-                  ))
-                  ) :*/}
                 {item.typeQuestion == "opción múltiple" ? (
                   <Form.Select
                     name={item._id}
@@ -153,16 +150,20 @@ const AnswerSurveyPage = () => {
                     </div>
                   ))
                   ) :(
+                   
                   <Form.Control
                     key={index}
-                    type="text"
+                    as="textarea"
                     onChange={handleChange}
                     id={item.id}
                     value={values[item._id]}
                     name={item._id}
                     required
+                    maxLength={80}
                   />
                 )}
+                </Col>
+                </Row>
               </Container>
             ))}
             <Container>
