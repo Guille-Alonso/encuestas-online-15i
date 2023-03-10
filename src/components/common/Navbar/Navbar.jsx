@@ -2,7 +2,7 @@ import { Navbar, Button, Text } from "@nextui-org/react";
 import { Container, Nav, Spinner } from "react-bootstrap";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import EncuestaLogo from "../../EncuestaLogo";
+import EncuestaLogo from "../../Surveys/EncuestaLogo";
 import { UserIcon } from "./UserIcon/UserIcon";
 import { SurveysContext } from "../../../context/addSurveyContext";
 import "../Navbar/Navbar.css";
@@ -119,7 +119,7 @@ const NavBar = () => {
         )}
       </Navbar.Content>
 
-      <Navbar.Collapse disableAnimation>
+      <Navbar.Collapse>
         {items.map((item, index) => (
           <Navbar.CollapseItem
             key={index}

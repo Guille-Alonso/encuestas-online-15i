@@ -1,5 +1,5 @@
-import  Content  from "../Content.jsx";
-import { Box } from "../Box.jsx";
+import  Content  from "../Surveys/Content";
+import { Box } from "../Surveys/Box.jsx";
 export const LayoutHome = ({ children }) => (
   <Box
     css={{

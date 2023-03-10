@@ -14,8 +14,8 @@ const CardEncuesta = ({ titulo, descripcion, id }) => {
           <img
             className="d-inline-block  justify-align-center"
             src="src/Image/encuesta.png"
-            width="70"
-            height="70"
+            width="75"
+            height="75"
             alt=""
           />
         </div>
