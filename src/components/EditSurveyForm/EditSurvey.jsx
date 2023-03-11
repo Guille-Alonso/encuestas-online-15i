@@ -37,7 +37,7 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
       setQuestionsA([])
     
     } catch (error) {
-      // toast.error('Error al enviar los datos. Intente nuevamente más tarde.')
+      setQuestionsA([])
     	if(error.response.data.errors){
         toast.error(error.response.data.errors[0].msg)
       

@@ -25,8 +25,10 @@ const GridCardContainer = () => {
           if (card.estado == "activa") {
             return (
               <Grid
+              className="d-flex mb-3"
                 key={nanoid()}
                 xs={12}
+                sm={6}
                 md={4}
                 justify="center"
                 css={{ marginBottom: 5 }}

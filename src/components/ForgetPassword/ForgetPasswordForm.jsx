@@ -1,8 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-
-
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import styled from 'styled-components';
@@ -16,29 +14,21 @@ import { toast } from "react-toastify";
 
 const ForgetPasswordForm =()=>{
 
-  const navigate = useNavigate();
-
-const goToLogin =()=>{
-navigate('/login')
-}
-
-  const [email,setEmail]=useState("");
+const [email,setEmail]=useState("");
+const navigate = useNavigate()
   
-
-  
-const handleSubmit= (e)=>{
-  e.preventDefault();
-// console.log (email);
-if ([email].includes ("")){
-  toast.error("El email es obligatorio",{
-   theme: "dark",
-});
-return;
+const sendEmail = ()=>{
+  Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "guilloalonsot@gmail.com",
+    Password :  import.meta.env.VITE_APP_ELASTIC_KEY,
+    To : email,
+    From : "guilloalonsot@gmail.com",
+    Subject : "Recuperar contraseña Encuestas-Online",
+    Body :  "<h1>Comuniquese con el administrador para recuperar su contraseña</h1>"
+    }).then(() => toast.success("Revise su correo por favor"));
+    navigate('/login')
 }
-
-console.log ("Correcto");
-};
-
 
   return(
     <>
@@ -51,7 +41,7 @@ console.log ("Correcto");
     height:'100%',
    }}
    >
-      <Form style={{
+      <Form onSubmit={sendEmail} style={{
           
           minHeight:'69vh',
       }}>

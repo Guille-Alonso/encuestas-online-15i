@@ -8,9 +8,12 @@ const DeleteConfirmation = ({onClose, deleteFunction}) => {
   }
   return ( 
     <>
-      <p> Estas seguro que deseas eliminar este elemento</p>
-      <Button variant="success" onClick={handleDelete}> Confirmar </Button>
-      <Button variant="danger" onClick={onClose}> Cancelar </Button>
+      <p> Estas seguro que deseas eliminar este elemento?</p>
+      <div className="d-flex">
+      <Button variant="danger" className="d-flex me-2" onClick={handleDelete}> Confirmar </Button>
+      <Button onClick={onClose}> Cancelar </Button>
+      </div>
+      
     </>
   );
 }
