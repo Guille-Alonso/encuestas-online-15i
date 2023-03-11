@@ -1,15 +1,14 @@
 
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import { Button, Form} from "react-bootstrap";
+import { Button, Form,Alert} from "react-bootstrap";
 import { toast} from "react-toastify";
 import axios from "../../config/axios";
-
+import { validationNames } from "../../helpers/validationsNames";
 import { ADD_CATEGORY_VALUES } from "../../constants";
 import useForm from "../../hook/useForm";
 
 const AddCategoryForm = ({onClose,getCategories}) => {
-    // const [values, setValues] = useState(ADD_CATEGORY_VALUES);
 
   const addCategory = async()=>{
     try {
@@ -26,7 +25,7 @@ const AddCategoryForm = ({onClose,getCategories}) => {
     }
   }
   
-  const {handleChange, handleSubmit, values,setValues} = useForm(ADD_CATEGORY_VALUES,addCategory,onClose)
+  const {handleChange, handleSubmit, values,errors} = useForm(ADD_CATEGORY_VALUES,addCategory,onClose,null,validationNames)
   return ( 
     <>
     <Form onSubmit={handleSubmit}>
@@ -34,6 +33,12 @@ const AddCategoryForm = ({onClose,getCategories}) => {
       <Form.Group className="mb-3" controlId="NombreCategoría">
         <Form.Label>Nombre de la categoría</Form.Label>
         <Form.Control required type="text" placeholder="popular" onChange={handleChange} value={values.name} name='name' maxLength={25} minLength={4}/>
+        {Object.keys(errors).length !== 0 &&
+          Object.values(errors).map((error, index) => (
+            <Alert variant="danger" className="mt-3" key={index}>
+              {error}
+            </Alert>
+          ))}
       </Form.Group>
         <Form.Group className="mb-3" controlId="EstadoCategoría">    
         <Form.Label>Estado</Form.Label>

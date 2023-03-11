@@ -1,17 +1,16 @@
 
 import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
-import { Button, Form} from "react-bootstrap";
+import { Button, Form,Alert} from "react-bootstrap";
 import { Link } from "react-router-dom";
-
 import { toast} from "react-toastify";
 import axios from "../../config/axios";
-
 import { ADD_SURVEY_VALUES } from "../../constants/index";
 import { SurveysContext } from "../../context/addSurveyContext";
 import useForm from "../../hook/useForm";
 import GeneralTable from "../common/GeneralTable/GeneralTable";
 import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
+import { validationNames } from "../../helpers/validationsNames";
 
 const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, selected, client}) => {
 
@@ -84,7 +83,7 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
 
   },[questionsA])
  
-  const {handleChange, handleSubmit,values, setValues} = useForm(ADD_SURVEY_VALUES,addSurvey,onClose,goToAdmin)
+  const {handleChange, handleSubmit,values, errors} = useForm(ADD_SURVEY_VALUES,addSurvey,onClose,goToAdmin,validationNames)
 
   return ( 
     <>
@@ -93,6 +92,12 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       <Form.Group className="mb-3" controlId="NombreEncuesta">
         <Form.Label>Nombre de la encuesta</Form.Label>
         <Form.Control required type="text" placeholder="popular" onChange={handleChange} value={values.name} name='name' maxLength={35} minLength={4}/>
+        {Object.keys(errors).length !== 0 &&
+          Object.values(errors).map((error, index) => (
+            <Alert variant="danger" className="mt-3" key={index}>
+              {error}
+            </Alert>
+          ))}
       </Form.Group>
       <Form.Group className="mb-3" controlId="CategoriaEncuesta">
         <Form.Label>Categoría</Form.Label>

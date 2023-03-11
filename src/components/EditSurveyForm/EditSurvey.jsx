@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Spinner,Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "../../config/axios";
@@ -11,6 +11,7 @@ import useGet from "../../hook/useGet";
 import GeneralModal from "../common/GeneralModal/GeneralModal";
 import GeneralTable from "../common/GeneralTable/GeneralTable";
 import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
+import { validationNames } from "../../helpers/validationsNames";
 
 const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goToAdmin}) => {
     const [questionsWithoutAnserws, loading, getData,setQuestionsWithoutAnserws] = useGet('/surveys/'+selected,axios,selected);
@@ -44,7 +45,7 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
     }
   }
 
-  const {handleChange, handleSubmit,values,setValues} = useForm(ADD_SURVEY_VALUES,editSurvey,onClose,goToAdmin);
+  const {handleChange, handleSubmit,values,setValues,errors} = useForm(ADD_SURVEY_VALUES,editSurvey,onClose,goToAdmin,validationNames);
  
   const getSurveyInfo = async ()=>{
     try {
@@ -106,6 +107,12 @@ setQuestionsWithoutAnserws(aux)
           maxLength={35}
           minLength={4}
         />
+          {Object.keys(errors).length !== 0 &&
+          Object.values(errors).map((error, index) => (
+            <Alert variant="danger" className="mt-3" key={index}>
+              {error}
+            </Alert>
+          ))}
       </Form.Group>
       <Form.Group className="mb-3" controlId="CategoriaEncuesta">
         <Form.Label>Categoría</Form.Label>
