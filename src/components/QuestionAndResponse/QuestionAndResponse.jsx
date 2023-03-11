@@ -19,7 +19,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
 
   const addQuestions = () => {
 
-    if (question.question) {
+    if (question.question && question.typeQuestion) {
       let arrayResponses = [];
       if (responses.length > 0) {
         arrayResponses = [...responses];

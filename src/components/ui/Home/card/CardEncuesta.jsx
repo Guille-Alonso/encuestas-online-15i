@@ -9,7 +9,7 @@ const CardEncuesta = ({ titulo, descripcion, id }) => {
     navigate(`/answerSurvey/${id}`)
   }
   return (
-    <Card css={{ mw: "330px" , backgroundColor: "#073044" , opacity:"0.8"}}>
+    <Card css={{ mw: "300px" , backgroundColor: "#073044" , opacity:"0.8"}}>
       <Card.Header className="d-flex justify-content-center">
       <div className="d-flex justify-content-center">
           <img

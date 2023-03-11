@@ -3,6 +3,10 @@ import "../components/AboutUs/About.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import guille from "../asset/aboutUs/Guille alonso.jpeg"
+import nico from "../asset/aboutUs/Nicolas Pereira.jpeg"
+import stella from "../asset/aboutUs/StellaAguero.jpeg"
+import rosario from "../asset/aboutUs/Rosario Pittaro.jpeg"
 
 function About() {
 return (
@@ -31,25 +35,25 @@ return (
     <Row>
         <Col>
         <a href="https://github.com/Guille-Alonso">
-        <img className="img" id="Guille-Alonso" src="src\asset\aboutUs\Guille alonso.jpeg" alt="Imagen de Guille" />
+        <img className="img" id="Guille-Alonso" src={guille} alt="Imagen de Guille" />
         </a>
         </Col>
         <Col>
         <a href="https://github.com/Rosario1105">
-        <img className="img" id="Roro-pittaro" src="src\asset\aboutUs\Rosario Pittaro.jpeg" alt="Imagen de Rosario" />
+        <img className="img" id="Roro-pittaro" src={rosario} alt="Imagen de Rosario" />
         </a>
         </Col>
         
     </Row>
     <Row className="row m-2">
         <Col >
-        <a href="">
-        <img className="img" id="pick-nico" src="src\asset\aboutUs\Nicolas Pereira.jpeg" alt="Imagen de Nicolas" />
+        <a href="https://github.com/nBenjaminPr">
+        <img className="img" id="pick-nico" src={nico} alt="Imagen de Nicolas" />
         </a>
         </Col>
         <Col>
         <a href="https://github.com/stellamaris8">
-        <img className="img" id="Stella" src="src\asset\aboutUs\StellaAguero.jpeg" alt="Imagen de Stella" />
+        <img className="img" id="Stella" src={stella} alt="Imagen de Stella" />
         </a>
         </Col>
     </Row>

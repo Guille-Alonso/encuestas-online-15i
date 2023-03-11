@@ -28,6 +28,12 @@ body {
 	background-color: #083045;
 }
 
+.selectedFilter{
+	border-radius: 30px;
+	border-color: black;
+	border-style:solid;
+	background-color: #48829A;
+}
 
 
 

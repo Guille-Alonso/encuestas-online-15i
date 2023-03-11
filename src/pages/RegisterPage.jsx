@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import  useForm  from '../hook/useForm'
 import 'bootstrap/dist/css/bootstrap.css'
 import "../components/Register/register.css"
@@ -10,12 +10,14 @@ import { Button,Alert } from 'react-bootstrap';
 import { validationRegister } from "../helpers/validationsRegister";
 
 export const RegisterPage = () => {
-	
+
+	const navigate = useNavigate()
+
 	const register = async () => {
 		try {
 			const { data } = await axios.post("/users/register", values);
 			toast.success("registro exitoso")	
-	
+			navigate('/login');
 		} catch (error) {
 		// toast.error("Registro fallido. Campos incorrectos");
 		if(error.response.data.errors){
