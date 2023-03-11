@@ -13,7 +13,7 @@ const CardEncuesta = ({ titulo, descripcion, id }) => {
       <div className="d-flex justify-content-center">
           <img
             className="d-inline-block  justify-align-center"
-            src="src/Image/encuesta.png"
+            src="../../../src/Image/encuesta.png"
             width="75"
             height="75"
             alt=""
