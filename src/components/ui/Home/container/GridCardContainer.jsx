@@ -22,7 +22,7 @@ const GridCardContainer = ({filter}) => {
         <Spinner />
       ) : (
         survey.map((card) => {
-          if (card.estado == "activa" && card.categoria.name==filter || card.estado == "activa" && filter ==undefined || card.estado == "activa" && filter =='') {
+          if (card.estado == "activa" && card.categoria.name==filter || card.estado == "activa" && filter =='') {
             return (
               <Grid
               className="d-flex mb-3"

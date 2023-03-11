@@ -11,7 +11,7 @@ import GridCardContainer from "../ui/Home/container/GridCardContainer";
 const Content = () => {
   const { authenticated } = useContext(SurveysContext);
   const [categories, loading] = useGet('/categories',axios);
-  const [selected,setSelected] = useState(undefined)
+  const [selected,setSelected] = useState('')
 
 const categorySelected = (e)=>{
 setSelected(e.target.value)
