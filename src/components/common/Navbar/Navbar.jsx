@@ -6,7 +6,7 @@ import EncuestaLogo from "../../Surveys/EncuestaLogo";
 import { UserIcon } from "./UserIcon/UserIcon";
 import { SurveysContext } from "../../../context/addSurveyContext";
 import "../Navbar/Navbar.css";
-
+import imageSurvey from "../../../Image/encuesta.png"
 
 
 const NavBar = () => {
@@ -51,7 +51,7 @@ const NavBar = () => {
         <Navbar.Toggle showIn="xs">
         <img
           className="d-inline-block  justify-align-center"
-          src="src/Image/encuesta.png"
+          src={imageSurvey}
           width="50"
           height="50"
           alt=""

@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Text, Button, Row } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
+import imageSurvey from "../../../../Image/encuesta.png"
 
 const CardEncuesta = ({ titulo, descripcion, id }) => {
   const navigate = useNavigate()
@@ -13,7 +14,7 @@ const CardEncuesta = ({ titulo, descripcion, id }) => {
       <div className="d-flex justify-content-center">
           <img
             className="d-inline-block  justify-align-center"
-            src="../../../src/Image/encuesta.png"
+            src={imageSurvey}
             width="75"
             height="75"
             alt=""
