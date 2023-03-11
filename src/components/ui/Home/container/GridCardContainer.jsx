@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@nextui-org/react";
 import { Card, Grid, Text, Button, Row } from "@nextui-org/react";
 import CardEncuesta from "../card/CardEncuesta";
@@ -10,7 +10,7 @@ import { nanoid } from "nanoid";
 
  
 
-const GridCardContainer = () => {
+const GridCardContainer = ({filter}) => {
   const [survey, loading] = useGet(
     "/surveys",
     axios
@@ -22,7 +22,7 @@ const GridCardContainer = () => {
         <Spinner />
       ) : (
         survey.map((card) => {
-          if (card.estado == "activa") {
+          if (card.estado == "activa" && card.categoria.name==filter || card.estado == "activa" && filter ==undefined || card.estado == "activa" && filter =='') {
             return (
               <Grid
               className="d-flex mb-3"
