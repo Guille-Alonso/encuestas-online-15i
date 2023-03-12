@@ -1,0 +1,12 @@
+.adminHeight{
+    min-height: 80vh;
+}
+/* ver en dispositivos */
+
+
+@media(max-width: 520px) {
+    .buttonPosition{
+   display: flex;
+    margin: auto;
+    }
+}

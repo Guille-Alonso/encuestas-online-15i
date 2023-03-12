@@ -1,7 +1,7 @@
 
 import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
-import { Button, Form,Alert} from "react-bootstrap";
+import { Form,Alert} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast} from "react-toastify";
 import axios from "../../config/axios";
@@ -11,6 +11,7 @@ import useForm from "../../hook/useForm";
 import GeneralTable from "../common/GeneralTable/GeneralTable";
 import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
 import { validationNames } from "../../helpers/validationsNames";
+import {Button} from "@nextui-org/react";
 
 const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, selected, client}) => {
 
@@ -29,8 +30,11 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       if(getSurveys){
         getSurveys();
       }
- 
-      toast.success('encuesta creada');
+      
+      if(client){
+        toast.info('Su encuesta será evaluada..');
+      }else  toast.success('encuesta creada');
+     
       setSelected(undefined)
       setQuestionsA([])
     } catch (error) {
@@ -193,7 +197,7 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       
             <QuestionAndResponse />
             {
-               aux.length > 0 &&   <Button className="d-flex ms-auto mb-1" onClick={removeQuestionAdd}>Quitar</Button>
+               aux.length > 0 &&   <Button className="d-flex ms-auto mb-1"  shadow color="secondary" auto flat onClick={removeQuestionAdd}>Quitar</Button>
             }
           
         
@@ -205,7 +209,7 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
           }
 
       <br></br>
-      <Button variant="success" type="submit" >
+      <Button className="d-flex mb-2" color="success" auto flat variant="success" type="submit" >
         Agregar
       </Button>
     </Form>

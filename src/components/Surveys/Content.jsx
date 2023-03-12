@@ -7,18 +7,19 @@ import { SurveysContext } from "../../context/addSurveyContext";
 import useGet from "../../hook/useGet";
 import ButtonEncuesta from "../ui/Home/botonAgregarEncuesta/ButtonEncuesta";
 import GridCardContainer from "../ui/Home/container/GridCardContainer";
+import "./Content.css"
 
 const Content = () => {
   const { authenticated } = useContext(SurveysContext);
   const [categories, loading] = useGet('/categories',axios);
-  const [selected,setSelected] = useState(undefined)
+  const [selected,setSelected] = useState('')
 
 const categorySelected = (e)=>{
 setSelected(e.target.value)
 }
 
   return (  
-    <div>
+    <div className="contentHeight">
       <Text className="text-center" h1>
         Bienvenidos a Encuestas Online
       </Text>

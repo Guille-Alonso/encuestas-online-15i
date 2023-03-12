@@ -1,6 +1,7 @@
 import { cloneElement, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { toast} from "react-toastify";
+import {Button} from "@nextui-org/react";
 
 const GeneralModal = ({buttonText, modalTitle, modalBody, variant, seleccion}) => {
   const [show, setShow] = useState(false);
@@ -15,7 +16,7 @@ const GeneralModal = ({buttonText, modalTitle, modalBody, variant, seleccion}) =
   return (
     <>
 
-      <Button variant={variant} onClick={handleShow} className="mx-2">
+      <Button color={variant} auto flat onClick={handleShow} className="mx-2">
         {buttonText}
       </Button>
 

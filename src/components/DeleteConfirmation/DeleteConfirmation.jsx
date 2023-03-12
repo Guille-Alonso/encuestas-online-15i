@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import {Button} from "@nextui-org/react";
 
 const DeleteConfirmation = ({onClose, deleteFunction}) => {
 
@@ -10,8 +10,8 @@ const DeleteConfirmation = ({onClose, deleteFunction}) => {
     <>
       <p> Estas seguro que deseas eliminar este elemento?</p>
       <div className="d-flex">
-      <Button variant="danger" className="d-flex me-2" onClick={handleDelete}> Confirmar </Button>
-      <Button onClick={onClose}> Cancelar </Button>
+      <Button shadow color="secondary" auto flat className="d-flex me-2" onClick={handleDelete}> Confirmar </Button>
+      <Button shadow color="primary" auto flat onClick={onClose}> Cancelar </Button>
       </div>
       
     </>

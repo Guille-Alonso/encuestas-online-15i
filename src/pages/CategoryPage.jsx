@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
 import GeneralModal from "../components/common/GeneralModal/GeneralModal";
 import GeneralTable from "../components/common/GeneralTable/GeneralTable";
@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import AddCategoryForm from "../components/AddCategoryForm/AddCategoryForm";
 import EditCategoryForm from "../components/EditCategoryForm/EditCategoryForm";
 import axios from "../config/axios";
+import "../components/Styles/responsivesPages.css"
+import {Button} from "@nextui-org/react";
 
 const CategoryPage = () => {
 
@@ -41,36 +43,35 @@ const CategoryPage = () => {
   
     return ( 
       <>
-      <Container>
+      <Container className="adminHeight">
         <h1>Página de Categorías</h1>
         <Row className="m-3">
           <Col className="d-flex justify-content-start">
-          <Button onClick={handleClick}>Encuestas</Button>
+          <Button className="mb-3 buttonPosition" shadow color="primary" auto flat onClick={handleClick}>Encuestas</Button>
           </Col>
           <Col className="d-flex justify-content-end">
           
             <GeneralModal
-            buttonText='Añadir Categoría'
+            buttonText='Añadir'
             modalTitle={'Añadir Categoría'}
             modalBody={<AddCategoryForm getCategories={getCategories}/>}
             variant="success"
             seleccion={true}
             />
             <GeneralModal
-            buttonText='Eliminar Categoría'
-            modalTitle={'Eliminar Categoría'}
-            modalBody={<DeleteConfirmation deleteFunction={deleteCategory}/>}
-            variant="danger"
-            seleccion={selected}
-            />
-            <GeneralModal
-            buttonText='Editar Categoría'
+            buttonText='Editar'
             modalTitle={'Editar Categoría'}
             modalBody={<EditCategoryForm  selected={selected} getCategories={getCategories} setSelected={setSelected}/>}
             variant="warning"
             seleccion={selected}
             />
-            
+              <GeneralModal
+            buttonText='Eliminar'
+            modalTitle={'Eliminar Categoría'}
+            modalBody={<DeleteConfirmation deleteFunction={deleteCategory}/>}
+            variant="secondary"
+            seleccion={selected}
+            />
           </Col>
         </Row>
         <Row>

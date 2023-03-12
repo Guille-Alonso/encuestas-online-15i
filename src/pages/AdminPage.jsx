@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
+import {  Col, Container, Row, Spinner } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
 import AddSurveyForm from "../components/AddSurveyForm/AddSurveyForm";
 import GeneralModal from "../components/common/GeneralModal/GeneralModal";
@@ -13,6 +13,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import SurveyPage from "./SurveyPage";
 import EditSurvey from "../components/EditSurveyForm/EditSurvey";
 import { SurveysContext } from "../context/addSurveyContext";
+import "../components/Styles/responsivesPages.css"
+import {Button} from "@nextui-org/react";
 
 const AdminPage = () => {
   const [surveys, loading, getSurveys] = useGet('/surveys',axios);
@@ -79,7 +81,7 @@ const AdminPage = () => {
   },[])
 
   return ( 
-    <>
+    <div className="adminHeight">
     {
     survey==''?
       
@@ -87,20 +89,19 @@ const AdminPage = () => {
       <h1>Página de administración</h1>
       <Row className="m-3">
         <Col className="d-flex justify-content-start">
-        <Button onClick={aCategorías}>Categorías</Button>
+        <Button className="mb-3 buttonPosition" shadow color="primary" auto flat onClick={aCategorías}>Categorías</Button>
         </Col>
         <Col className="d-flex justify-content-end">
 
-        <Button className="me-2" variant="success" onClick={()=>cargarFormularioDeEncuesta('agregar')}>Añadir Encuesta</Button>
-          <GeneralModal
-          buttonText='Eliminar Encuesta'
+        <Button className="me-2"  color="success" auto flat variant="success" onClick={()=>cargarFormularioDeEncuesta('agregar')}>Añadir</Button>  
+        <Button className="mx-2"  color="warning" auto flat variant="warning" onClick={()=>cargarFormularioDeEncuesta('editar')}>Editar</Button>
+        <GeneralModal
+          buttonText='Eliminar'
           modalTitle={'Eliminar Encuesta'}
           modalBody={<DeleteConfirmation deleteFunction={deleteSurvey}/>}
-          variant="danger"
+          variant="secondary"
           seleccion={selected}
           />
-          
-           <Button variant="warning" onClick={()=>cargarFormularioDeEncuesta('editar')}>Editar Encuesta</Button>
        
         </Col>
       </Row>
@@ -123,7 +124,7 @@ const AdminPage = () => {
       <Row>
         <Col>
             <Col className="d-flex justify-content-end">
-                <Button onClick={goToSurveys}>Encuestas</Button>
+                <Button className="d-flex mt-3" shadow color="primary" auto flat onClick={goToSurveys}>Encuestas</Button>
                
             </Col>
     
@@ -137,7 +138,7 @@ const AdminPage = () => {
       <Row>
         <Col>
         <Col className="d-flex justify-content-end">
-          <Button onClick={goToSurveys}>Encuestas</Button>
+          <Button className="d-flex mt-3" shadow color="primary" auto flat onClick={goToSurveys}>Encuestas</Button>
         </Col>
             <SurveyPage modo={<AddSurveyForm getSurveys={getSurveys} categorias = {categorias} goToAdmin={goToAdmin} setSelected={setSelected} selected={selected}/>}/>
         </Col>
@@ -146,7 +147,7 @@ const AdminPage = () => {
     
 }
  <ToastContainer/>
-    </>
+    </div>
    );
 }
  

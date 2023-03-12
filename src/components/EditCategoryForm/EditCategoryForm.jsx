@@ -1,11 +1,12 @@
 
 import { useEffect, useState } from "react";
-import { Button, Form,Alert} from "react-bootstrap";
+import { Form,Alert} from "react-bootstrap";
 import { toast} from "react-toastify";
 import axios from "../../config/axios";
 import { ADD_CATEGORY_VALUES,ERROR_MESSAGE } from "../../constants";
 import useForm from "../../hook/useForm";
 import { validationNames } from "../../helpers/validationsNames";
+import {Button} from "@nextui-org/react";
 
 const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
 
@@ -71,7 +72,7 @@ const EditCategoryForm = ({onClose,selected,getCategories,setSelected}) => {
           </Form.Select>
           </Form.Group>
         
-        <Button variant="success" type="submit">
+        <Button color="warning" shadow auto flat type="submit">
           Editar
         </Button>
       </Form>

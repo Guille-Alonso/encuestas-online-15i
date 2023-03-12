@@ -1,12 +1,13 @@
 
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import { Button, Form,Alert} from "react-bootstrap";
+import { Form,Alert} from "react-bootstrap";
 import { toast} from "react-toastify";
 import axios from "../../config/axios";
 import { validationNames } from "../../helpers/validationsNames";
 import { ADD_CATEGORY_VALUES } from "../../constants";
 import useForm from "../../hook/useForm";
+import {Button} from "@nextui-org/react";
 
 const AddCategoryForm = ({onClose,getCategories}) => {
 
@@ -66,7 +67,7 @@ const AddCategoryForm = ({onClose,getCategories}) => {
           />
         </Form.Group>
       
-      <Button variant="success" type="submit">
+      <Button color="success" shadow auto flat type="submit">
         Agregar
       </Button>
     </Form>
