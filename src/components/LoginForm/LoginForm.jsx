@@ -8,10 +8,14 @@ import useForm from "../../hook/useForm"
 import { Link, useNavigate } from "react-router-dom";
 import { SurveysContext } from "../../context/addSurveyContext";
 import { validationLogin } from "../../helpers/validationsLogin";
+import {RiEyeLine,RiEyeOffLine} from "react-icons/ri";
+import "../Styles/loginForm.css"
 
 const LoginForm =()=>{
 
   const { login, authenticated } = useContext(SurveysContext);
+  const [showPassword, setShowPassword] = useState(false)
+
   const { handleChange, handleSubmit, values,errors} = useForm(
     LOGIN_VALUES,
     login,
@@ -28,6 +32,9 @@ const LoginForm =()=>{
     }
   }, [authenticated]);
 
+  const handleShowPassword = ()=>{
+    setShowPassword(!showPassword)
+  }
 
   return (
     <>
@@ -41,7 +48,7 @@ const LoginForm =()=>{
         }}
         >
        
-<Form.Group className="mb-3 w-96" controlId="formBasicEmail">
+      <Form.Group className="mb-3 w-96" controlId="formBasicEmail">
         <Form.Label style={{
           color: "#083045",
           fontSize: "15px",
@@ -52,13 +59,18 @@ const LoginForm =()=>{
         <Form.Control required value={values.email} onChange={handleChange} name= "email" type="email" placeholder="Ingresa tu email" maxLength={35}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3 formPassword" controlId="formBasicPassword">
         <Form.Label style={{
           color: "#083045",
           fontSize: "15px",
           fontWeight: 'bold',
         }}>Contraseña</Form.Label>
-        <Form.Control required value={values.password} onChange={handleChange} name="password" type="password" placeholder="Contraseña" maxLength={25} minLength={5}/>
+        <Form.Control required value={values.password} onChange={handleChange} name="password" type={showPassword? "text" : "password"} placeholder="Contraseña" maxLength={25} minLength={5}/>
+      {showPassword?
+        <RiEyeOffLine onClick={handleShowPassword} className="iconPassword"/>
+        :
+        <RiEyeLine onClick={handleShowPassword} className="iconPassword" />  
+      }
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Recuérdame" style={{
