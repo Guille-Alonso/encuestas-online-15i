@@ -13,6 +13,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import SurveyPage from "./SurveyPage";
 import EditSurvey from "../components/EditSurveyForm/EditSurvey";
 import { SurveysContext } from "../context/addSurveyContext";
+import "../components/Styles/AdminPage.css"
 
 const AdminPage = () => {
   const [surveys, loading, getSurveys] = useGet('/surveys',axios);
@@ -79,7 +80,7 @@ const AdminPage = () => {
   },[])
 
   return ( 
-    <>
+    <div className="adminHeight">
     {
     survey==''?
       
@@ -146,7 +147,7 @@ const AdminPage = () => {
     
 }
  <ToastContainer/>
-    </>
+    </div>
    );
 }
  
