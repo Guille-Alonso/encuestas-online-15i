@@ -1,12 +1,13 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import { Button, Container, Form, FormLabel, Spinner,Row,Col } from "react-bootstrap";
+import { Container, Form, FormLabel, Spinner,Row,Col } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useGet from "../../hook/useGet"
 import axios from "../../config/axios";
 import useForm from "../../hook/useForm";
 import "../../components/Styles/responsivesPages.css"
+import {Button} from "@nextui-org/react";
 
 const AnswerSurveyPage = () => {
   const params = useParams();
@@ -81,7 +82,7 @@ const AnswerSurveyPage = () => {
       ) : (
         <>
         <Container>
-         <Button className="d-flex my-3" onClick={goToSurveys}>Volver</Button>
+         <Button className="d-flex my-3" shadow color="primary" auto flat onClick={goToSurveys}>Volver</Button>
         <h1>Encuesta: {survey.survey.name}</h1>
           <br />
           <h2>Categoría: {survey.survey.categoria?.name}</h2>
@@ -168,7 +169,7 @@ const AnswerSurveyPage = () => {
               </Container>
             ))}
             <Container>
-            <Button variant="success" className="mt-4" type="submit">Enviar Respuestas</Button>
+            <Button color="success" auto flat className="my-3" type="submit">Enviar Respuestas</Button>
             </Container>
             
           </Form>

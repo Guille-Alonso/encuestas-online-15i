@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Button, Col, Container, Form, Row, Spinner,Alert } from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner,Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "../../config/axios";
@@ -12,6 +12,7 @@ import GeneralModal from "../common/GeneralModal/GeneralModal";
 import GeneralTable from "../common/GeneralTable/GeneralTable";
 import QuestionAndResponse from "../QuestionAndResponse/QuestionAndResponse";
 import { validationNames } from "../../helpers/validationsNames";
+import {Button} from "@nextui-org/react";
 
 const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goToAdmin}) => {
     const [questionsWithoutAnserws, loading, getData,setQuestionsWithoutAnserws] = useGet('/surveys/'+selected,axios,selected);
@@ -168,7 +169,7 @@ setQuestionsWithoutAnserws(aux)
           variant="warning"
           seleccion={selectedQuestion}
           />
-         <Button variant="danger" onClick={removeQuestion}>Quitar</Button> 
+         <Button variant="danger" className="ms-2" color="secondary" auto flat onClick={removeQuestion}>Quitar</Button> 
     </div>
       
         {
@@ -180,7 +181,7 @@ setQuestionsWithoutAnserws(aux)
     
         }
 
-      <Button variant="success" type="submit">
+      <Button className="d-flex mb-2" color="warning" auto flat type="submit">
         Guardar Cambios
       </Button>
     </Form>

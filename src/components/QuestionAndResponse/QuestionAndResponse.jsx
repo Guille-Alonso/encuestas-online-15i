@@ -1,11 +1,11 @@
 import { nanoid } from "nanoid";
 import { useContext, useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ADD_QUESTION_VALUES } from "../../constants";
 import { SurveysContext } from "../../context/addSurveyContext";
-// import useForm from "../../hooks/useForm";
+import {Button} from "@nextui-org/react";
 
 const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSelectedQuestion}) => {
  const {questionsA,setQuestionsA, setFlagQuestion} = useContext(SurveysContext)
@@ -236,7 +236,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
             <br /> </>
           }
             
-          <Button className="m-3" onClick={addQuestions}> Añadir Pregunta</Button>
+          <Button className="m-3" color="primary" auto flat onClick={addQuestions}> Añadir Pregunta</Button>
         </Form.Group>
         </div>
    
