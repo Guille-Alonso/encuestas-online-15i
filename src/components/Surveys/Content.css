@@ -8,7 +8,7 @@
     min-height: 80vh;
 }
 
-@media(width: 768px) {
+/* @media(width: 768px) {
     .contentHeight{
         min-height: 75vh;
     }
@@ -24,5 +24,5 @@
     .contentHeight{
         min-height: 57vh;
     }
-}
+} */
 

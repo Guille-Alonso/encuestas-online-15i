@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import useGet from "../../hook/useGet"
 import axios from "../../config/axios";
 import useForm from "../../hook/useForm";
+import "../../components/Styles/responsivesPages.css"
 
 const AnswerSurveyPage = () => {
   const params = useParams();
@@ -74,7 +75,7 @@ const AnswerSurveyPage = () => {
 
   const { handleChange, handleSubmit, values } = useForm(initialState, submit);
   return (
-    <>
+    <div className="adminHeight">
       {loading ? (
         <Spinner />
       ) : (
@@ -173,7 +174,7 @@ const AnswerSurveyPage = () => {
           </Form>
         </>
       )}
-    </>
+    </div>
   );
 };
 

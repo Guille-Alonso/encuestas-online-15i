@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import AddCategoryForm from "../components/AddCategoryForm/AddCategoryForm";
 import EditCategoryForm from "../components/EditCategoryForm/EditCategoryForm";
 import axios from "../config/axios";
+import "../components/Styles/responsivesPages.css"
 
 const CategoryPage = () => {
 
@@ -41,7 +42,7 @@ const CategoryPage = () => {
   
     return ( 
       <>
-      <Container>
+      <Container className="adminHeight">
         <h1>Página de Categorías</h1>
         <Row className="m-3">
           <Col className="d-flex justify-content-start">

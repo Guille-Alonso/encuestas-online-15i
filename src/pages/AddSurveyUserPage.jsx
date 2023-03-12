@@ -20,7 +20,7 @@ const AddSurveyUserPage = () => {
   
     return (  
 <div className="layout">
-    <h1>Bienvenido a la pagina para proponer una encuesta</h1>
+    <h1>Proponga una Encuesta</h1>
 
     {
         user && 

@@ -29,8 +29,11 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       if(getSurveys){
         getSurveys();
       }
- 
-      toast.success('encuesta creada');
+      
+      if(client){
+        toast.info('Su encuesta será evaluada..');
+      }else  toast.success('encuesta creada');
+     
       setSelected(undefined)
       setQuestionsA([])
     } catch (error) {
