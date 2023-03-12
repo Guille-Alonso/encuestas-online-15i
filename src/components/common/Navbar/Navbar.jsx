@@ -118,7 +118,6 @@ const NavBar = () => {
           )
         )}
       </Navbar.Content>
-
       <Navbar.Collapse>
         {items.map((item, index) => (
           <Navbar.CollapseItem

@@ -10,7 +10,7 @@ const DeleteConfirmation = ({onClose, deleteFunction}) => {
     <>
       <p> Estas seguro que deseas eliminar este elemento?</p>
       <div className="d-flex">
-      <Button shadow color="secondary" auto flat className="d-flex me-2" onClick={handleDelete}> Confirmar </Button>
+      <Button shadow color="error" auto flat className="d-flex me-2" onClick={handleDelete}> Confirmar </Button>
       <Button shadow color="primary" auto flat onClick={onClose}> Cancelar </Button>
       </div>
       

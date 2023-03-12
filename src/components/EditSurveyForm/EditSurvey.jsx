@@ -169,7 +169,7 @@ setQuestionsWithoutAnserws(aux)
           variant="warning"
           seleccion={selectedQuestion}
           />
-         <Button variant="danger" className="ms-2" color="secondary" auto flat onClick={removeQuestion}>Quitar</Button> 
+         <Button variant="danger" className="ms-2" color="error" auto flat onClick={removeQuestion}>Quitar</Button> 
     </div>
       
         {

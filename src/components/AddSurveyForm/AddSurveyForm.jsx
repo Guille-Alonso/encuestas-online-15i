@@ -197,7 +197,7 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       
             <QuestionAndResponse />
             {
-               aux.length > 0 &&   <Button className="d-flex ms-auto mb-1"  shadow color="secondary" auto flat onClick={removeQuestionAdd}>Quitar</Button>
+               aux.length > 0 &&   <Button className="d-flex ms-auto mb-1"  shadow color="error" auto flat onClick={removeQuestionAdd}>Quitar</Button>
             }
           
         

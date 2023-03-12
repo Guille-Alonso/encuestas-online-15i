@@ -82,7 +82,7 @@ const AnswerSurveyPage = () => {
       ) : (
         <>
         <Container>
-         <Button className="d-flex my-3" shadow color="primary" auto flat onClick={goToSurveys}>Volver</Button>
+         <Button className="d-flex my-3" css={{zIndex: 0}} shadow color="primary" auto flat onClick={goToSurveys}>Volver</Button>
         <h1>Encuesta: {survey.survey.name}</h1>
           <br />
           <h2>Categoría: {survey.survey.categoria?.name}</h2>

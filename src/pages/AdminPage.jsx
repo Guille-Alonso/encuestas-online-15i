@@ -89,17 +89,17 @@ const AdminPage = () => {
       <h1>Página de administración</h1>
       <Row className="m-3">
         <Col className="d-flex justify-content-start">
-        <Button className="mb-3 buttonPosition" shadow color="primary" auto flat onClick={aCategorías}>Categorías</Button>
+        <Button className="mb-3 buttonPosition" css={{zIndex: 0}} shadow color="primary" auto flat onClick={aCategorías}>Categorías</Button>
         </Col>
         <Col className="d-flex justify-content-end">
 
-        <Button className="me-2"  color="success" auto flat variant="success" onClick={()=>cargarFormularioDeEncuesta('agregar')}>Añadir</Button>  
-        <Button className="mx-2"  color="warning" auto flat variant="warning" onClick={()=>cargarFormularioDeEncuesta('editar')}>Editar</Button>
+        <Button className="me-2" css={{zIndex: 0}} color="success" auto flat variant="success" onClick={()=>cargarFormularioDeEncuesta('agregar')}>Añadir</Button>  
+        <Button className="mx-2" css={{zIndex: 0}} color="warning" auto flat variant="warning" onClick={()=>cargarFormularioDeEncuesta('editar')}>Editar</Button>
         <GeneralModal
           buttonText='Eliminar'
           modalTitle={'Eliminar Encuesta'}
           modalBody={<DeleteConfirmation deleteFunction={deleteSurvey}/>}
-          variant="secondary"
+          variant="error"
           seleccion={selected}
           />
        
@@ -124,7 +124,7 @@ const AdminPage = () => {
       <Row>
         <Col>
             <Col className="d-flex justify-content-end">
-                <Button className="d-flex mt-3" shadow color="primary" auto flat onClick={goToSurveys}>Encuestas</Button>
+                <Button className="d-flex mt-3" css={{zIndex: 0}} shadow color="primary" auto flat onClick={goToSurveys}>Encuestas</Button>
                
             </Col>
     
@@ -138,7 +138,7 @@ const AdminPage = () => {
       <Row>
         <Col>
         <Col className="d-flex justify-content-end">
-          <Button className="d-flex mt-3" shadow color="primary" auto flat onClick={goToSurveys}>Encuestas</Button>
+          <Button className="d-flex mt-3" css={{zIndex: 0}} shadow color="primary" auto flat onClick={goToSurveys}>Encuestas</Button>
         </Col>
             <SurveyPage modo={<AddSurveyForm getSurveys={getSurveys} categorias = {categorias} goToAdmin={goToAdmin} setSelected={setSelected} selected={selected}/>}/>
         </Col>
