@@ -6,7 +6,7 @@
     background-size: contain;
 }
 
-@media(max-width: 320px) {
+@media(max-width: 374px) {
     .positionButtonGo{
     position: absolute;
     bottom: 200px;
