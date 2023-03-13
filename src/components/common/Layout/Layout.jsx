@@ -3,11 +3,11 @@ import NavbarComponent from "../Navbar/NavbarComponent";
 import "../../Styles/homePage.css";
 
 const Layout = ({children}) => {
-    return (   <div className="layoutHeight">
+    return (   <>
         <NavbarComponent/>
           {children}
         <FooterComponent/>
-        </div> );
+        </> );
 }
  
 export default Layout;
