@@ -5,3 +5,21 @@
     background-position: center;
     background-size: contain;
 }
+
+@media(max-width: 320px) {
+    .positionButtonGo{
+    position: absolute;
+    bottom: 200px;
+    }
+    .landingHeight{
+        min-height: 80vh;
+        background-image: url(../../Image/Logo.png);
+        background-repeat: no-repeat;
+        background-position:top;
+        background-size: contain;
+    }
+    .textLanding{
+        position: absolute;
+        bottom: 250px;
+    }
+}

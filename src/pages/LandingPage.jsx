@@ -16,13 +16,13 @@ const LandingPage = () => {
         <Container>
           <Row>
             <Col className="d-flex justify-content-center mt-5">
-              <h1 className="text-center">
+              <h1 className="text-center textLanding">
               ¿Qué estás esperando?
               </h1>
             </Col>
           </Row>
           <Row>
-            <Col className="d-flex justify-content-center">
+            <Col className="d-flex justify-content-center positionButtonGo">
               <Button
                 className="mt-4"
                 onClick={goToRegister}
