@@ -24,7 +24,7 @@ const LandingPage = () => {
           <Row>
             <Col className="d-flex justify-content-center">
               <Button
-                className="mt-5"
+                className="mt-4"
                 onClick={goToRegister}
                 color="success"
                 flat
