@@ -1,0 +1,14 @@
+body{
+    background-image: url(../../Image/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.Navbar-text{
+    color: black;
+}
+
+/* .layoutHeight{
+    min-height: 80vh;
+} */

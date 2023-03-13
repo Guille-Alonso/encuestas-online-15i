@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Stick No Bills', sans-serif;
+}
+
+.about {
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px 50px 50px 50px;
+    background-image: url("C:\Users\Usuario\Desktop\Proyectos de Rolling\FORMULARIO CON REACT\encuestas-online-15i\src\asset\fondo.jpg");
+}
+
+
+
+#pick-nico{
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+#pick-nico:hover{
+    border: 2px solid cyan;
+}
+
+
+#Roro-pittaro{
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+#Roro-pittaro:hover{
+    border: 2px solid palevioletred;
+}
+
+#Guille-Alonso{
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+#Guille-Alonso:hover{
+    border: 2px solid yellow;
+}
+
+
+#Stella{
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+#Stella:hover{
+    border: 2px solid green;
+}

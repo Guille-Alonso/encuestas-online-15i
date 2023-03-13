@@ -1,0 +1,28 @@
+.selectedFilter{
+	border-radius: 30px;
+	border-color: black;
+	border-style:solid;
+	background-color: #48829A;
+}
+.contentHeight{
+    min-height: 80vh;
+}
+
+/* @media(width: 768px) {
+    .contentHeight{
+        min-height: 75vh;
+    }
+}
+
+@media(width: 820px) {
+    .contentHeight{
+        min-height: 66vh;
+    }
+}
+
+@media(width: 912px) {
+    .contentHeight{
+        min-height: 57vh;
+    }
+} */
+
