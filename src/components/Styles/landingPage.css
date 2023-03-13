@@ -1,0 +1,34 @@
+.landingHeight{
+    min-height: 80vh;
+    background-image: url(../../Image/Logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+@media(max-width: 374px) {
+    .positionButtonGo{
+    position: absolute;
+    bottom: 120px;
+    }
+    .landingHeight{
+        min-height: 80vh;
+        background-image: url(../../Image/Logo.png);
+        background-repeat: no-repeat;
+        background-position:top;
+        background-size: contain;
+    }
+    .textLanding{
+        position: absolute;
+        bottom: 180px;
+    }
+}
+
+@media(max-height: 374px) {
+    .positionButtonGo{
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    }
+   
+}

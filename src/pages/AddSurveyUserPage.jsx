@@ -29,7 +29,7 @@ const AddSurveyUserPage = () => {
         <Container>
             <Row>
             <Col>
-                <Button className="d-flex my-3 ms-auto" shadow color="primary" auto flat onClick={goToSurveys}>Volver</Button>
+                <Button className="d-flex my-3 ms-auto" css={{zIndex: 0}} shadow color="primary" auto flat onClick={goToSurveys}>Volver</Button>
             </Col>
             </Row>
             <Row>

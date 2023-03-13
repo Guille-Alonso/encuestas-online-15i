@@ -16,7 +16,7 @@ const GeneralModal = ({buttonText, modalTitle, modalBody, variant, seleccion}) =
   return (
     <>
 
-      <Button color={variant} auto flat onClick={handleShow} className="mx-2">
+      <Button color={variant} css={{zIndex: 0}} auto flat onClick={handleShow} className="mx-2">
         {buttonText}
       </Button>
 

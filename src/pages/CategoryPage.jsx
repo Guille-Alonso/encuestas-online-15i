@@ -47,7 +47,7 @@ const CategoryPage = () => {
         <h1>Página de Categorías</h1>
         <Row className="m-3">
           <Col className="d-flex justify-content-start">
-          <Button className="mb-3 buttonPosition" shadow color="primary" auto flat onClick={handleClick}>Encuestas</Button>
+          <Button className="mb-3 buttonPosition" css={{zIndex: 0}} shadow color="primary" auto flat onClick={handleClick}>Encuestas</Button>
           </Col>
           <Col className="d-flex justify-content-end">
           
@@ -69,7 +69,7 @@ const CategoryPage = () => {
             buttonText='Eliminar'
             modalTitle={'Eliminar Categoría'}
             modalBody={<DeleteConfirmation deleteFunction={deleteCategory}/>}
-            variant="secondary"
+            variant="error"
             seleccion={selected}
             />
           </Col>
