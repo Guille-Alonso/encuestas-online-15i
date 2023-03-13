@@ -13,6 +13,7 @@ import CategoryPage from "./pages/CategoryPage";
 import SurveyPage from "./pages/SurveyPage";
 import AnswerSurveyPage from "./pages/AnswerSurveyPage/AnswerSurveyPage";
 import AddSurveyUserPage from "./pages/AddSurveyUserPage";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
@@ -37,11 +38,12 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path='/answerSurvey/:surveyId' element={<AnswerSurveyPage/>}/>
             <Route path='/addSurveyUser' element={<PrivateRoute><AddSurveyUserPage/></PrivateRoute>}/>
+            <Route path="/home" element={<Content/>} />
             <Route
               path="/*"
               element={
                 
-                  <Content />
+                  <LandingPage />
                 
               }
             />

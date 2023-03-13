@@ -1,0 +1,7 @@
+.landingHeight{
+    min-height: 80vh;
+    background-image: url(../../Image/Logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
