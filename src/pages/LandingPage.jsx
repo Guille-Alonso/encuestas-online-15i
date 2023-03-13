@@ -17,14 +17,14 @@ const LandingPage = () => {
           <Row>
             <Col className="d-flex justify-content-center mt-5">
               <h1 className="text-center">
-                Registrate y podrás armar tu propia encuesta personalizada !
+              ¿Qué estás esperando?
               </h1>
             </Col>
           </Row>
           <Row>
             <Col className="d-flex justify-content-center">
               <Button
-                className="mt-4"
+                className="mt-5"
                 onClick={goToRegister}
                 color="success"
                 flat
