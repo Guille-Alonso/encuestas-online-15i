@@ -169,7 +169,7 @@ const AnswerSurveyPage = () => {
               </Container>
             ))}
             <Container>
-            <Button color="success" auto flat className="my-3" type="submit">Enviar Respuestas</Button>
+            <Button color="success" auto flat className="my-3" css={{zIndex: 0}} type="submit">Enviar Respuestas</Button>
             </Container>
             
           </Form>

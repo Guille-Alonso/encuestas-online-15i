@@ -23,3 +23,12 @@
         bottom: 180px;
     }
 }
+
+@media(max-height: 374px) {
+    .positionButtonGo{
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    }
+   
+}

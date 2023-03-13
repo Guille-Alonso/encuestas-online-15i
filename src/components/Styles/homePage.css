@@ -8,3 +8,7 @@ body{
 .Navbar-text{
     color: black;
 }
+
+.layoutHeight{
+    min-height: 80vh;
+}
