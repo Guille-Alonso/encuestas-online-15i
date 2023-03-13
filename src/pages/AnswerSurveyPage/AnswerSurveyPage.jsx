@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import { Container, Form, FormLabel, Spinner,Row,Col } from "react-bootstrap";
+import { Container, Form, FormLabel, Spinner,Row,Col, Alert } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useGet from "../../hook/useGet"
@@ -8,6 +8,7 @@ import axios from "../../config/axios";
 import useForm from "../../hook/useForm";
 import "../../components/Styles/responsivesPages.css"
 import {Button} from "@nextui-org/react";
+import { validationAnswer } from "../../helpers/validationsAnswer";
 
 const AnswerSurveyPage = () => {
   const params = useParams();
@@ -74,7 +75,7 @@ const AnswerSurveyPage = () => {
     }
   };
 
-  const { handleChange, handleSubmit, values } = useForm(initialState, submit);
+  const { handleChange, handleSubmit, values,errors } = useForm(initialState, submit,null,null,validationAnswer);
   return (
     <div className="adminHeight">
       {loading ? (
@@ -96,7 +97,7 @@ const AnswerSurveyPage = () => {
           {
             survey.survey.unaRespuestaPorPersona? 
          
-            <FormLabel>Email obligatorio:<Form.Control type="text"
+            <FormLabel>Email obligatorio:<Form.Control type="email"
             onChange={handleChange}
             value={values.email}
             name="email" 
@@ -104,7 +105,7 @@ const AnswerSurveyPage = () => {
             required>
               </Form.Control></FormLabel>
             :
-            <FormLabel>Email :<Form.Control type="text"
+            <FormLabel>Email :<Form.Control type="email"
             onChange={handleChange}
             value={values.email}
             maxLength={40}
@@ -112,6 +113,12 @@ const AnswerSurveyPage = () => {
               </Form.Control></FormLabel>
            
           }
+           {Object.keys(errors).length !== 0 &&
+          Object.values(errors).map((error, index) => (
+            <Alert variant="danger" className="mt-3" key={index}>
+              {error}
+            </Alert>
+          ))}
           <h2>Preguntas:</h2>
                  </Col>
               </Row>
