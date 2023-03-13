@@ -16,7 +16,7 @@ const LandingPage = () => {
         <Container>
           <Row>
             <Col className="d-flex justify-content-center mt-5">
-              <h1 className="text-center textLanding typeTextLanding">
+              <h1 className="text-center textLanding">
               ¿Estás listo?
               </h1>
             </Col>
