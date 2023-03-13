@@ -6,6 +6,10 @@
     background-size: contain;
 }
 
+.typeTextLanding{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+
 @media(max-width: 374px) {
     .positionButtonGo{
     position: absolute;
