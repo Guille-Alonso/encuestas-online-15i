@@ -33,11 +33,14 @@ setSelected(e.target.value)
                 {loading?
                 <Spinner/>
                 :
-                categories.map((item) => (
-                  <option key={nanoid()} value={item.name}>
-                    {item.name}
-                  </option>
-                ))}
+                categories.map((item) => 
+                {
+                  if(item.state){
+                  return <option key={nanoid()} value={item.name}>{item.name}</option>
+                  }
+                }
+                  
+                )}
     </select>
     </div>
      
