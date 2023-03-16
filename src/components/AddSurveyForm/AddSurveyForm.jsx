@@ -25,7 +25,9 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       const auxSurvey = {...values}
       auxSurvey.user = user._id;
       auxSurvey.pregunta = questionsA
-  
+      if(questionsA.length == 0){
+        throw new Error("No puede crear una encuesta sin preguntas")
+      }
       await axios.post('/surveys',auxSurvey);
       if(getSurveys){
         getSurveys();
@@ -39,7 +41,7 @@ const AddSurveyForm = ({onClose, getSurveys, categorias,goToAdmin,setSelected, s
       setQuestionsA([])
     } catch (error) {
       setQuestionsA([])
-      if(error.response.data.errors){
+      if(error.response?.data?.errors){
         toast.error(error.response.data.errors[0].msg)
       
       }else toast.error(error.message)
