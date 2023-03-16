@@ -28,8 +28,11 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
       const obj = {
         "id":values._id,
         "campos":aux
-    }
-   
+      }
+      
+      if(questionsA.length == 0){
+        throw new Error("La encuesta debe tener preguntas")
+      }
       await axios.put('/surveys/',obj);
       
       getSurveys();
@@ -39,7 +42,7 @@ const EditSurvey = ({onClose, selected, getSurveys, setSelected, categorias, goT
     
     } catch (error) {
       setQuestionsA([])
-    	if(error.response.data.errors){
+    	if(error.response?.data?.errors){
         toast.error(error.response.data.errors[0].msg)
       
       }else toast.error(error.message)

@@ -8,7 +8,6 @@ import axios from "../../config/axios";
 import useForm from "../../hook/useForm";
 import "../../components/Styles/responsivesPages.css"
 import {Button} from "@nextui-org/react";
-import { validationAnswer } from "../../helpers/validationsAnswer";
 
 const AnswerSurveyPage = () => {
   const params = useParams();
@@ -75,7 +74,7 @@ const AnswerSurveyPage = () => {
     }
   };
 
-  const { handleChange, handleSubmit, values,errors } = useForm(initialState, submit,null,null,validationAnswer);
+  const { handleChange, handleSubmit, values } = useForm(initialState, submit);
   return (
     <div className="adminHeight">
       {loading ? (
@@ -113,12 +112,7 @@ const AnswerSurveyPage = () => {
               </Form.Control></FormLabel>
            
           }
-           {Object.keys(errors).length !== 0 &&
-          Object.values(errors).map((error, index) => (
-            <Alert variant="danger" className="mt-3" key={index}>
-              {error}
-            </Alert>
-          ))}
+         
           <h2>Preguntas:</h2>
                  </Col>
               </Row>
