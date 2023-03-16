@@ -148,7 +148,7 @@ const QuestionAndResponse = ({itemQuestion,values,setValues,indice,onClose,setSe
             onChange={handleChangeQuestion}
             value={question.question}
             name="question"
-            maxLength={60}
+            maxLength={65}
           />
           <Form.Label>Seleccione el tipo de respuesta</Form.Label>
           <Form.Check
