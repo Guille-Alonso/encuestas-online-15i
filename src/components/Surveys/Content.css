@@ -8,21 +8,10 @@
     min-height: 80vh;
 }
 
-/* @media(width: 768px) {
+@media(max-width: 1100px) {
     .contentHeight{
-        min-height: 75vh;
+		min-height: 90vh;
+        height: 100%;
     }
-}
-
-@media(width: 820px) {
-    .contentHeight{
-        min-height: 66vh;
-    }
-}
-
-@media(width: 912px) {
-    .contentHeight{
-        min-height: 57vh;
-    }
-} */
+} 
 

@@ -41,7 +41,7 @@ export const RegisterPage = () => {
 	}
 
 	return (
-		<div id='register' >
+		<div id='register' className='contentHeightRegister'>
 			<form onSubmit={handleSubmit} className="form-register">
 			<h1 className="h1-form font-weight-bold mb-3">Registrarse</h1>
 
@@ -56,8 +56,8 @@ export const RegisterPage = () => {
 						autoComplete='off'
 						placeholder="Ingresa tu nombre"
 						maxLength={25}
-						pattern="[A-Za-z ]{4,25}"
-           				title="Solo Letras, sin acentos. Tamaño mínimo: 4. Tamaño máximo: 25"
+						// pattern="[A-Za-z ]{4,25}"
+           				// title="Solo Letras, sin acentos. Tamaño mínimo: 4. Tamaño máximo: 25"
 					/>
 				</div>
 
