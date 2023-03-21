@@ -1,8 +1,6 @@
 .adminHeight{
     min-height: 80vh;
 }
-/* ver en dispositivos */
-
 
 @media(max-width: 520px) {
     .buttonPosition{
@@ -10,3 +8,10 @@
     margin: auto;
     }
 }
+
+@media(max-width: 1100px) {
+    .adminHeight{
+		min-height: 90vh;
+        height: 100%;
+    }
+} 
