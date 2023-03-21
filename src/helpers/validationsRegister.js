@@ -7,9 +7,9 @@ export const validationRegister = (values) => {
         errors.name="El nombre no puede tener mas de 25 caracteres";
     }else if(values.name.length<4){
         errors.name="El nombre debe tener como mínimo 4 caracteres";
-    }else if(!/^[a-zA-Z ]*$/.test(values.name)){
-        errors.name="El nombre solo admite letras"
-    }
+    }else if(!/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g.test(values.name)){
+      errors.name="El nombre solo admite letras"
+  }
  
 
     if (!values.email) {
